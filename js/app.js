@@ -6,10 +6,16 @@ import {
     onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import {
+    GoogleAuthProvider,
+    signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 const { db } = await import("../firebase/config.js");
+const { auth } = await import("../firebase/config.js");
 const { logout } = await import("../services/sessionService.js");
 
-console.log('rheme')
+console.log('rheme');
 function toggleTheme() {
 
     document.documentElement.classList.toggle("light");
@@ -284,7 +290,10 @@ async function include(id, file) {
     const html = await fetch(file).then(r => r.text());
 
     const el = document.getElementById(id);
-    el.innerHTML = html;
+
+    if(el){
+        el.innerHTML = html;
+    }
 }
 
 function bindNavigation() {
@@ -305,7 +314,9 @@ async function loadPage(page) {
 
         const html = await response.text();
         document.getElementById("content").innerHTML = html;
-        document.getElementById("sidebar").classList.toggle('collapsed');
+        if(document.getElementById("sidebar")){
+            document.getElementById("sidebar").classList.toggle('collapsed');
+        }
         carregarUsuarios()
   
 
@@ -466,6 +477,21 @@ function initLogout() {
     });
 
 }
+
+const googleProvider = new GoogleAuthProvider();
+
+document
+    .getElementById("continueWithGoogle")
+    .addEventListener("click", async () => {
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
+
+            console.log("Login realizado:", result.user);
+
+        } catch (error) {
+            console.error("Erro no login Google:", error);
+        }
+    });
 loadNotifications();
 bindNavigation(); 
  initUserMenu();

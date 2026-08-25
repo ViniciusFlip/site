@@ -2041,12 +2041,110 @@
 
   </footer>
 
+   <script src="assets/js/tema.js"></script>
+    <script src="assets/js/loader.js"></script>
+  
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="js/app.js"></script> 
+    <!-- <script type="module" src="js/getUsers.js"></script>  -->
+    <script 
+      type="module"
+      src="js/guard.js"></script>
 
+      
+      <!-- <script type="module">
+      import "/services/notification.service.js";
+      import { initSession } from "/services/sessionService.js";
+
+      initSession();
+    </script> -->
+
+     <script type="module">
+      import "./services/notification.service.js";
+      import { initSession } from "./services/sessionService.js";
+
+      initSession();
+    </script>
+      
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- POPUP: INICIAR CONVERSA -->
+<div
+  id="conversationModal"
+  class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+>
+  <div
+    id="conversationModalContent"
+    class="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl"
+  >
+    <!-- Fechar -->
+    <button
+      id="closeConversationModal"
+      type="button"
+      class="absolute right-4 top-4 text-gray-400 transition hover:text-gray-900"
+      aria-label="Fechar"
+    >
+      ✕
+    </button>
+
+    <div class="pr-8">
+      <p class="mb-2 text-sm font-medium text-gray-500">
+        Vamos começar
+      </p>
+
+      <h2 class="text-2xl font-bold text-gray-900">
+        Vamos conversar sobre seu projeto?
+      </h2>
+
+      <p class="mt-3 text-gray-600">
+        Primeiro, vamos identificar você para continuar seu atendimento.
+      </p>
+    </div>
+
+    <div class="mt-6">
+      <button
+        id="continueWithGoogle"
+        type="button"
+        class="w-full rounded-xl bg-black px-5 py-3.5 font-semibold text-white transition hover:opacity-90"
+      >
+        Continuar com Google
+      </button>
+    </div>
+  </div>
+</div>
 
   <!-- =========================
        JAVASCRIPT
   ========================== -->
+<script>
+  const conversationModal = document.getElementById("conversationModal");
+  const closeConversationModal = document.getElementById("closeConversationModal");
 
+  // Todos os CTAs da landing
+  document.querySelectorAll(".start-conversation").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      conversationModal.classList.remove("hidden");
+      conversationModal.classList.add("flex");
+    });
+  });
+
+  // Fechar pelo X
+  closeConversationModal.addEventListener("click", () => {
+    conversationModal.classList.add("hidden");
+    conversationModal.classList.remove("flex");
+  });
+
+  // Fechar clicando fora do popup
+  conversationModal.addEventListener("click", (event) => {
+    if (event.target === conversationModal) {
+      conversationModal.classList.add("hidden");
+      conversationModal.classList.remove("flex");
+    }
+  });
+</script>
   <script>
 
     lucide.createIcons();
