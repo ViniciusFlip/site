@@ -1,407 +1,2081 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal OMDA Fansub </title>
-    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/tema.css">
-    <link rel="stylesheet" href="assets/css/loader.css">
-    <!-- <link rel="stylesheet" href="assets/css/table.css"> -->
-    <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  </head>
-  <body  >
-    <div  id="app-loader"
-      class=" fixed inset-0 z-[9999] flex items-center justify-center bg-[#e1e1e1]">
-      <div class="text-center">
-        <!-- Glow -->
-        <div class="relative mx-auto w-28 h-28">
-          <div class="absolute inset-0 rounded-full bg-[#5864be] blur-3xl opacity-30 animate-pulse"></div>
-        </div>
-
-        <div class="">
-         
-
-
-            <div   class="flex  justify-center xl:justify-start flex items-center">
-      <a class="">
-      <img
-        class="h-14 "
-        src="assets/images/ft-logo.png"
-        alt="Logo"
-        >
-      </a>
-    </div>
-        </div>
-        
-       
-        <!-- Barra -->
-        <div class="mt-10 w-72 h-1 bg-white/10 rounded-full overflow-hidden mx-auto">
-          <div id="loader-bar"
-            class="h-full bg-[#5864be] rounded-full"
-            style="width:0%"></div>
-        </div>
-        <!-- Status -->
-        <p id="loader-text"
-          class="mt-5 text-sm text-zinc-400">
-          Inicializando...
-        </p>
-        
-      </div>
-    </div>
-    <div class="min-h-screen lg:flex">
-      <!-- Sidebar -->
-      <div id="box-sidebar" class=" "></div>
-      <!-- Área principal -->
-      <main id="main-content" class="flex-1 flex flex-col h-screen overflow-hidden">
-        <!-- Header -->
-        <div id="header" ></div>
-        <!-- Conteúdo -->
-        <div id="content" class="flex-1 overflow-auto"></div>
-      </main>
-      <!-- Painel do usuário -->
-      <aside id="user-sidebar" class="hidden  w-80  ">
-
-        <div class="user-card  ">
-
-    <div class="overflow-hidden rounded-3xl border border-white/10 ">
-
-        <!-- Banner -->
-        <div class="relative h-36">
-
-            <!-- <img
-                src="assets/capa/profile-banner.jpg"
-                class="absolute inset-0 h-full w-full object-cover opacity-70"> -->
-
-            <div class="absolute inset-0 bg-gradient-to-t from-[#171717] via-[#171717]/60 to-transparent"></div>
-
-            <!-- Avatar -->
-            <div class="absolute -bottom-10 left-1/2 -translate-x-1/2">
-
-                <img
-                    src="assets/images/user-avatar.png"
-                    class="w-20 h-20 rounded-full border-4 border-[#171717] object-cover">
-
-            </div>
-
-        </div>
-
-        <!-- Conteúdo -->
-
-        <div class="pt-14 px-6 pb-6">
- <div class="user-card">
-  <a href="#"
-    class="group relative block overflow-hidden rounded-3xl border border-white/5
-    ">
-
-    <!-- Glow -->
-    <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_top,#5864be30,transparent_65%)]">
-    </div>
-
-    <div class="relative p-5">
-
-      <!-- Avatar -->
-      <div class="flex flex-col items-center">
-
-        
-
-        <h3
-          class="mt-4 text-lg font-bold tracking-wide text-white"
-          data-user-name></h3>
-
-        <span
-          data-user-role
-          class="mt-2 px-3 py-1 rounded-full text-[11px]
-          bg-[#5864be]/15
-          border border-[#5864be]/30
-          text-[#b7c2ff]
-          uppercase tracking-widest">
-        </span>
-
-        <span
-          class="mt-2 text-xs text-zinc-500"
-          data-user-email>
-        </span>
-
-      </div>
-
-      <!-- Divider -->
-      <div
-        class="my-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent">
-      </div>
-
-      <!-- Stats -->
-      <div class="grid grid-cols-2 gap-3">
-
-        <div
-          class="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-
-          <div class="flex items-center gap-2 text-green-400">
-
-            <i data-lucide="shield-check" class="w-4 h-4"></i>
-
-            <span class="font-bold">
-              2.22
-            </span>
-
-          </div>
-
-          <div class="mt-1 text-[11px] uppercase tracking-wider text-zinc-500">
-            Ratio
-          </div>
-
-        </div>
-
-        <div
-          class="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-
-          <div class="flex items-center gap-2 text-yellow-400">
-
-            <i data-lucide="coins" class="w-4 h-4"></i>
-
-            <span class="font-bold">
-              19.57
-            </span>
-
-          </div>
-
-          <div class="mt-1 text-[11px] uppercase tracking-wider text-zinc-500">
-            Otabills
-          </div>
-
-        </div>
-
-        <div
-          class="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-
-          <div class="flex items-center gap-2 text-cyan-400">
-
-            <i data-lucide="upload" class="w-4 h-4"></i>
-
-            <span class="font-bold">
-              4.3 TB
-            </span>
-
-          </div>
-
-          <div class="mt-1 text-[11px] uppercase tracking-wider text-zinc-500">
-            Upload
-          </div>
-
-        </div>
-
-        <div
-          class="rounded-2xl border border-white/5 bg-white/[0.03] p-3">
-
-          <div class="flex items-center gap-2 text-red-400">
-
-            <i data-lucide="download" class="w-4 h-4"></i>
-
-            <span class="font-bold">
-              1.9 TB
-            </span>
-
-          </div>
-
-          <div class="mt-1 text-[11px] uppercase tracking-wider text-zinc-500">
-            Download
-          </div>
-
-        </div>
-
-      </div>
-
-      <!-- Logout -->
-
-      <button
-        data-logout
-        class="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl
-        border border-red-500/20
-        bg-red-500/10
-        py-3
-        text-sm
-        text-red-300
-        transition
-        hover:bg-red-500/20
-        hover:text-white">
-
-        <i data-lucide="log-out"></i>
-
-        <span>Sair da Sessão</span>
-
-      </button>
-
-    </div>
-
-  </a>
-</div>
-
-            <!-- Continue lendo -->
-
-            <div class="mt-8 rounded-2xl border border-white/5 bg-white/[0.03] p-4">
-
-                <div class="text-xs uppercase tracking-wider text-zinc-500">
-                    Continue lendo
-                </div>
-
-                <div class="mt-2 text-white font-semibold">
-                    One Piece
-                </div>
-
-                <div class="text-sm text-zinc-400">
-                    Capítulo 1158 • 82% concluído
-                </div>
-
-            </div>
-
-            <!-- Estatísticas -->
-
-            <div class="mt-6 grid grid-cols-3 gap-3">
-
-                <div class="rounded-2xl bg-white/[0.03] p-3 text-center">
-
-                    <div class="text-xl font-bold text-white">
-                        247
-                    </div>
-
-                    <div class="mt-1 text-[11px] text-zinc-500">
-                        Mangás
-                    </div>
-
-                </div>
-
-                <div class="rounded-2xl bg-white/[0.03] p-3 text-center">
-
-                    <div class="text-xl font-bold text-white">
-                        19
-                    </div>
-
-                    <div class="mt-1 text-[11px] text-zinc-500">
-                        Sequência
-                    </div>
-
-                </div>
-
-                <div class="rounded-2xl bg-white/[0.03] p-3 text-center">
-
-                    <div class="text-xl font-bold text-white">
-                        S
-                    </div>
-
-                    <div class="mt-1 text-[11px] text-zinc-500">
-                        Rank
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Ação -->
-
-            <button
-                class="mt-6 w-full rounded-2xl bg-indigo-600 py-3 font-medium text-white transition hover:bg-indigo-500">
-
-                Continuar Jornada
-
-            </button>
-
-            <!-- Logout -->
-
-            <button
-                data-logout
-                class="mt-3 flex w-full items-center justify-center rounded-2xl border border-white/10 py-3 text-zinc-400 transition hover:bg-white/5 hover:text-white">
- <i data-lucide="log-out"></i>
-                Sair da conta
-
-            </button>
- 
-
-        </div>
-
-    </div>
-
-</div>
-      </aside>
-    </div>
-    <div id="footer"></div>
-    <script src="assets/js/tema.js"></script>
-    <script src="assets/js/loader.js"></script>
-  
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module" src="js/app.js"></script> 
-    <!-- <script type="module" src="js/getUsers.js"></script>  -->
-    <script 
-      type="module"
-      src="js/guard.js"></script>
-
-      <script type="module">
-    import "/services/notification.service.js";
-import { initSession } from "/services/sessionService.js";
-
-initSession();
-    </script>
-    <!-- <script type="module">
-      import { initSession, logout } from "/services/sessionService.js";
-      console.log('init session')
-      initSession((user) => {
-      
-          const userMenuBtn = document.getElementById("userMenuBtn");
-          const userMenuName = document.getElementById("userMenuName");
-          const logoutBtn = document.getElementById("logoutBtn");
-          const userMenuMail = document.getElementById("userMenuMail");
-          const userMenuRole = document.getElementById("userMenuRole");
-      
-         //  user header
-          const userHeaderName = document.getElementById("userHeaderName");
-          const userHeaderRole = document.getElementById("userHeaderRole");
-      
-      
-        
-      
-          if (user) {
-      
-      
-            //   userMenuBtn.hidden = false;
-            //   userMenuName.textContent = user.name;
-            //   userMenuMail.textContent = user.email;
-            //   userMenuRole.textContent = user.role;
-      
-               //   userMenuBtn.hidden = false;
-            //   userHeaderName.textContent = user.name;
-          
-            //   userHeaderRole.textContent = user.role;
-      
-              logoutBtn.onclick = async () => {
-                  await logout();
-              };
-      
-              const roleClient='client'
-               if(user.role==roleClient){
-                  console.log('go client')
-                //   document.getElementById('horizontal-nav').style.cssText="display:none"
-                //   document.getElementById('route-uploads').style.cssText="display:none"
-                //   document.getElementById('route-settings').style.cssText="display:none"
-                //   document.getElementById('route-users').style.cssText="display:none"
-                //   document.getElementById('banner').style.cssText="display:none"
-                //   document.getElementById('data-highlights').style.cssText="display:none"
-                  
-               }else{
-                  // console.log('go other')
-                    
-               }
-          } else {
-             
-            //   userMenuBtn.hidden = true;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Vinicius Araujo — Brand · Product · Software</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 50px rgba(0,0,0,.10)',
+            dark: '0 12px 28px rgba(0,0,0,.22)'
           }
-      
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .hero-grid {
+      background:
+        radial-gradient(
+          circle at 78% 28%,
+          rgba(255,255,255,.13) 0 1px,
+          transparent 2px
+        ),
+        radial-gradient(
+          circle at 20% 75%,
+          rgba(255,255,255,.10) 0 1px,
+          transparent 2px
+        );
+
+      background-size: 48px 48px, 70px 70px;
+    }
+
+    .noise::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .055;
+
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+      mix-blend-mode: overlay;
+    }
+
+    .hero-photo {
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(255,45,0,.20),
+          rgba(0,0,0,.05) 50%,
+          rgba(0,0,0,.12)
+        ),
+        url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=90");
+
+      background-position: center top;
+      background-size: cover;
+      filter: saturate(.85) contrast(1.08);
+    }
+
+    .city-photo {
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(10,20,30,.15),
+          rgba(8,14,22,.75)
+        ),
+        url("https://images.unsplash.com/photo-1519832979-6fa011b87667?auto=format&fit=crop&w=1400&q=90");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .marquee {
+      animation: marquee 18s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .marquee {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#f1f1f0] text-[#111] antialiased">
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <header id="top" class="px-3 pt-3 sm:px-5 sm:pt-5">
+
+    <section
+      id="hero"
+      style="
+        background-image:
+          linear-gradient(90deg, rgba(15,15,15,.62) 0%, rgba(15,15,15,.28) 48%, rgba(15,15,15,.18) 100%),
+          linear-gradient(0deg, rgba(0,0,0,.28), rgba(0,0,0,.08)),
+          url('assets/images/im-2.png');
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-position:center;
+      "
+      class="noise hero-grid relative mx-auto min-h-[720px] max-w-[1480px] overflow-hidden rounded-[30px] bg-[red] text-white shadow-soft sm:min-h-[800px] lg:min-h-[820px]"
+    >
+
+      <!-- Giant decorative text -->
+
+      <div
+        class="pointer-events-none absolute -bottom-12 left-[-3%] select-none text-[170px] font-semibold leading-none tracking-[-.08em] text-white/[.055] sm:text-[260px] lg:text-[390px]"
+      >
+        Dev.
+      </div>
+
+
+      <!-- Navigation -->
+
+      <nav
+        class="relative z-20 flex items-center justify-between px-5 py-5 sm:px-8 lg:px-10"
+      >
+
+        <a
+          href="#top"
+          class="flex items-center gap-2 text-sm font-bold tracking-tight"
+        >
+
+          <span
+            class="grid h-8 w-8 place-items-center rounded-full text-[#ff3008]"
+          >
+            <img
+              src="assets/images/w 1.png"
+              class="h-6"
+              alt="Vinicius Araujo"
+            />
+          </span>
+
+          VINICIUS ARAUJO
+        </a>
+
+
+        <!-- Desktop navigation -->
+
+        <div
+          class="hidden items-center gap-8 text-[11px] font-medium lg:flex"
+        >
+
+          <a
+            href="#about"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            sobre mim
+          </a>
+
+          <a
+            href="#services"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            como trabalho
+          </a>
+
+          <a
+            href="#work"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            o que construo
+          </a>
+
+          <a
+            href="#pricing"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            projetos
+          </a>
+
+        </div>
+
+
+        <!-- CTA / Mobile menu -->
+
+        <div class="flex items-center gap-2">
+
+          <a
+            href="#contact"
+            class="hidden rounded-full bg-[#161616] px-5 py-3 text-[11px] font-semibold shadow-dark transition hover:-translate-y-0.5 sm:block"
+          >
+            Fale sobre um projeto
+          </a>
+
+          <button
+            id="menuBtn"
+            class="grid h-10 w-10 place-items-center rounded-full bg-white/15 backdrop-blur lg:hidden"
+            aria-label="Abrir menu"
+          >
+            <i
+              data-lucide="menu"
+              class="h-5 w-5"
+            ></i>
+          </button>
+
+        </div>
+
+      </nav>
+
+
+      <!-- Mobile menu -->
+
+      <div
+        id="mobileMenu"
+        class="relative z-30 hidden mx-4 rounded-2xl bg-[#171717] p-4 shadow-dark lg:hidden"
+      >
+
+        <div class="grid gap-1 text-sm">
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#about"
+          >
+            Sobre
+          </a>
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#services"
+          >
+            Como trabalho
+          </a>
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#work"
+          >
+            O que construo
+          </a>
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#pricing"
+          >
+            Projetos
+          </a>
+
+          <a
+            class="mt-2 rounded-xl bg-white px-4 py-3 text-center font-semibold text-black"
+            href="#contact"
+          >
+            Conversar sobre um projeto
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Hero content -->
+
+      <div
+        class="relative z-10 mx-auto grid max-w-[1240px] items-center px-5 pb-8 pt-8 sm:px-8 lg:grid-cols-[1fr_1.15fr_1fr] lg:px-10 lg:pb-16 lg:pt-14"
+      >
+
+        <!-- Hero text -->
+
+        <div class="relative z-20 max-w-[520px] lg:pt-10">
+
+          <div class="mb-4 sm:mb-5 flex items-center gap-2">
+
+            <span class="w-5 h-px bg-white/70"></span>
+
+            <span class="text-[9px] sm:text-[11px] uppercase tracking-[.18em] text-white/85">
+              Brand · Product · Software
+            </span>
+
+          </div>
+
+
+          <h1
+            class="max-w-[540px] text-[48px] font-medium leading-[.88] tracking-[-.065em] sm:text-[64px] lg:text-[70px]"
+          >
+            Construo marcas, <br />
+            produtos<br />
+            & software.
+          </h1>
+
+
+          <p
+            class="mt-6 max-w-[390px] text-[12px] leading-[1.55] text-white/80 sm:text-[13px]"
+          >
+            Desenvolvedor em formação que combina branding, produto, UX e software para transformar problemas reais em soluções simples, claras e funcionais.
+          </p>
+
+
+          <div class="mt-7 flex flex-wrap gap-2">
+
+            <a
+              href="#services"
+              class="inline-flex items-center gap-2 rounded-full bg-[#171717] px-5 py-3 text-[11px] font-semibold shadow-dark transition hover:-translate-y-0.5"
+            >
+              Ver como trabalho
+
+              <i
+                data-lucide="arrow-up-right"
+                class="h-3.5 w-3.5"
+              ></i>
+            </a>
+
+
+            <a
+              href="#contact"
+              class="mt-7 sm:mt-8 flex items-center gap-3 bg-white text-neutral-900 rounded-full pl-5 pr-2 py-2 text-[10px] sm:text-[11px] font-semibold shadow-xl"
+            >
+              Conversar sobre um projeto
+
+              <span class="w-7 h-7 rounded-full bg-neutral-900 text-white flex items-center justify-center">
+
+                <i
+                  data-lucide="arrow-up-right"
+                  class="w-3.5 h-3.5"
+                ></i>
+
+              </span>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- Central visual -->
+
+        <div
+          class="relative order-first mx-auto h-[440px] w-full max-w-[560px] sm:h-[520px] lg:order-none lg:h-[650px]"
+        >
+
+          <div
+            class="hidden hero-photo absolute left-1/2 top-1/2 h-[110%] w-[70%] -translate-x-1/2 -translate-y-[43%] rounded-[40%] opacity-90 sm:w-[58%] lg:w-[64%]"
+          ></div>
+
+
+          <div
+            class="absolute inset-x-0 bottom-[4%] mx-auto h-[44%] w-[68%] rounded-full bg-black/25 blur-3xl"
+          ></div>
+
+
+          <!-- Floating cards -->
+
+          <div
+            class="hidden absolute left-[6%] top-[38%] grid h-10 w-10 rotate-[-14deg] place-items-center rounded-lg bg-white text-black shadow-dark sm:left-[5%]"
+          >
+            <i
+              data-lucide="palette"
+              class="h-4 w-4"
+            ></i>
+          </div>
+
+
+          <div
+            class="hidden absolute left-[11%] top-[48%] grid h-9 w-9 rotate-[10deg] place-items-center rounded-lg bg-white text-black shadow-dark"
+          >
+            <i
+              data-lucide="box"
+              class="h-4 w-4"
+            ></i>
+          </div>
+
+
+          <div
+            class="hidden absolute right-[9%] top-[42%] grid h-10 w-10 rotate-[12deg] place-items-center rounded-lg bg-white text-black shadow-dark"
+          >
+            <i
+              data-lucide="braces"
+              class="h-4 w-4"
+            ></i>
+          </div>
+
+
+          <div
+            class="absolute bottom-[5%] left-1/2 -translate-x-1/2 text-[10px] font-medium text-white/85"
+          >
+
+            Construção pública
+
+            <span
+              class="ml-2 inline-grid h-5 w-5 place-items-center rounded-full bg-white text-black"
+            >
+              <i
+                data-lucide="arrow-down"
+                class="h-3 w-3"
+              ></i>
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- Metric -->
+
+        <div
+          class="hidden max-w-[260px] justify-self-end lg:block"
+        >
+
+          <p
+            class="max-w-[220px] text-[10px] leading-relaxed text-white/75"
+          >
+            Não construo apenas para parecer bom. Procuro entender o problema, testar a solução e transformar o que funciona em algo que possa ser vendido, usado e evoluído.
+          </p>
+
+
+          <div
+            class="mt-20 border-t border-white/20 pt-5"
+          >
+
+            <div
+              class="text-[9px] uppercase tracking-widest text-white/60"
+            >
+              Minha abordagem
+            </div>
+
+            <div
+              class="mt-1 text-[34px] font-medium leading-none tracking-[-.06em]"
+            >
+              Problema → Produto
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Logo / concept strip -->
+
+      <div
+        class="absolute bottom-0 left-0 right-0 z-20 overflow-hidden border-t border-white/10 py-5"
+      >
+
+        <div
+          class="marquee flex w-max items-center gap-14 px-8 text-[11px] font-semibold text-white/70"
+        >
+
+          <span>Branding</span>
+          <span>UX/UI</span>
+          <span>Landing Pages</span>
+          <span>Produto</span>
+          <span>Software</span>
+          <span>SaaS</span>
+
+          <span>Branding</span>
+          <span>UX/UI</span>
+          <span>Landing Pages</span>
+          <span>Produto</span>
+          <span>Software</span>
+          <span>SaaS</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+   </header>
+
+
+  <!-- =========================
+       PROVA — BRANDING
+  ========================== -->
+
+  <section
+    id="brands"
+    class="mx-auto max-w-[1480px] overflow-hidden px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+  >
+
+    <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+
+      <div>
+
+        <div
+          class="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
+          Projetos recentes
+        </div>
+
+        <h2
+          class="max-w-[760px] text-[44px] font-medium leading-[.92] tracking-[-.06em] sm:text-[62px] lg:text-[74px]"
+        >
+          Marcas que já<br />
+          <span class="text-black/25">saíram do papel.</span>
+        </h2>
+
+      </div>
+
+
+      <div class="max-w-[330px]">
+
+        <p class="text-[11px] leading-[1.65] text-black/45">
+          Identidade não é apenas estética.
+          É transformar uma ideia em algo que possa ser percebido,
+          lembrado e reconhecido.
+        </p>
+
+        <a
+          href="#contact"
+          class="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold"
+        >
+          Quero construir minha marca
+
+          <span
+            class="grid h-7 w-7 place-items-center rounded-full bg-[#171717] text-white"
+          >
+            <i
+              data-lucide="arrow-up-right"
+              class="h-3.5 w-3.5"
+            ></i>
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- CARROSSEL -->
+
+    <div
+      class="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-5"
+      style="scrollbar-width:none;"
+    >
+
+      <!-- MARCA 1 -->
+
+      <article
+        class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+        style="background-image:url('assets/images/marca1.png');"
+      >
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
+        ></div>
+
+        <div
+          class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+        >
+          Brand 01
+        </div>
+
+        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+          <p
+            class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55"
+          >
+            Identidade visual
+          </p>
+
+          <h3
+            class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]"
+          >
+            Sua marca.
+          </h3>
+
+          <p
+            class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65"
+          >
+            Transforme uma ideia em uma identidade com presença.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- MARCA 2 -->
+
+      <article
+        class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+        style="background-image:url('assets/images/marca2.png');"
+      >
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
+        ></div>
+
+        <div
+          class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+        >
+          Brand 02
+        </div>
+
+        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+          <p
+            class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55"
+          >
+            Identidade visual
+          </p>
+
+          <h3
+            class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]"
+          >
+            Crie o seu.
+          </h3>
+
+          <p
+            class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65"
+          >
+            Uma identidade pensada para comunicar antes mesmo de explicar.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- MARCA 3 -->
+
+      <article
+        class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+        style="background-image:url('assets/images/marca4.png');"
+      >
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
+        ></div>
+
+        <div
+          class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+        >
+          Brand 03
+        </div>
+
+        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+          <p
+            class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55"
+          >
+            Identidade visual
+          </p>
+
+          <h3
+            class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]"
+          >
+            Explore.
+          </h3>
+
+          <p
+            class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65"
+          >
+            Dê forma visual à próxima ideia que você quer colocar no mundo.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- MARCA 4 -->
+
+      <article
+        class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+        style="background-image:url('assets/images/im-4.png');"
+      >
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
+        ></div>
+
+        <div
+          class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+        >
+          Brand 04
+        </div>
+
+        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+          <p
+            class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55"
+          >
+            Identidade visual
+          </p>
+
+          <h3
+            class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]"
+          >
+            Comece agora.
+          </h3>
+
+          <p
+            class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65"
+          >
+            Sua identidade começa com uma ideia clara e uma execução consistente.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <!-- INDICADORES + CTA -->
+
+    <div class="mt-3 flex flex-col items-center justify-between gap-5 sm:flex-row">
+
+      <div class="flex gap-1.5">
+
+        <span
+          class="h-1.5 w-8 rounded-full bg-[#ff3008]"
+        ></span>
+
+        <span class="h-1.5 w-1.5 rounded-full bg-black/15"></span>
+        <span class="h-1.5 w-1.5 rounded-full bg-black/15"></span>
+        <span class="h-1.5 w-1.5 rounded-full bg-black/15"></span>
+
+      </div>
+
+
+      <a
+        href="#contact"
+        class="group inline-flex items-center gap-3 rounded-full bg-[#171717] py-2 pl-5 pr-2 text-[10px] font-semibold text-white shadow-dark"
+      >
+
+        Quero minha marca
+
+        <span
+          class="grid h-8 w-8 place-items-center rounded-full bg-white text-black transition group-hover:rotate-45"
+        >
+
+          <i
+            data-lucide="arrow-up-right"
+            class="h-3.5 w-3.5"
+          ></i>
+
+        </span>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <main>
+
+
+    <!-- ABOUT -->
+
+  <!-- =========================
+     ABOUT — POSICIONAMENTO
+========================== -->
+
+<section
+  id="about"
+  class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+>
+
+  <div class="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+
+
+    <!-- TEXTO PRINCIPAL -->
+
+    <div>
+
+      <div
+        class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+      >
+
+        <span
+          class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"
+        ></span>
+
+        Sobre o trabalho
+
+      </div>
+
+
+      <h2
+        class="max-w-[900px] text-[45px] font-medium leading-[.92] tracking-[-.06em] sm:text-[62px] lg:text-[78px]"
+      >
+        Não construo apenas<br />
+
+        <span class="text-black/25">
+          coisas bonitas.
+        </span>
+      </h2>
+
+
+      <p
+        class="mt-8 max-w-[650px] text-[14px] leading-[1.75] text-black/60"
+      >
+        Sou Vinicius Araujo, desenvolvedor em formação. Trabalho na interseção entre
+        <strong class="font-semibold text-black">
+          marca, produto e software
+        </strong>
+        para transformar ideias e problemas reais em soluções claras, funcionais e prontas para evoluir.
+      </p>
+
+
+      <p
+        class="mt-5 max-w-[650px] text-[14px] leading-[1.75] text-black/45"
+      >
+        Meu trabalho começa antes do código: entender o problema, o público,
+        a oportunidade e a forma mais simples de testar uma solução.
+      </p>
+
+    </div>
+
+
+    <!-- POSICIONAMENTO -->
+
+    <div
+      class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft sm:p-9"
+    >
+
+      <div
+        class="flex items-center justify-between"
+      >
+
+        <span
+          class="text-[9px] font-semibold uppercase tracking-[.2em] text-white/40"
+        >
+          Como penso
+        </span>
+
+        <i
+          data-lucide="crosshair"
+          class="h-4 w-4 text-white/40"
+        ></i>
+
+      </div>
+
+
+      <div
+        class="mt-12 space-y-5"
+      >
+
+        <div
+          class="flex items-start gap-4"
+        >
+
+          <span
+            class="mt-1 text-[9px] text-[#ff3008]"
+          >
+            01
+          </span>
+
+          <div>
+
+            <h3 class="text-lg font-medium">
+              Problema antes da solução
+            </h3>
+
+            <p
+              class="mt-1 text-[10px] leading-[1.6] text-white/40"
+            >
+              Entender o que realmente precisa ser resolvido.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="h-px bg-white/10"
+        ></div>
+
+
+        <div
+          class="flex items-start gap-4"
+        >
+
+          <span
+            class="mt-1 text-[9px] text-[#ff3008]"
+          >
+            02
+          </span>
+
+          <div>
+
+            <h3 class="text-lg font-medium">
+              Validação antes de excesso
+            </h3>
+
+            <p
+              class="mt-1 text-[10px] leading-[1.6] text-white/40"
+            >
+              Testar a menor solução possível antes de construir demais.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="h-px bg-white/10"
+        ></div>
+
+
+        <div
+          class="flex items-start gap-4"
+        >
+
+          <span
+            class="mt-1 text-[9px] text-[#ff3008]"
+          >
+            03
+          </span>
+
+          <div>
+
+            <h3 class="text-lg font-medium">
+              Resultado antes de vaidade
+            </h3>
+
+            <p
+              class="mt-1 text-[10px] leading-[1.6] text-white/40"
+            >
+              Clientes, receita, aprendizado e evolução importam mais que aparência de sucesso.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FRASE DE POSICIONAMENTO -->
+
+  <div
+    class="mt-16 border-t border-black/10 pt-7"
+  >
+
+    <div
+      class="flex flex-col justify-between gap-5 md:flex-row md:items-center"
+    >
+
+      <p
+        class="max-w-[850px] text-[20px] font-medium leading-[1.1] tracking-[-.03em] sm:text-[27px]"
+      >
+        Desenvolvedor em formação que constrói marcas,
+        produtos digitais e software.
+      </p>
+
+
+      <span
+        class="shrink-0 text-[9px] uppercase tracking-[.18em] text-black/30"
+      >
+        Brand · Product · Software
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section
+      id="services"
+      class="bg-[#171717] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div class="mx-auto max-w-[1480px]">
+
+        <div
+          class="flex flex-col justify-between gap-8 md:flex-row md:items-end"
+        >
+
+          <div>
+
+            <div
+              class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-[9px] font-semibold"
+            >
+
+              <i
+                data-lucide="layers-3"
+                class="h-3 w-3"
+              ></i>
+
+              Como trabalho
+
+            </div>
+
+
+            <h2
+              class="text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]"
+            >
+              Do problema<br />
+              à solução.
+            </h2>
+
+          </div>
+
+
+          <p
+            class="max-w-[360px] text-[12px] leading-[1.6] text-white/50"
+          >
+            Serviços são o primeiro laboratório. Eles geram caixa, experiência e contato direto com problemas que podem revelar oportunidades de produtos.
+          </p>
+
+        </div>
+
+
+        <div
+          class="mt-14 grid gap-px overflow-hidden rounded-[28px] border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4"
+        >
+
+
+          <!-- Discovery -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="search"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Descobrir
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Entender o problema, o público, o contexto e o que já existe antes de decidir o que construir.
+            </p>
+
+          </article>
+
+
+          <!-- Brand -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="palette"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Construir marca
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Criar identidade, posicionamento e comunicação para que a solução seja percebida com clareza.
+            </p>
+
+          </article>
+
+
+          <!-- Product -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="layout-dashboard"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Criar produto
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Transformar hipóteses em landing pages, protótipos e experiências simples que podem ser testadas rapidamente.
+            </p>
+
+          </article>
+
+
+          <!-- Software -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="code-2"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Desenvolver
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Transformar soluções validadas em software, automações e produtos digitais funcionais.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         STRATEGY
+    ========================== -->
+
+    <section
+      id="strategy"
+      class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div
+        class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+      >
+
+        <div>
+
+          <div
+            class="mb-4 inline-flex rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+          >
+            Estratégia
+          </div>
+
+
+          <h2
+            class="text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]"
+          >
+            Aprender.<br />
+            Construir.<br />
+            Validar.
+          </h2>
+
+        </div>
+
+
+        <p
+          class="max-w-[330px] text-[11px] leading-[1.6] text-black/45"
+        >
+          Conteúdo, serviços e produtos fazem parte do mesmo sistema: descobrir problemas, criar confiança, vender soluções e transformar padrões em produtos.
+        </p>
+
+      </div>
+
+
+      <div class="grid gap-4 lg:grid-cols-3">
+
+
+        <!-- Validate -->
+
+        <article
+          class="rounded-[28px] bg-white p-7 shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-black/45"
+            >
+              01 · Validar
+            </span>
+
+
+            <i
+              data-lucide="message-circle"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            Conversa
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-black/40"
+          >
+            Problema antes do código
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-black/10"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-black/65"
+          >
+            <li>Identificar um problema</li>
+            <li>Encontrar quem sente</li>
+            <li>Entender como resolvem hoje</li>
+            <li>Testar disposição para pagar</li>
+          </ul>
+
+        </article>
+
+
+
+        <!-- Offer -->
+
+        <article
+          class="rounded-[28px] bg-[red] p-7 text-white shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-white/70"
+            >
+              02 · Ofertar
+            </span>
+
+
+            <i
+              data-lucide="sparkles"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            Solução
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-white/65"
+          >
+            A menor solução possível
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-white/20"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-white/80"
+          >
+            <li>Landing page</li>
+            <li>Protótipo</li>
+            <li>Serviço manual</li>
+            <li>Pré-venda ou primeira entrega</li>
+          </ul>
+
+        </article>
+
+
+
+        <!-- Product -->
+
+        <article
+          class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-white/45"
+            >
+              03 · Produto
+            </span>
+
+
+            <i
+              data-lucide="infinity"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            Software
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-white/40"
+          >
+            Automatizar o que se repete
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-white/10"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-white/60"
+          >
+            <li>Encontrar padrões</li>
+            <li>Produtizar o processo</li>
+            <li>Automatizar tarefas</li>
+            <li>Buscar receita recorrente</li>
+          </ul>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         WORK / CONTENT
+    ========================== -->
+
+    <section
+      id="content"
+      class="bg-[#171717] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div class="mx-auto max-w-[1480px]">
+
+        <div
+          class="flex flex-col justify-between gap-8 md:flex-row md:items-end"
+        >
+
+          <div>
+
+            <div
+              class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-[9px] font-semibold"
+            >
+
+              <i
+                data-lucide="radio"
+                class="h-3 w-3"
+              ></i>
+
+              Construção pública
+
+            </div>
+
+
+            <h2
+              class="text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]"
+            >
+              Conteúdo que<br />
+              vira negócio.
+            </h2>
+
+          </div>
+
+
+          <p
+            class="max-w-[360px] text-[12px] leading-[1.6] text-white/50"
+          >
+            Não publico apenas para crescer audiência. Documento problemas, experimentos, decisões e resultados para construir confiança e descobrir oportunidades.
+          </p>
+
+        </div>
+
+
+        <div
+          class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4"
+        >
+
+
+          <article
+            class="rounded-[28px] border border-white/10 bg-white/[.03] p-7"
+          >
+
+            <i
+              data-lucide="hammer"
+              class="h-5 w-5"
+            ></i>
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Build in public
+            </h3>
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              O que estou construindo, decisões, erros, experimentos e resultados.
+            </p>
+
+          </article>
+
+
+          <article
+            class="rounded-[28px] border border-white/10 bg-white/[.03] p-7"
+          >
+
+            <i
+              data-lucide="graduation-cap"
+              class="h-5 w-5"
+            ></i>
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Aprendizado
+            </h3>
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Compartilhar aquilo que estou aprendendo e aplicando na prática.
+            </p>
+
+          </article>
+
+
+          <article
+            class="rounded-[28px] border border-white/10 bg-white/[.03] p-7"
+          >
+
+            <i
+              data-lucide="scan-search"
+              class="h-5 w-5"
+            ></i>
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Problemas
+            </h3>
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Observar dores reais de empresas, profissionais e usuários.
+            </p>
+
+          </article>
+
+
+          <article
+            class="rounded-[28px] border border-white/10 bg-white/[.03] p-7"
+          >
+
+            <i
+              data-lucide="badge-check"
+              class="h-5 w-5"
+            ></i>
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Prova
+            </h3>
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Mostrar projetos, entregas, métricas, produtos e resultados reais.
+            </p>
+
+          </article>
+
+        </div>
+
+
+        <div
+          class="mt-8 rounded-[28px] border border-white/10 p-7 sm:p-9"
+        >
+
+          <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+
+            <div>
+
+              <p
+                class="text-[9px] uppercase tracking-[.2em] text-white/35"
+              >
+                Regra de ouro
+              </p>
+
+
+              <p
+                class="mt-4 max-w-[800px] text-[25px] font-medium leading-[1.05] tracking-[-.04em] sm:text-[38px]"
+              >
+                Conteúdo → problema → conversa → oferta → cliente → aprendizado → produto → receita.
+              </p>
+
+            </div>
+
+
+            <div
+              class="text-[10px] text-white/40"
+            >
+              Atenção não é o objetivo.<br />
+              Negócio é.
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SERVICES / OFFERS
+    ========================== -->
+
+    <section
+      id="pricing"
+      class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div
+        class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+      >
+
+        <div>
+
+          <div
+            class="mb-4 inline-flex rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+          >
+            Projetos
+          </div>
+
+
+          <h2
+            class="text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]"
+          >
+            Escolha o<br />
+            problema.
+          </h2>
+
+        </div>
+
+
+        <p
+          class="max-w-[330px] text-[11px] leading-[1.6] text-black/45"
+        >
+          Cada projeto começa entendendo o problema. A entrega pode ser uma marca, uma landing page, um produto digital ou software.
+        </p>
+
+      </div>
+
+
+      <div class="grid gap-4 lg:grid-cols-3">
+
+
+        <!-- Branding -->
+
+        <article
+          class="rounded-[28px] bg-white p-7 shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-black/45"
+            >
+              Branding
+            </span>
+
+
+            <i
+              data-lucide="palette"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            Marca
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-black/40"
+          >
+            Para posicionar melhor uma ideia
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-black/10"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-black/65"
+          >
+            <li>Posicionamento</li>
+            <li>Identidade visual</li>
+            <li>Direção de comunicação</li>
+            <li>Sistema visual</li>
+          </ul>
+
+        </article>
+
+
+
+        <!-- Product -->
+
+        <article
+          class="rounded-[28px] bg-[red] p-7 text-white shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-white/70"
+            >
+              Produto
+            </span>
+
+
+            <i
+              data-lucide="layout-template"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            Experiência
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-white/65"
+          >
+            Para transformar atenção em ação
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-white/20"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-white/80"
+          >
+            <li>Landing pages</li>
+            <li>UX/UI</li>
+            <li>Protótipos</li>
+            <li>Experiências digitais</li>
+          </ul>
+
+        </article>
+
+
+
+        <!-- Software -->
+
+        <article
+          class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-white/45"
+            >
+              Software
+            </span>
+
+
+            <i
+              data-lucide="code-2"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            Sistema
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-white/40"
+          >
+            Para transformar processos em produto
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-white/10"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-white/60"
+          >
+            <li>Desenvolvimento</li>
+            <li>Automações</li>
+            <li>Produtos digitais</li>
+            <li>Soluções sob medida</li>
+          </ul>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         VALIDATION
+    ========================== -->
+
+    <section
+      class="mx-auto max-w-[1480px] px-5 pb-20 sm:px-8 lg:px-10 lg:pb-28"
+    >
+
+      <div
+        class="rounded-[30px] bg-white p-8 shadow-soft sm:p-12 lg:p-16"
+      >
+
+        <div
+          class="grid gap-12 lg:grid-cols-[.8fr_1.2fr]"
+        >
+
+          <div>
+
+            <div
+              class="mb-4 inline-flex rounded-full bg-[#f1f1f0] px-3 py-2 text-[9px] font-semibold"
+            >
+              Validação
+            </div>
+
+
+            <h2
+              class="text-[45px] font-medium leading-[.9] tracking-[-.06em] sm:text-[62px]"
+            >
+              Antes do<br />
+              software,<br />
+              a evidência.
+            </h2>
+
+          </div>
+
+
+          <div
+            class="grid gap-3 sm:grid-cols-2"
+          >
+
+            <div
+              class="rounded-2xl bg-[#f1f1f0] p-5"
+            >
+
+              <span class="text-[9px] font-semibold text-black/35">
+                01
+              </span>
+
+              <h3 class="mt-8 text-lg font-medium">
+                Hipótese
+              </h3>
+
+              <p class="mt-2 text-[11px] leading-[1.6] text-black/50">
+                Quem tem o problema e por que ele importa?
+              </p>
+
+            </div>
+
+
+            <div
+              class="rounded-2xl bg-[#f1f1f0] p-5"
+            >
+
+              <span class="text-[9px] font-semibold text-black/35">
+                02
+              </span>
+
+              <h3 class="mt-8 text-lg font-medium">
+                Evidência
+              </h3>
+
+              <p class="mt-2 text-[11px] leading-[1.6] text-black/50">
+                Existem sinais reais de que isso acontece?
+              </p>
+
+            </div>
+
+
+            <div
+              class="rounded-2xl bg-[#f1f1f0] p-5"
+            >
+
+              <span class="text-[9px] font-semibold text-black/35">
+                03
+              </span>
+
+              <h3 class="mt-8 text-lg font-medium">
+                Oferta
+              </h3>
+
+              <p class="mt-2 text-[11px] leading-[1.6] text-black/50">
+                Alguém aceitaria pagar por uma solução simples?
+              </p>
+
+            </div>
+
+
+            <div
+              class="rounded-2xl bg-[#f1f1f0] p-5"
+            >
+
+              <span class="text-[9px] font-semibold text-black/35">
+                04
+              </span>
+
+              <h3 class="mt-8 text-lg font-medium">
+                Construção
+              </h3>
+
+              <p class="mt-2 text-[11px] leading-[1.6] text-black/50">
+                Só depois disso faz sentido automatizar e escalar.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+      id="contact"
+      class="px-5 pb-5 sm:px-8 lg:px-10 lg:pb-10"
+    >
+
+      <div
+        class="noise relative mx-auto max-w-[1480px] overflow-hidden rounded-[30px] bg-[red] p-8 text-white sm:p-12 lg:p-20"
+      >
+
+        <div
+          class="relative z-10 max-w-[850px]"
+        >
+
+          <div
+            class="mb-5 inline-flex rounded-full bg-white px-3 py-2 text-[9px] font-semibold text-black"
+          >
+            Fale comigo sobre um projeto
+          </div>
+
+
+          <h2
+            class="text-[52px] font-medium leading-[.9] tracking-[-.06em] sm:text-[76px]"
+          >
+            Tem um problema?<br />
+            Vamos construir a solução.
+          </h2>
+
+
+          <p
+            class="mt-6 max-w-[580px] text-[12px] leading-[1.7] text-white/75"
+          >
+            Pode ser uma marca, uma landing page, um produto digital, uma automação ou software. Primeiro entendemos o problema. Depois decidimos o que realmente vale construir.
+          </p>
+
+
+          <a
+            href="mailto:vinicius@exemplo.com"
+            class="mt-8 inline-flex items-center gap-2 rounded-full bg-[#171717] px-6 py-4 text-[11px] font-semibold shadow-dark"
+          >
+            Vamos conversar
+
+            <i
+              data-lucide="arrow-up-right"
+              class="h-4 w-4"
+            ></i>
+
+          </a>
+
+        </div>
+
+
+        <div
+          class="pointer-events-none absolute -bottom-32 -right-10 text-[250px] font-semibold leading-none tracking-[-.12em] text-white/[.055] sm:text-[360px]"
+        >
+          V
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer
+    class="mx-auto flex max-w-[1480px] flex-col gap-4 px-5 py-8 text-[10px] text-black/45 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10"
+  >
+
+    <span>
+      © 2026 Vinicius Araujo. Brand · Product · Software.
+    </span>
+
+
+    <div class="flex gap-5">
+
+      <a
+        href="#top"
+        class="hover:text-black"
+      >
+        Voltar ao topo
+      </a>
+
+      <a
+        href="#services"
+        class="hover:text-black"
+      >
+        Serviços
+      </a>
+
+      <a
+        href="#contact"
+        class="hover:text-black"
+      >
+        Contato
+      </a>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    lucide.createIcons();
+
+
+    const menuBtn =
+      document.getElementById('menuBtn');
+
+
+    const mobileMenu =
+      document.getElementById('mobileMenu');
+
+
+    menuBtn?.addEventListener('click', () => {
+
+      mobileMenu.classList.toggle('hidden');
+
+    });
+
+
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+
+      link.addEventListener('click', () => {
+
+        mobileMenu.classList.add('hidden');
+
       });
-    </script> -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  </body>
+
+    });
+
+  </script>
+
+</body>
 </html>
