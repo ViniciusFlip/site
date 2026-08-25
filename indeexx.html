@@ -341,11 +341,32 @@
       src="js/guard.js"></script>
 
       <script type="module">
-    import "/services/notification.service.js";
-import { initSession } from "/services/sessionService.js";
+  const isGitHub = window.location.hostname.endsWith("github.io");
 
-initSession();
-    </script>
+  if (isGitHub) {
+    await import("./services/notification.service.js");
+
+    const { initSession } = await import(
+      "./services/sessionService.js"
+    );
+
+    initSession();
+  } else {
+    await import("/services/notification.service.js");
+
+    const { initSession } = await import(
+      "/services/sessionService.js"
+    );
+
+    initSession();
+  }
+</script>
+      <!-- <script type="module">
+      import "/services/notification.service.js";
+      import { initSession } from "/services/sessionService.js";
+
+      initSession();
+    </script> -->
     <!-- <script type="module">
       import { initSession, logout } from "/services/sessionService.js";
       console.log('init session')
