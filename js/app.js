@@ -6,18 +6,8 @@ import {
     onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const isGitHub = window.location.hostname.endsWith("github.io");
-
-const firebasePath = isGitHub
-  ? "../firebase/config.js"
-  : "../../firebase/config.js";
-
-const sessionPath = isGitHub
-  ? "../services/sessionService.js"
-  : "../../services/sessionService.js";
-
-const { db } = await import(firebasePath);
-const { logout } = await import(sessionPath);
+const { db } = await import("../firebase/config.js");
+const { logout } = await import("../services/sessionService.js");
 
 console.log('rheme')
 function toggleTheme() {
