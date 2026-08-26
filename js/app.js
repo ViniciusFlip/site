@@ -3,13 +3,17 @@ import {
     getDocs,
     query,
     orderBy,
-    onSnapshot
+    onSnapshot,
+    addDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
     GoogleAuthProvider,
     signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
 
 const { db } = await import("../firebase/config.js");
 const { auth } = await import("../firebase/config.js");
@@ -477,6 +481,7 @@ function initLogout() {
     });
 
 }
+ 
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -486,12 +491,24 @@ document
         try {
             const result = await signInWithPopup(auth, googleProvider);
 
-            console.log("Login realizado:", result.user);
+            const user = result.user;
+
+            await addDoc(collection(db, "conversas"), {
+                uid: user.uid,
+                nome: user.displayName || "",
+                email: user.email || "",
+                acao: "Quero conversar sobre meu projeto",
+                pagina: window.location.pathname,
+                criadoEm: serverTimestamp()
+            });
+
+            console.log("Lead salvo:", user);
 
         } catch (error) {
             console.error("Erro no login Google:", error);
         }
     });
+
 loadNotifications();
 bindNavigation(); 
  initUserMenu();
