@@ -505,7 +505,7 @@ document
             console.log("Lead salvo:", user);
             const nome = user.displayName || "Olá";
 
-            const mensagem = `Olá! Sou ${nome}. Quero falar sobre .`;
+            const mensagem = ` Sou ${nome}. Quero falar sobre .`;
 
             const telefone = "5512981053361";
 
