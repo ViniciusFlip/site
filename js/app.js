@@ -497,12 +497,19 @@ document
                 uid: user.uid,
                 nome: user.displayName || "",
                 email: user.email || "",
-                acao: "Quero conversar sobre meu projeto",
+                acao: "Falar sobre meu projeto agora",
                 pagina: window.location.pathname,
                 criadoEm: serverTimestamp()
             });
 
             console.log("Lead salvo:", user);
+            const nome = user.displayName || "Olá";
+
+            const mensagem = `Olá! Sou ${nome}. Quero falar sobre .`;
+
+            const telefone = "5512981053361";
+
+            window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
         } catch (error) {
             console.error("Erro no login Google:", error);
