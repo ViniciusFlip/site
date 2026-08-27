@@ -1376,6 +1376,94 @@
     </div>
 
   </footer>
+
+
+  <div
+  id="conversationModal"
+  class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+>
+  <div
+    id="conversationModalContent"
+    class="relative w-full max-w-md overflow-hidden rounded-[30px] border border-black/10 bg-[#f5f5f3] p-7 text-[#171717] shadow-2xl dark:border-white/10 dark:bg-[#171717] dark:text-white sm:p-9"
+  >
+
+    <!-- Fechar -->
+    <button
+      id="closeConversationModal"
+      type="button"
+      class="absolute right-5 top-5 grid h-8 w-8 place-items-center rounded-full border border-black/10 text-black/40 transition hover:bg-black hover:text-white dark:border-white/10 dark:text-white/40 dark:hover:bg-white dark:hover:text-black"
+      aria-label="Fechar"
+    >
+      <i data-lucide="x" class="h-4 w-4"></i>
+    </button>
+
+
+    <div class="pr-8">
+
+      <div
+        class="mb-5 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:border-white/10 dark:bg-white/5"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
+        Vamos começar
+      </div>
+
+
+      <h2
+        class="text-[32px] font-medium leading-[.95] tracking-[-.05em] sm:text-[38px]"
+      >
+        Vamos conversar sobre
+        <span class="text-[#ff3008]">
+          seu projeto?
+        </span>
+      </h2>
+
+
+      <p
+        class="mt-5 text-[12px] leading-[1.7] text-black/50 dark:text-white/50"
+      >
+        Primeiro, vamos identificar você para continuar seu atendimento.
+      </p>
+
+    </div>
+
+
+    <div class="mt-8">
+
+      <button
+        id="continueWithGoogle"
+        type="button"
+        class="group flex w-full items-center justify-between rounded-full bg-[#171717] py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-white shadow-dark transition hover:-translate-y-0.5 dark:bg-white dark:text-[#171717]"
+      >
+
+        <span>
+          Continuar com Google
+        </span>
+
+        <span
+          class="grid h-9 w-9 place-items-center rounded-full bg-white text-[#171717] transition group-hover:rotate-45 dark:bg-[#171717] dark:text-white"
+        >
+          <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div class="mt-6 border-t border-black/10 pt-5 dark:border-white/10">
+
+      <p class="text-[8px] uppercase tracking-[.18em] text-black/30 dark:text-white/30">
+        Atendimento
+      </p>
+
+      <p class="mt-2 text-[10px] leading-[1.6] text-black/40 dark:text-white/40">
+        Seus dados são usados apenas para continuar o atendimento do projeto.
+      </p>
+
+    </div>
+
+  </div>
+</div>
 <script>
   const conversationModal = document.getElementById("conversationModal");
   const closeConversationModal = document.getElementById("closeConversationModal");
