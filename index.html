@@ -1376,7 +1376,34 @@
     </div>
 
   </footer>
+<script>
+  const conversationModal = document.getElementById("conversationModal");
+  const closeConversationModal = document.getElementById("closeConversationModal");
 
+  // Todos os CTAs da landing
+  document.querySelectorAll(".start-conversation").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      conversationModal.classList.remove("hidden");
+      conversationModal.classList.add("flex");
+    });
+  });
+
+  // Fechar pelo X
+  closeConversationModal.addEventListener("click", () => {
+    conversationModal.classList.add("hidden");
+    conversationModal.classList.remove("flex");
+  });
+
+  // Fechar clicando fora do popup
+  conversationModal.addEventListener("click", (event) => {
+    if (event.target === conversationModal) {
+      conversationModal.classList.add("hidden");
+      conversationModal.classList.remove("flex");
+    }
+  });
+</script>
 
 
   <script>
