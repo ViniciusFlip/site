@@ -317,7 +317,11 @@ async function loadPage(page) {
         }
 
         const html = await response.text();
-        document.getElementById("content").innerHTML = html;
+        var contentElement = document.getElementById("content");
+
+        if(contentElement){
+            contentElement.innerHTML = html;
+        } 
         if(document.getElementById("sidebar")){
             document.getElementById("sidebar").classList.toggle('collapsed');
         }
