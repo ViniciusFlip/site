@@ -63,101 +63,89 @@
 
 <body class="bg-[#f5f5f3] text-[#171717] antialiased transition-colors duration-300 dark:bg-[#0d0d0d] dark:text-[#f5f5f3]">
 
-  <!-- NAV -->
+ 
+<!-- NAV -->
 
-  <header class="sticky top-0 z-50 border-b border-black/5 bg-[#f5f5f3]/90 backdrop-blur-xl dark:border-white/10 dark:bg-[#0d0d0d]/90">
+<header class="absolute top-0 left-0 z-50 w-full bg-transparent">
 
-    <nav class="mx-auto flex max-w-[1480px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+  <nav class="mx-auto flex max-w-[1480px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
 
-      <a href="#top" class="flex items-center gap-3">
+    <a href="#top" class="flex items-center gap-3">
 
-        <!-- <div class="grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-[10px] font-bold text-white dark:bg-white dark:text-[#171717]"> -->
-          <span
-            class="grid h-8 w-8 place-items-center rounded-full text-[#ff3008]"
-          >
-            <img
-              src="assets/images/r1-.png"
-              class="h-6"
-              alt="Vinicius Araujo"
-            />
-          </span>
-        <!-- </div> -->
+      <span class="grid h-8 w-8 place-items-center rounded-full text-[#ff3008]">
+        <img
+          src="assets/images/r1-.png"
+          class="h-6"
+          alt="Vinicius Araujo"
+        />
+      </span>
 
-        <div class="leading-none">
-          <p class="text-[11px] font-bold tracking-[-.02em]">
-            VINICIUS ARAUJO
-          </p>
+      <div class="leading-none">
+        <p class="text-[11px] font-bold tracking-[-.02em]">
+          VINICIUS ARAUJO
+        </p>
 
-          <p class="mt-1 text-[7px] uppercase tracking-[.18em] text-black/35 dark:text-white/35">
-            Brand · Product · Software
-          </p>
-        </div>
+        <p class="mt-1 text-[7px] uppercase tracking-[.18em] text-black/35 dark:text-white/35">
+          Brand · Product · Software
+        </p>
+      </div>
 
+    </a>
+
+    <div class="hidden items-center gap-7 md:flex">
+
+      <a href="#projects" class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white">
+        Projetos
       </a>
 
+      <a href="#services" class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white">
+        Serviços
+      </a>
 
-      <div class="hidden items-center gap-7 md:flex">
+      <a href="#about" class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white">
+        Sobre
+      </a>
 
-        <a href="#projects" class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white">
-          Projetos
-        </a>
+      <button
+        id="themeToggle"
+        type="button"
+        aria-label="Alternar tema"
+        class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white/70 transition hover:scale-105 dark:border-white/10 dark:bg-white/10"
+      >
+        <i data-lucide="moon" class="theme-icon h-3.5 w-3.5"></i>
+      </button>
 
-        <a href="#services" class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white">
-          Serviços
-        </a>
+      <a href=" " class="start-conversation rounded-full bg-[#171717] px-4 py-2.5 text-[9px] font-semibold text-white transition hover:scale-[1.03] dark:bg-white dark:text-[#171717]">
+        Fale Agora
+      </a>
 
-        <a href="#about" class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white">
-          Sobre
-        </a>
+    </div>
 
-        <button
-          id="themeToggle"
-          type="button"
-          aria-label="Alternar tema"
-          class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white transition hover:scale-105 dark:border-white/10 dark:bg-white/10"
-        >
-          <i data-lucide="moon" class="theme-icon h-3.5 w-3.5"></i>
-        </button>
+    <div class="flex items-center gap-2 md:hidden">
 
-        <a href=" " class="
-        start-conversation
-        rounded-full bg-[#171717] px-4 py-2.5 text-[9px] font-semibold text-white transition hover:scale-[1.03] dark:bg-white dark:text-[#171717]">
-          
-            Fale  Agora
-          
-        </a>
+      <button
+        id="themeToggleMobile"
+        type="button"
+        aria-label="Alternar tema"
+        class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white/70 dark:border-white/10 dark:bg-white/10"
+      >
+        <i data-lucide="moon" class="theme-icon h-3.5 w-3.5"></i>
+      </button>
 
-      </div>
+      <a href=" " class="start-conversation grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717]">
+        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+      </a>
 
+    </div>
 
-      <div class="flex items-center gap-2 md:hidden">
+  </nav>
 
-        <button
-          id="themeToggleMobile"
-          type="button"
-          aria-label="Alternar tema"
-          class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white dark:border-white/10 dark:bg-white/10"
-        >
-          <i data-lucide="moon" class="theme-icon h-3.5 w-3.5"></i>
-        </button>
+</header>
 
-        <a href=" " class="
-          start-conversation
-          grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717]">
-          <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-        </a>
+<main id="top">
 
-      </div>
+  <!-- HERO -->
 
-    </nav>
-
-  </header>
-
-
-  <main id="top">
-
-
-    <!-- HERO -->
 
    <section 
   style="
