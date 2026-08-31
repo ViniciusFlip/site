@@ -492,31 +492,49 @@ const googleProvider = new GoogleAuthProvider();
 document
     .getElementById("continueWithGoogle")
     .addEventListener("click", async () => {
+
+        const telefone = "5512981053361";
+
         try {
+            // Tenta login com Google
             const result = await signInWithPopup(auth, googleProvider);
 
             const user = result.user;
 
-            await addDoc(collection(db, "conversas"), {
-                uid: user.uid,
-                nome: user.displayName || "",
-                email: user.email || "",
-                acao: "Falar sobre meu projeto agora",
-                pagina: window.location.pathname,
-                criadoEm: serverTimestamp()
-            });
+            // Tenta salvar o lead no Firestore
+            try {
+                await addDoc(collection(db, "conversas"), {
+                    uid: user.uid,
+                    nome: user.displayName || "",
+                    email: user.email || "",
+                    acao: "Falar sobre meu projeto agora",
+                    pagina: window.location.pathname,
+                    criadoEm: serverTimestamp()
+                });
 
-            console.log("Lead salvo:", user);
+                console.log("Lead salvo:", user);
+
+            } catch (firestoreError) {
+                // Firestore falhou, mas NÃO impede o WhatsApp
+                console.error("Erro ao salvar lead:", firestoreError);
+            }
+
             const nome = user.displayName || "Olá";
 
-            const mensagem = ` Sou ${nome}. Quero falar sobre .`;
+            const mensagem = `Sou ${nome}. Quero falar sobre meu projeto.`;
 
-            const telefone = "5512981053361";
+            // Google funcionou → WhatsApp com nome
+            window.location.href =
+                `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
-            window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+        } catch (googleError) {
+            // Google falhou → WhatsApp continua normalmente
+            console.error("Erro no login Google:", googleError);
 
-        } catch (error) {
-            console.error("Erro no login Google:", error);
+            const mensagem = "Oii, Vinicius!  gostaria de falar sobre meu projeto.";
+
+            window.location.href =
+                `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
         }
     });
 
