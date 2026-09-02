@@ -99,16 +99,21 @@ function checkHeader() {
 checkHeader();
 window.addEventListener("resize", checkHeader);
 
-function initSwiper() {
+ function initSwiper() {
 
+    // =========================
     // HERO
-    const swiperElement = document.querySelector(".heroSwiper");
+    // =========================
 
-    if (swiperElement) {
+    const heroElement = document.querySelector(".heroSwiper");
+
+    if (heroElement) {
 
         const progress = document.querySelector(".timeline-progress");
 
         function restartProgress() {
+
+            if (!progress) return;
 
             progress.style.transition = "none";
             progress.style.width = "0%";
@@ -161,62 +166,70 @@ function initSwiper() {
 
     }
 
-    // LATEST
-   // LATEST
-const latestElement = document.querySelector(".latestSwiper");
 
-if (latestElement) {
+    // =========================
+    // LATEST / PROJECTS
+    // =========================
 
-    new Swiper(".latestSwiper", {
+    const latestElement = document.querySelector(".latestSwiper");
 
-        loop: true,
+    if (latestElement) {
 
-        slidesPerView: 1.2,
+        new Swiper(".latestSwiper", {
 
-        spaceBetween: 20,
+            loop: true,
 
-        speed: 700,
+            speed: 600,
 
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
-        },
+            slidesPerView: 1.2,
 
-        navigation: {
-            nextEl: ".latest-next",
-            prevEl: ".latest-prev"
-        },
+            spaceBetween: 16,
 
-        pagination: {
-            el: ".latest-pagination",
-            clickable: true
-        },
+            grabCursor: true,
 
-        keyboard: {
-            enabled: true
-        },
+            autoplay: {
 
-        breakpoints: {
+                delay: 4000,
 
-            640: {
-                slidesPerView: 2.2,
-                spaceBetween: 20
+                disableOnInteraction: false,
+
+                pauseOnMouseEnter: true
+
             },
 
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 16
+            navigation: {
+
+                nextEl: ".latest-next",
+
+                prevEl: ".latest-prev"
+
+            },
+
+            breakpoints: {
+
+                640: {
+
+                    slidesPerView: 2.2,
+
+                    spaceBetween: 16
+
+                },
+
+                1024: {
+
+                    slidesPerView: 3,
+
+                    spaceBetween: 16
+
+                }
+
             }
 
-        }
+        });
 
-    });
-
-}
+    }
 
 }
-
 
 async function carregarUsuarios() {
 
