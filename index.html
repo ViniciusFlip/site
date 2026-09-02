@@ -368,7 +368,8 @@
 
   <div class="swiper meuSwiper">
 
-    <div class="swiper-wrapper">
+  
+<div class="swiper-wrapper">
 
   <!-- MORREN -->
   <div class="swiper-slide">
@@ -379,61 +380,161 @@
       style="background-image:url('./assets/images/morren.png');"
     >
 
-      <div class="pointer-events-none absolute inset-0 z-0 rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent"></div>
+      <!-- Overlay somente desktop -->
+      <div
+        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
+      ></div>
 
-      <div class="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-5 sm:p-6">
+      <!-- Footer -->
+      <div
+        class="project-controls hidden
+         absolute inset-x-0 bottom-0
+         items-center
+         border-t border-white/10
+         bg-black/70 backdrop-blur-md
+         sm:flex"
+      >
 
-        <div class="min-w-0">
-          <p class="mb-1 text-[9px] uppercase tracking-[.2em] text-white/55">
+        <!-- Linha 1: Informações -->
+        <div class="min-w-0 pb-3 sm:pb-0">
+
+          <p
+            class="mb-1 text-[9px] font-medium uppercase
+                   tracking-[.2em] text-white/55"
+          >
             Identidade visual
           </p>
 
-          <p class="hidden text-[14px] leading-[1.4] text-white/90 xl:inline">
+          <p
+            class="truncate text-[13px] font-medium
+                   leading-tight text-white/95 sm:text-[14px]"
+          >
             Morren Studios
           </p>
-        </div>
-
-        <div class="flex shrink-0 items-center gap-1.5">
-
-          <button
-            type="button"
-            aria-label="Curtir projeto"
-            class="group/like flex items-center gap-1.5 rounded-full px-2 py-1.5 text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 10v12"/>
-              <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
-            </svg>
-
-            <span class="text-[10px] tabular-nums text-white/45">
-              49
-            </span>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Não gostei do projeto"
-            class="flex h-8 w-8 items-center justify-center rounded-full text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 14V2"/>
-              <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Visualizar projeto"
-            onclick="openProjectPreview('morren')"
-            class="ml-1 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white/90"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/>
-              <path d="m13 6 6 6-6 6"/>
-            </svg>
-          </button>
 
         </div>
+
+
+        <!-- Linha 2: Controles -->
+        <div
+          class="flex h-10 w-full items-center
+                 border-t border-white/10 pt-2
+                 sm:absolute sm:bottom-6 sm:right-6
+                 sm:h-auto sm:w-auto
+                 sm:border-0 sm:pt-0"
+        >
+
+          <!-- ESQUERDA — Likes -->
+          <div
+            class="flex h-full w-1/2 items-center
+                   justify-start gap-1
+                   sm:w-auto sm:justify-end"
+          >
+
+            <!-- Like -->
+            <button
+              type="button"
+              aria-label="Curtir projeto"
+              class="flex h-10 min-w-10 items-center justify-center
+                     gap-1.5 rounded-full px-2.5
+                     text-white/65
+                     transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 10v12"/>
+                <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
+              </svg>
+
+              <span class="text-[10px] tabular-nums text-white/50">
+                49
+              </span>
+            </button>
+
+
+            <!-- Dislike -->
+            <button
+              type="button"
+              aria-label="Não gostei do projeto"
+              class="flex h-10 w-10 items-center justify-center
+                     rounded-full
+                     text-white/65
+                     transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 14V2"/>
+                <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
+              </svg>
+            </button>
+
+          </div>
+
+
+          <!-- DIREITA — Preview -->
+          <div
+            class="flex h-full w-1/2 items-center
+                   justify-end
+                   sm:w-auto"
+          >
+
+            <button
+              type="button"
+              aria-label="Visualizar projeto"
+              onclick="openProjectPreview('morren')"
+              class="flex h-10 w-full items-center justify-end
+                     gap-2 rounded-full
+                     text-[10px] font-medium uppercase
+                     tracking-[.16em] text-white/70
+                     transition-all duration-200
+                     active:scale-[.98]
+                     hover:text-white
+                     sm:h-9 sm:w-auto sm:px-2"
+            >
+              <span>Preview</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"/>
+                <path d="m13 6 6 6-6 6"/>
+              </svg>
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
     </article>
   </div>
@@ -448,61 +549,150 @@
       style="background-image:url('./assets/images/buyed.png');"
     >
 
-      <div class="pointer-events-none absolute inset-0 z-0 rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent"></div>
+      <!-- Overlay somente desktop -->
+      <div
+        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
+      ></div>
 
-      <div class="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-5 sm:p-6">
+      <!-- Footer -->
+      <div
+        class="absolute inset-x-0 bottom-0 z-10
+               bg-black/70 p-4
+               backdrop-blur-[2px]
+               sm:bg-transparent sm:p-6 sm:backdrop-blur-0"
+      >
 
-        <div class="min-w-0">
-          <p class="mb-1 text-[9px] uppercase tracking-[.2em] text-white/55">
+        <!-- Linha 1 -->
+        <div class="min-w-0 pb-3 sm:pb-0">
+
+          <p
+            class="mb-1 text-[9px] font-medium uppercase
+                   tracking-[.2em] text-white/55"
+          >
             Identidade visual
           </p>
 
-          <p class="hidden text-[14px] leading-[1.4] text-white/90 xl:inline">
+          <p
+            class="truncate text-[13px] font-medium
+                   leading-tight text-white/95 sm:text-[14px]"
+          >
             Buyed
           </p>
-        </div>
-
-        <div class="flex shrink-0 items-center gap-1.5">
-
-          <button
-            type="button"
-            aria-label="Curtir projeto"
-            class="group/like flex items-center gap-1.5 rounded-full px-2 py-1.5 text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 10v12"/>
-              <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
-            </svg>
-
-            <span class="text-[10px] tabular-nums text-white/45">
-              36
-            </span>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Não gostei do projeto"
-            class="flex h-8 w-8 items-center justify-center rounded-full text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 14V2"/>
-              <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Visualizar projeto"
-            onclick="openProjectPreview('buyed')"
-            class="ml-1 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white/90"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/>
-              <path d="m13 6 6 6-6 6"/>
-            </svg>
-          </button>
 
         </div>
+
+
+        <!-- Linha 2 -->
+        <div
+          class="flex h-10 w-full items-center
+                 border-t border-white/10 pt-2
+                 sm:absolute sm:bottom-6 sm:right-6
+                 sm:h-auto sm:w-auto
+                 sm:border-0 sm:pt-0"
+        >
+
+          <!-- Likes -->
+          <div
+            class="flex h-full w-1/2 items-center
+                   justify-start gap-1
+                   sm:w-auto sm:justify-end"
+          >
+
+            <button
+              type="button"
+              aria-label="Curtir projeto"
+              class="flex h-10 min-w-10 items-center justify-center
+                     gap-1.5 rounded-full px-2.5
+                     text-white/65 transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 10v12"/>
+                <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
+              </svg>
+
+              <span class="text-[10px] tabular-nums text-white/50">
+                36
+              </span>
+            </button>
+
+            <button
+              type="button"
+              aria-label="Não gostei do projeto"
+              class="flex h-10 w-10 items-center justify-center
+                     rounded-full text-white/65
+                     transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 14V2"/>
+                <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
+              </svg>
+            </button>
+
+          </div>
+
+
+          <!-- Preview -->
+          <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
+
+            <button
+              type="button"
+              aria-label="Visualizar projeto"
+              onclick="openProjectPreview('buyed')"
+              class="flex h-10 w-full items-center justify-end
+                     gap-2 rounded-full
+                     text-[10px] font-medium uppercase
+                     tracking-[.16em] text-white/70
+                     transition-all duration-200
+                     active:scale-[.98]
+                     hover:text-white
+                     sm:h-9 sm:w-auto sm:px-2"
+            >
+              <span>Preview</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"/>
+                <path d="m13 6 6 6-6 6"/>
+              </svg>
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
     </article>
   </div>
@@ -517,61 +707,146 @@
       style="background-image:url('./assets/images/traki.png');"
     >
 
-      <div class="pointer-events-none absolute inset-0 z-0 rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent"></div>
+      <!-- Overlay somente desktop -->
+      <div
+        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
+      ></div>
 
-      <div class="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-5 sm:p-6">
+      <!-- Footer -->
+      <div
+        class="absolute inset-x-0 bottom-0 z-10
+               bg-black/70 p-4
+               backdrop-blur-[2px]
+               sm:bg-transparent sm:p-6 sm:backdrop-blur-0"
+      >
 
-        <div class="min-w-0">
-          <p class="mb-1 text-[9px] uppercase tracking-[.2em] text-white/55">
+        <div class="min-w-0 pb-3 sm:pb-0">
+
+          <p
+            class="mb-1 text-[9px] font-medium uppercase
+                   tracking-[.2em] text-white/55"
+          >
             Identidade visual
           </p>
 
-          <p class="hidden text-[14px] leading-[1.4] text-white/90 xl:inline">
+          <p
+            class="truncate text-[13px] font-medium
+                   leading-tight text-white/95 sm:text-[14px]"
+          >
             Traki App
           </p>
-        </div>
-
-        <div class="flex shrink-0 items-center gap-1.5">
-
-          <button
-            type="button"
-            aria-label="Curtir projeto"
-            class="group/like flex items-center gap-1.5 rounded-full px-2 py-1.5 text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 10v12"/>
-              <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
-            </svg>
-
-            <span class="text-[10px] tabular-nums text-white/45">
-              36
-            </span>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Não gostei do projeto"
-            class="flex h-8 w-8 items-center justify-center rounded-full text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 14V2"/>
-              <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Visualizar projeto"
-            onclick="openProjectPreview('traki')"
-            class="ml-1 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white/90"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/>
-              <path d="m13 6 6 6-6 6"/>
-            </svg>
-          </button>
 
         </div>
+
+
+        <div
+          class="flex h-10 w-full items-center
+                 border-t border-white/10 pt-2
+                 sm:absolute sm:bottom-6 sm:right-6
+                 sm:h-auto sm:w-auto
+                 sm:border-0 sm:pt-0"
+        >
+
+          <div
+            class="flex h-full w-1/2 items-center
+                   justify-start gap-1
+                   sm:w-auto sm:justify-end"
+          >
+
+            <button
+              type="button"
+              aria-label="Curtir projeto"
+              class="flex h-10 min-w-10 items-center justify-center
+                     gap-1.5 rounded-full px-2.5
+                     text-white/65 transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 10v12"/>
+                <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
+              </svg>
+
+              <span class="text-[10px] tabular-nums text-white/50">
+                36
+              </span>
+            </button>
+
+            <button
+              type="button"
+              aria-label="Não gostei do projeto"
+              class="flex h-10 w-10 items-center justify-center
+                     rounded-full text-white/65
+                     transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 14V2"/>
+                <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
+              </svg>
+            </button>
+
+          </div>
+
+
+          <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
+
+            <button
+              type="button"
+              aria-label="Visualizar projeto"
+              onclick="openProjectPreview('traki')"
+              class="flex h-10 w-full items-center justify-end
+                     gap-2 rounded-full
+                     text-[10px] font-medium uppercase
+                     tracking-[.16em] text-white/70
+                     transition-all duration-200
+                     active:scale-[.98]
+                     hover:text-white
+                     sm:h-9 sm:w-auto sm:px-2"
+            >
+              <span>Preview</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"/>
+                <path d="m13 6 6 6-6 6"/>
+              </svg>
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
     </article>
   </div>
@@ -586,61 +861,146 @@
       style="background-image:url('./assets/images/veraspay.png');"
     >
 
-      <div class="pointer-events-none absolute inset-0 z-0 rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent"></div>
+      <!-- Overlay somente desktop -->
+      <div
+        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
+      ></div>
 
-      <div class="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-5 sm:p-6">
+      <!-- Footer -->
+      <div
+        class="absolute inset-x-0 bottom-0 z-10
+               bg-black/70 p-4
+               backdrop-blur-[2px]
+               sm:bg-transparent sm:p-6 sm:backdrop-blur-0"
+      >
 
-        <div class="min-w-0">
-          <p class="mb-1 text-[9px] uppercase tracking-[.2em] text-white/55">
+        <div class="min-w-0 pb-3 sm:pb-0">
+
+          <p
+            class="mb-1 text-[9px] font-medium uppercase
+                   tracking-[.2em] text-white/55"
+          >
             Identidade Visual Brand
           </p>
 
-          <p class="text-[14px] leading-[1.4] text-white/90">
+          <p
+            class="truncate text-[13px] font-medium
+                   leading-tight text-white/95 sm:text-[14px]"
+          >
             Veraspay
           </p>
-        </div>
-
-        <div class="flex shrink-0 items-center gap-1.5">
-
-          <button
-            type="button"
-            aria-label="Curtir projeto"
-            class="group/like flex items-center gap-1.5 rounded-full px-2 py-1.5 text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 10v12"/>
-              <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
-            </svg>
-
-            <span class="text-[10px] tabular-nums text-white/45">
-              21
-            </span>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Não gostei do projeto"
-            class="flex h-8 w-8 items-center justify-center rounded-full text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 14V2"/>
-              <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Visualizar projeto"
-            onclick="openProjectPreview('veraspay')"
-            class="ml-1 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white/90"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/>
-              <path d="m13 6 6 6-6 6"/>
-            </svg>
-          </button>
 
         </div>
+
+
+        <div
+          class="flex h-10 w-full items-center
+                 border-t border-white/10 pt-2
+                 sm:absolute sm:bottom-6 sm:right-6
+                 sm:h-auto sm:w-auto
+                 sm:border-0 sm:pt-0"
+        >
+
+          <div
+            class="flex h-full w-1/2 items-center
+                   justify-start gap-1
+                   sm:w-auto sm:justify-end"
+          >
+
+            <button
+              type="button"
+              aria-label="Curtir projeto"
+              class="flex h-10 min-w-10 items-center justify-center
+                     gap-1.5 rounded-full px-2.5
+                     text-white/65 transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 10v12"/>
+                <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
+              </svg>
+
+              <span class="text-[10px] tabular-nums text-white/50">
+                21
+              </span>
+            </button>
+
+            <button
+              type="button"
+              aria-label="Não gostei do projeto"
+              class="flex h-10 w-10 items-center justify-center
+                     rounded-full text-white/65
+                     transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 14V2"/>
+                <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
+              </svg>
+            </button>
+
+          </div>
+
+
+          <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
+
+            <button
+              type="button"
+              aria-label="Visualizar projeto"
+              onclick="openProjectPreview('veraspay')"
+              class="flex h-10 w-full items-center justify-end
+                     gap-2 rounded-full
+                     text-[10px] font-medium uppercase
+                     tracking-[.16em] text-white/70
+                     transition-all duration-200
+                     active:scale-[.98]
+                     hover:text-white
+                     sm:h-9 sm:w-auto sm:px-2"
+            >
+              <span>Preview</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"/>
+                <path d="m13 6 6 6-6 6"/>
+              </svg>
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
     </article>
   </div>
@@ -655,132 +1015,153 @@
       style="background-image:url('./assets/images/alle2.png');"
     >
 
-      <div class="pointer-events-none absolute inset-0 z-0 rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent"></div>
+      <!-- Overlay somente desktop -->
+      <div
+        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
+      ></div>
 
-      <div class="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-5 sm:p-6">
+      <!-- Footer -->
+      <div
+        class="absolute inset-x-0 bottom-0 z-10
+               bg-black/70 p-4
+               backdrop-blur-[2px]
+               sm:bg-transparent sm:p-6 sm:backdrop-blur-0"
+      >
 
-        <div class="min-w-0">
-          <p class="mb-1 text-[9px] uppercase tracking-[.2em] text-white/55">
+        <div class="min-w-0 pb-3 sm:pb-0">
+
+          <p
+            class="mb-1 text-[9px] font-medium uppercase
+                   tracking-[.2em] text-white/55"
+          >
             Identidade Visual
           </p>
 
-          <p class="hidden text-[14px] leading-[1.4] text-white/90 xl:inline">
+          <p
+            class="truncate text-[13px] font-medium
+                   leading-tight text-white/95 sm:text-[14px]"
+          >
             Alle Mourad
           </p>
-        </div>
-
-        <div class="flex shrink-0 items-center gap-1.5">
-
-          <button
-            type="button"
-            aria-label="Curtir projeto"
-            class="group/like flex items-center gap-1.5 rounded-full px-2 py-1.5 text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 10v12"/>
-              <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
-            </svg>
-
-            <span class="text-[10px] tabular-nums text-white/45">
-              148
-            </span>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Não gostei do projeto"
-            class="flex h-8 w-8 items-center justify-center rounded-full text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 14V2"/>
-              <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Visualizar projeto"
-            onclick="openProjectPreview('alle')"
-            class="ml-1 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white/90"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/>
-              <path d="m13 6 6 6-6 6"/>
-            </svg>
-          </button>
 
         </div>
+
+
+        <div
+          class="flex h-10 w-full items-center
+                 border-t border-white/10 pt-2
+                 sm:absolute sm:bottom-6 sm:right-6
+                 sm:h-auto sm:w-auto
+                 sm:border-0 sm:pt-0"
+        >
+
+          <div
+            class="flex h-full w-1/2 items-center
+                   justify-start gap-1
+                   sm:w-auto sm:justify-end"
+          >
+
+            <button
+              type="button"
+              aria-label="Curtir projeto"
+              class="flex h-10 min-w-10 items-center justify-center
+                     gap-1.5 rounded-full px-2.5
+                     text-white/65 transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M7 10v12"/>
+                <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
+              </svg>
+
+              <span class="text-[10px] tabular-nums text-white/50">
+                148
+              </span>
+            </button>
+
+            <button
+              type="button"
+              aria-label="Não gostei do projeto"
+              class="flex h-10 w-10 items-center justify-center
+                     rounded-full text-white/65
+                     transition-all duration-200
+                     active:scale-95
+                     hover:bg-white/10 hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 14V2"/>
+                <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
+              </svg>
+            </button>
+
+          </div>
+
+
+          <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
+
+            <button
+              type="button"
+              aria-label="Visualizar projeto"
+              onclick="openProjectPreview('alle')"
+              class="flex h-10 w-full items-center justify-end
+                     gap-2 rounded-full
+                     text-[10px] font-medium uppercase
+                     tracking-[.16em] text-white/70
+                     transition-all duration-200
+                     active:scale-[.98]
+                     hover:text-white
+                     sm:h-9 sm:w-auto sm:px-2"
+            >
+              <span>Preview</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"/>
+                <path d="m13 6 6 6-6 6"/>
+              </svg>
+            </button>
+
+          </div>
+
+        </div>
+
       </div>
     </article>
   </div>
-  <!-- ALLE MOURAD -->
-  <div class="swiper-slide">
-    <article
-      class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-      data-category="brand"
-      data-project="alle"
-      style="background-image:url('./assets/images/pravda1.png');"
-    >
 
-      <div class="pointer-events-none absolute inset-0 z-0 rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent"></div>
-
-      <div class="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-5 sm:p-6">
-
-        <div class="min-w-0">
-          <p class="mb-1 text-[9px] uppercase tracking-[.2em] text-white/55">
-            Identidade Visual
-          </p>
-
-          <p class="hidden text-[14px] leading-[1.4] text-white/90 xl:inline">
-            PRAVDA REALTY
-          </p>
-        </div>
-
-        <div class="flex shrink-0 items-center gap-1.5">
-
-          <button
-            type="button"
-            aria-label="Curtir projeto"
-            class="group/like flex items-center gap-1.5 rounded-full px-2 py-1.5 text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 10v12"/>
-              <path d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"/>
-            </svg>
-
-            <span class="text-[10px] tabular-nums text-white/45">
-              18
-            </span>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Não gostei do projeto"
-            class="flex h-8 w-8 items-center justify-center rounded-full text-white/55 transition-all duration-300 hover:bg-white/10 hover:text-white"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 14V2"/>
-              <path d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"/>
-            </svg>
-          </button>
-
-          <button
-            type="button"
-            aria-label="Visualizar projeto"
-            onclick="openProjectPreview('alle')"
-            class="ml-1 flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-lg transition-all duration-300 hover:scale-110 hover:bg-white/90"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"/>
-              <path d="m13 6 6 6-6 6"/>
-            </svg>
-          </button>
-
-        </div>
-      </div>
-    </article>
-  </div>
 </div>
+
+
 
    <!-- CONTROLES DO SWIPER -->
 <div class="mt-6 flex items-center justify-between">
@@ -2367,6 +2748,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+</script>
+<script>
+document.querySelectorAll('.project-card').forEach(card => {
+
+  let timer;
+
+  const controls = card.querySelector('.project-controls');
+
+  if (!controls) return;
+
+  card.addEventListener('pointerdown', (e) => {
+
+    // Se tocou diretamente em algum botão já visível
+    if (e.target.closest('button')) return;
+
+    // Apenas mobile
+    if (window.innerWidth >= 640) return;
+
+    clearTimeout(timer);
+
+    controls.classList.remove('hidden');
+    controls.classList.add('flex');
+
+    timer = setTimeout(() => {
+      controls.classList.remove('flex');
+      controls.classList.add('hidden');
+    }, 3500);
+  });
+
+});
 </script>
 </body>
 </html>
