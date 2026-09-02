@@ -162,33 +162,58 @@ function initSwiper() {
     }
 
     // LATEST
-    if (document.querySelector(".latestSwiper")) {
+   // LATEST
+const latestElement = document.querySelector(".latestSwiper");
 
-        new Swiper(".latestSwiper", {
+if (latestElement) {
 
-            loop: false, // importante
+    new Swiper(".latestSwiper", {
 
-            slidesPerView: 1.2,
+        loop: true,
 
-            spaceBetween: 20,
+        slidesPerView: 1.2,
 
-            navigation: {
-                nextEl: ".latest-next",
-                prevEl: ".latest-prev"
+        spaceBetween: 20,
+
+        speed: 700,
+
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+        },
+
+        navigation: {
+            nextEl: ".latest-next",
+            prevEl: ".latest-prev"
+        },
+
+        pagination: {
+            el: ".latest-pagination",
+            clickable: true
+        },
+
+        keyboard: {
+            enabled: true
+        },
+
+        breakpoints: {
+
+            640: {
+                slidesPerView: 2.2,
+                spaceBetween: 20
             },
 
-            breakpoints: {
-                640: {
-                    slidesPerView: 2.2
-                },
-                1024: {
-                    slidesPerView: 4
-                }
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 16
             }
 
-        });
+        }
 
-    }
+    });
+
+}
 
 }
 
