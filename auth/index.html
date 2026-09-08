@@ -1,528 +1,647 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Portal OMDA </title>
-<script src="https://cdn.tailwindcss.com"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-      />
-    <style>
-      *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      }
-      .card{
-    backdrop-filter:blur(30px);
-   background:rgba(88,100,190,.08);
-border:1px solid rgba(115,128,223,.18);
-box-shadow:
-0 0 40px rgba(88,100,190,.15),
-inset 0 1px 0 rgba(255,255,255,.05);
-}
-      .swiper{
-      width:100%;
-      height:100vh;
-      }
-      .swiper-slide{
-      position:relative;
-      overflow:hidden;
-      }
-      /*==========================
-      IMAGEM
-      ===========================*/
-      .hero-image{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transform:scale(1);
-      transition:transform 10s linear;
-      }
-      .swiper-slide-active .hero-image{
-      transform:scale(1.08);
-      }
-      /*==========================
-      LUZ
-      ===========================*/
-      .hero-light{
-      position:absolute;
-      inset:0;
+  <title>Login — OMDA Tracker</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background: #171717;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      color: white;
+    }
+
+    ::selection {
+      background: #ff3008;
+      color: white;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: #171717;
+    }
+
+    .background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+
       background:
-      radial-gradient(
-      circle at 75% 30%,
-      rgba(255,255,255,.15),
-      transparent 40%
-      );
-      mix-blend-mode:screen;
-      z-index:2;
-      }
-      /*==========================
-      TOPO
-      ===========================*/
-      .hero-overlay-top{
-      position:absolute;
-      inset:0;
-      background:
-      linear-gradient(
-      to bottom,
-      rgba(0,0,0,.45),
-      transparent 25%
-      );
-      z-index:3;
-      }
-      /*==========================
-      LATERAIS
-      ===========================*/
-      .hero-overlay-side{
-      position:absolute;
-      inset:0;
-      background:
-      linear-gradient(
-      90deg,
-      rgba(0,0,0,.45),
-      rgba(0,0,0,.15) 20%,
-      transparent 45%,
-      transparent 65%,
-      rgba(0,0,0,.20)
-      );
-      z-index:3;
-      }
-      /*==========================
-      FUNDO
-      ===========================*/
-      .hero-overlay-bottom{
-      position:absolute;
-      inset:0;
-      background:
-      linear-gradient(
-      to top,
-      rgba(9,9,11,1),
-      rgba(9,9,11,.88) 12%,
-      rgba(9,9,11,.55) 22%,
-      rgba(9,9,11,.15) 35%,
-      transparent 55%
-      );
-      z-index:4;
-      }
-      /*==========================
-      CONTEÚDO
-      ===========================*/
-      .hero-content{
-      position:absolute;
-      left:7%;
-      bottom:8%;
-      width:650px;
-      max-width:90%;
-      color:white;
-      z-index:20;
-      }
-      .badge{
-      display:inline-block;
-      padding:8px 14px;
-      border-radius:50px;
-      background:#5864be;
-      margin-bottom:20px;
-      font-size:13px;
-      font-weight:700;
-      }
-      .hero-title{
-      font-size:76px;
-      font-weight:900;
-      line-height:.9;
-      text-shadow:
-      0 10px 30px rgba(0,0,0,.7);
-      }
-      .hero-meta{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:20px;
-      }
-      .hero-meta span{
-      padding:8px 14px;
-      background:rgba(255,255,255,.08);
-      border-radius:30px;
-      font-size:14px;
-      }
-      .hero-description{
-      margin-top:25px;
-      font-size:19px;
-      line-height:1.7;
-      color:#ececec;
-      text-shadow:
-      0 5px 20px rgba(0,0,0,.8);
-      }
-      .buttons{
-      display:flex;
-      gap:15px;
-      margin-top:35px;
-      }
-      .btn{
-      padding:16px 30px;
-      border:none;
-      border-radius:14px;
-      cursor:pointer;
-      font-size:15px;
-      font-weight:700;
-      transition:.35s;
-      }
-      .primary{
-      background:#5864be;
-      color:white;
-      }
-      .primary:hover{
-      transform:translateY(-4px);
-      }
-      .secondary{
-      background:rgba(255,255,255,.12);
-      color:white;
-      }
-      .secondary:hover{
-      background:rgba(255,255,255,.18);
-      }
-      @media(max-width:900px){
-      .hero-content{
-      left:30px;
-      right:30px;
-      bottom:35px;
-      width:auto;
-      }
-      .hero-title{
-      font-size:44px;
-      }
-      .hero-description{
-      font-size:16px;
-      }
-      }
-      .hero-timeline{
-      position:absolute;
-      left:0;
-      bottom:0;
-      width:100%;
-      height:4px;
-      background:rgba(255,255,255,.15);
-      z-index:50;
-      overflow:hidden;
-      }
-      .timeline-progress{
-      width:0%;
-      height:100%;
-      background:#5864be;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="loadingBar"></div>
-	<style>
+        linear-gradient(
+          rgba(0, 0, 0, .58),
+          rgba(0, 0, 0, .72)
+        );
+    }
 
-		  #loadingBar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 4px;
-            z-index: 99999;
-            opacity: 1;
-            transition: width .25s linear, opacity .3s ease;
+    /* =========================
+       CONTAINER
+    ========================== */
 
-            background: linear-gradient(
-                90deg,
-                #60a5fa,
-                #818cf8,
-                #a78bfa
-            );
+    .page {
+      position: relative;
+      z-index: 10;
 
-            box-shadow: 0 0 12px rgba(96, 165, 250, .5);
-        }
+      min-height: 100vh;
 
-      
-		@media(max-width:1200px){
-		nav.md\:flex.ml-8.items-center.gap-6.text-2xl.text-white {
-    display: none !important;
-}
-}
-	</style>
-    <div class="swiper heroSwiper">
-      <div class="swiper-wrapper">
-             <!-- Slide 0 -->
-        <div class="swiper-slide">
-          <img
-            class="hero-image"
-            src="../assets/images/naruto.webp"
-            alt="">
-          <div class="hero-light"></div>
-          <div class="hero-overlay-top"></div>
-          <div class="hero-overlay-side"></div>
-          <div class="hero-overlay-bottom"></div>
-       <div class="hero-content">
-<div class="card w-full max-w-md rounded-3xl p-6 sm:p-8 relative">
- 
-<form id="loginForm" class="space-y-6">
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    <div id="stepEmail">
+      padding: 24px;
+    }
 
-        <div class="relative">
+    /* =========================
+       LOGIN
+    ========================== */
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+
+      padding: 32px;
+
+      background: rgba(23, 23, 23, .86);
+
+      border: 1px solid rgba(255, 255, 255, .10);
+
+      border-radius: 28px;
+
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, .40),
+        inset 0 1px 0 rgba(255, 255, 255, .04);
+    }
+
+    /* =========================
+       TITLE
+    ========================== */
+
+    .title {
+      margin-bottom: 28px;
+    }
+
+    .title h1 {
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+
+    .title p {
+      margin-top: 8px;
+
+      font-size: 13px;
+      line-height: 1.5;
+
+      color: rgba(255, 255, 255, .42);
+    }
+
+    /* =========================
+       INPUT
+    ========================== */
+
+    .input-group {
+      position: relative;
+    }
+
+    .input {
+      width: 100%;
+      height: 58px;
+
+      padding: 18px 56px 8px 18px;
+
+      color: white;
+
+      background: rgba(255, 255, 255, .045);
+
+      border: 1px solid rgba(255, 255, 255, .10);
+
+      border-radius: 17px;
+
+      outline: none;
+
+      font-size: 14px;
+
+      transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .input:hover {
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .input:focus {
+      border-color: rgba(255, 48, 8, .7);
+
+      background: rgba(255, 255, 255, .065);
+
+      box-shadow:
+        0 0 0 3px rgba(255, 48, 8, .10);
+    }
+
+    .input-label {
+      position: absolute;
+
+      left: 18px;
+      top: 19px;
+
+      font-size: 13px;
+
+      color: rgba(255, 255, 255, .42);
+
+      pointer-events: none;
+
+      transition: all .2s ease;
+    }
+
+    .input:focus + .input-label,
+    .input:not(:placeholder-shown) + .input-label {
+      top: 8px;
+      font-size: 10px;
+      color: #ff3008;
+    }
+
+    /* =========================
+       NEXT BUTTON
+    ========================== */
+
+    .next-button {
+      position: absolute;
+
+      right: 8px;
+      top: 8px;
+
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: none;
+      border-radius: 999px;
+
+      background: #ff3008;
+
+      color: white;
+
+      cursor: pointer;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .next-button:hover {
+      transform: scale(1.05);
+
+      box-shadow:
+        0 8px 24px rgba(255, 48, 8, .25);
+    }
+
+    /* =========================
+       STATUS
+    ========================== */
+
+    #emailStatus {
+      min-height: 18px;
+
+      padding: 7px 4px 0;
+
+      font-size: 11px;
+
+      color: rgba(255, 255, 255, .35);
+    }
+
+    /* =========================
+       BUTTON
+    ========================== */
+
+    .primary-button {
+      width: 100%;
+      height: 52px;
+
+      margin-top: 16px;
+
+      border: none;
+      border-radius: 999px;
+
+      background: #ff3008;
+
+      color: white;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 12px 30px rgba(255, 48, 8, .22);
+    }
+
+    /* =========================
+       GOOGLE
+    ========================== */
+
+    .google-button {
+      width: 100%;
+      height: 52px;
+
+      margin-top: 10px;
+
+      border: 1px solid rgba(255, 255, 255, .10);
+
+      border-radius: 999px;
+
+      background: rgba(255, 255, 255, .045);
+
+      color: white;
+
+      font-size: 12px;
+
+      cursor: pointer;
+
+      transition:
+        background .2s ease,
+        border-color .2s ease;
+    }
+
+    .google-button:hover {
+      background: rgba(255, 255, 255, .08);
+
+      border-color: rgba(255, 255, 255, .16);
+    }
+
+    /* =========================
+       FORGOT
+    ========================== */
+
+    .forgot-button {
+      width: 100%;
+
+      margin-top: 14px;
+
+      border: none;
+
+      background: transparent;
+
+      color: rgba(255, 255, 255, .35);
+
+      font-size: 11px;
+
+      cursor: pointer;
+
+      transition: color .2s ease;
+    }
+
+    .forgot-button:hover {
+      color: rgba(255, 255, 255, .70);
+    }
+
+    /* =========================
+       VERSION
+    ========================== */
+
+    .version {
+      margin-top: 26px;
+
+      text-align: center;
+
+      font-size: 9px;
+
+      color: rgba(255, 255, 255, .25);
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 520px) {
+
+      .page {
+        padding: 16px;
+      }
+
+      .login-card {
+        padding: 24px;
+
+        border-radius: 24px;
+      }
+
+      .title h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+
+  <div class="background">
+
+    <img
+      src="../assets/images/naruto.webp"
+      alt=""
+    >
+
+    <div class="overlay"></div>
+
+  </div>
+
+
+  <!-- PAGE -->
+
+  <main class="page">
+
+    <section class="login-card">
+
+      <!-- TITLE -->
+
+      <div class="title">
+
+        <h1>
+          Entrar a sua conta
+        </h1>
+
+        <p>
+          Acesse sua conta para continuar.
+        </p>
+
+      </div>
+
+
+      <!-- FORM -->
+
+      <form id="loginForm">
+
+        <!-- EMAIL -->
+
+        <div id="stepEmail">
+
+          <div class="input-group">
 
             <input
-                id="email"
-                type="email"
-                placeholder=" "
-                class="peer w-full h-14 rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none focus:border-[#7380df] focus:ring-2 focus:ring-[#5864be]/20"
+              id="email"
+              type="email"
+              placeholder=" "
+              autocomplete="email"
+              class="input"
             >
 
             <label
-                for="email"
-                class="absolute left-5 top-4 text-zinc-400 transition-all duration-300 peer-focus:text-xs peer-focus:top-2 peer-focus:text-[#7380df] peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:top-2"
+              for="email"
+              class="input-label"
             >
-                Email
+              Email
             </label>
 
             <button
-                type="button"
-                id="nextBtn"
-                class="absolute right-2 top-2 w-10 h-10 rounded-full text-white flex items-center justify-center transition hover:scale-105"
-                style="background:linear-gradient(135deg,#7380df,#5864be)"
+              type="button"
+              id="nextBtn"
+              class="next-button"
+              aria-label="Continuar"
             >
-                →
+              →
             </button>
+
+          </div>
+
+          <p id="emailStatus"></p>
 
         </div>
 
-        <p id="emailStatus" class="text-xs text-zinc-400 pl-2"></p>
 
-    </div>
+        <!-- PASSWORD -->
 
-    <div id="stepPassword" class="hidden">
+        <div
+          id="stepPassword"
+          class="hidden"
+        >
 
-        <div class="relative">
+          <div class="input-group">
 
             <input
-                id="password"
-                type="password"
-                placeholder=" "
-                class="peer w-full h-14 rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none focus:border-[#7380df] focus:ring-2 focus:ring-[#5864be]/20"
+              id="password"
+              type="password"
+              placeholder=" "
+              autocomplete="current-password"
+              class="input"
             >
 
             <label
-                for="password"
-                class="absolute left-5 top-4 text-zinc-400 transition-all duration-300 peer-focus:text-xs peer-focus:top-2 peer-focus:text-[#7380df] peer-[&:not(:placeholder-shown)]:text-xs peer-[&:not(:placeholder-shown)]:top-2"
+              for="password"
+              class="input-label"
             >
-                Senha
+              Senha
             </label>
 
-        </div>
+          </div>
 
-        <button
-        id="loginBtn"
+
+          <button
+            id="loginBtn"
             type="submit"
-            class="w-full h-12 rounded-2xl text-white mt-4"
-            style="background:linear-gradient(135deg,#7380df,#5864be)"
-        >
+            class="primary-button"
+          >
             Entrar
-        </button>
+          </button>
 
-       
-        <button
+
+          <button
+            id="continueWithGoogle"
             type="button"
-            class="w-full h-12 rounded-2xl bg-white/5 border border-white/10 text-white mt-3"
-        >
+            class="google-button"
+          >
             Continuar com Google
-        </button>
+          </button>
 
-        <button
+
+          <button
             type="button"
-            class="w-full text-zinc-400 text-sm mt-3"
-        >
+            class="forgot-button"
+          >
             Não lembro minha senha
-        </button>
+          </button>
 
-    </div>
-
-</form>
-
-<div class="text-center text-[11px] text-zinc-500 mt-8">
-    OMDA Tracker • v1.0.0
-</div>
- 
-
-</div>
-       </div>
         </div>
-       
-     
+
+      </form>
+
+
+      <!-- VERSION -->
+
+      <div class="version">
+        VAHUB • v1.0.0
       </div>
-      <div class="hero-timeline">
-        <div class="timeline-progress"></div>
-      </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-      const swiper = new Swiper(".heroSwiper", {
-      
-          loop: true,
-      
-          effect: "fade",
-      
-          fadeEffect: {
-              crossFade: true
-          },
-      
-          speed: 2500,
-      
-          autoplay: {
-              delay: 7000,
-              disableOnInteraction: false
-          },
-      
-          allowTouchMove: false,
-      
-          keyboard: {
-              enabled: true
-          }
-      
-      });
-      const progressSlide = document.querySelector(".timeline-progress");
-      
-      function startTimeline(){
-      
-          progressSlide.style.transition = "none";
-          progressSlide.style.width = "0%";
-      
-          requestAnimationFrame(()=>{
-      
-              progressSlide.style.transition = "width 7000ms linear";
-              progressSlide.style.width = "100%";
-      
-          });
-      
-      }
-      
-      startTimeline();
-      
-      swiper.on("slideChangeTransitionStart", ()=>{
-      
-          startTimeline();
-      
-      });
-    </script>
-  
-<script>
 
-const email = document.getElementById('email');
-const status = document.getElementById('emailStatus');
+    </section>
 
-email.addEventListener('input',()=>{
+  </main>
 
-    const valid =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
 
-    if(email.value.length === 0){
-        status.textContent='';
-        return;
-    }
-
-    status.textContent =
-    valid ? '✓ válido' : 'email inválido';
-
-});
-
-document
-.getElementById('nextBtn')
-.addEventListener('click',()=>{
-
-    const valid =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
-
-    if(!valid){
-        email.focus();
-        return;
-    }
-
-    document
-    .getElementById('stepEmail')
-    .classList.add('hidden');
-
-    document
-    .getElementById('stepPassword')
-    .classList.remove('hidden');
-
-});
-
-</script>
   <script>
-        const loadingBar = document.getElementById("loadingBar");
 
-        let progress = 0;
-        let loadingInterval;
+    const email =
+      document.getElementById("email");
 
-        function startLoading() {
+    const status =
+      document.getElementById("emailStatus");
 
-            progress = 0;
+    const nextBtn =
+      document.getElementById("nextBtn");
 
-            loadingBar.style.opacity = "1";
-            loadingBar.style.width = "0%";
+    const stepEmail =
+      document.getElementById("stepEmail");
 
-            loadingInterval = setInterval(() => {
+    const stepPassword =
+      document.getElementById("stepPassword");
 
-                if (progress < 90) {
 
-                    progress += Math.random() * 8;
+    /* =========================
+       EMAIL VALIDATION
+    ========================== */
 
-                    loadingBar.style.width = progress + "%";
+    function validarEmail() {
 
-                }
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email.value);
 
-            }, 100);
+    }
 
-        }
 
-        function finishLoading() {
+    email.addEventListener("input", () => {
 
-            clearInterval(loadingInterval);
+      if (!email.value) {
 
-            loadingBar.style.width = "100%";
+        status.textContent = "";
 
-            setTimeout(() => {
+        return;
 
-                loadingBar.style.opacity = "0";
+      }
 
-                setTimeout(() => {
+      status.textContent =
+        validarEmail()
+          ? "✓ email válido"
+          : "email inválido";
 
-                    loadingBar.style.width = "0%";
-                    loadingBar.style.opacity = "1";
+    });
 
-                }, 300);
 
-            }, 250);
+    /* =========================
+       NEXT
+    ========================== */
 
-        }
+    nextBtn.addEventListener("click", () => {
 
-        function simularLogin() {
+      if (!validarEmail()) {
 
-            startLoading();
+        email.focus();
 
-            // Simula uma requisição de 3 segundos
-            setTimeout(() => {
+        return;
 
-                finishLoading();
+      }
 
-                console.log("Login realizado!");
+      stepEmail.classList.add("hidden");
 
-            }, 3000);
+      stepPassword.classList.remove("hidden");
 
-        }
-    </script>
-<script 
-type="module"
-src="./sysops.js?v=1.0.2">
-</script>
+      document
+        .getElementById("password")
+        .focus();
 
+    });
+
+
+    /* =========================
+       ENTER NO EMAIL
+    ========================== */
+
+    email.addEventListener("keydown", (event) => {
+
+      if (event.key === "Enter") {
+
+        event.preventDefault();
+
+        nextBtn.click();
+
+      }
+
+    });
+
+
+    /* =========================
+       LOGIN
+    ========================== */
+
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        console.log("Login realizado!");
+
+      });
+
+  </script>
+
+
+  <!-- SEU CONTROLLER -->
+
+  <script
+    type="module"
+    src="./sysops.js?v=1.0.2">
+  </script>
 
 </body>
 </html>
