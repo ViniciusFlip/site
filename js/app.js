@@ -525,101 +525,227 @@ function initLogout() {
 
 }
  
+import {
+    GoogleAuthProvider,
+    signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+    collection,
+    addDoc,
+    updateDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+    auth,
+    db
+} from "../firebase/config.js";
+
+
 const googleProvider = new GoogleAuthProvider();
 
-document
-    .getElementById("continueWithGoogle")
-    .addEventListener("click", async () => {
+const button =
+    document.getElementById("continueWithGoogle");
 
-        const telefone = "5512981053361";
 
-        // 1. Registra a intenção ANTES do login
-        let conversaRef;
+button.addEventListener("click", async () => {
 
-        try {
-            conversaRef = await addDoc(collection(db, "conversas"), {
+    const telefone = "5512981053361";
+
+    let conversationRef = null;
+
+
+    // =========================================
+    // 1. REGISTRA A INTENÇÃO DE CONVERSA
+    // =========================================
+
+    try {
+
+        conversationRef = await addDoc(
+            collection(db, "conversations"),
+            {
                 uid: null,
-                nome: "",
+                name: "",
                 email: "",
-                autenticado: false,
-                metodo: "visitante",
-                acao: "Falar sobre meu projeto agora",
-                pagina: window.location.pathname,
-                whatsappAberto: false,
-                criadoEm: serverTimestamp()
-            });
-        } catch (error) {
-            console.error("Erro ao criar conversa:", error);
-        }
 
-        // 2. Tenta autenticar com Google
-        try {
-            const result = await signInWithPopup(auth, googleProvider);
-            const user = result.user;
+                role: "client",
 
-            // 3. Atualiza o registro criado anteriormente
-            if (conversaRef) {
-                try {
-                    await updateDoc(conversaRef, {
+                authenticated: false,
+                method: "visitor",
+
+                action: "Falar sobre meu projeto agora",
+
+                page: window.location.pathname,
+
+                whatsappOpened: false,
+
+                createdAt: serverTimestamp()
+            }
+        );
+
+        console.log(
+            "Conversation created:",
+            conversationRef.id
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error creating conversation:",
+            error
+        );
+    }
+
+
+    // =========================================
+    // 2. TENTA LOGIN COM GOOGLE
+    // =========================================
+
+    try {
+
+        const result =
+            await signInWithPopup(
+                auth,
+                googleProvider
+            );
+
+        const user = result.user;
+
+
+        // =====================================
+        // 3. ATUALIZA A CONVERSA COM GOOGLE
+        // =====================================
+
+        if (conversationRef) {
+
+            try {
+
+                await updateDoc(
+                    conversationRef,
+                    {
                         uid: user.uid,
-                        nome: user.displayName || "",
-                        email: user.email || "",
-                        autenticado: true,
-                        metodo: "google"
-                    });
-                } catch (error) {
-                    console.error("Erro ao atualizar conversa:", error);
-                }
+
+                        name:
+                            user.displayName || "",
+
+                        email:
+                            user.email || "",
+
+                        role: "client",
+
+                        authenticated: true,
+
+                        method: "google"
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Error updating conversation:",
+                    error
+                );
             }
-
-            // 4. Abre WhatsApp
-            const nome = user.displayName || "Olá";
-
-            const mensagem =
-                `Sou ${nome}. Quero falar sobre meu projeto.`;
-
-            if (conversaRef) {
-                try {
-                    await updateDoc(conversaRef, {
-                        whatsappAberto: true
-                    });
-                } catch (error) {
-                    console.error(
-                        "Erro ao registrar abertura do WhatsApp:",
-                        error
-                    );
-                }
-            }
-
-            window.location.href =
-                `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-
-        } catch (googleError) {
-
-            console.error("Google não utilizado:", googleError);
-
-            // Cliente recusou/falhou no Google → continua como visitante
-            if (conversaRef) {
-                try {
-                    await updateDoc(conversaRef, {
-                        metodo: "visitante",
-                        whatsappAberto: true
-                    });
-                } catch (error) {
-                    console.error(
-                        "Erro ao atualizar visitante:",
-                        error
-                    );
-                }
-            }
-
-            const mensagem =
-                "Oii, Vinicius! Gostaria de falar sobre meu projeto.";
-
-            window.location.href =
-                `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
         }
-    });
+
+
+        // =====================================
+        // 4. MARCA WHATSAPP COMO ABERTO
+        // =====================================
+
+        if (conversationRef) {
+
+            try {
+
+                await updateDoc(
+                    conversationRef,
+                    {
+                        whatsappOpened: true
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Error updating WhatsApp status:",
+                    error
+                );
+            }
+        }
+
+
+        // =====================================
+        // 5. ABRE WHATSAPP
+        // =====================================
+
+        const name =
+            user.displayName || "Olá";
+
+        const message =
+            `Sou ${name}. Quero falar sobre meu projeto.`;
+
+
+        window.location.href =
+            `https://wa.me/${telefone}?text=${encodeURIComponent(message)}`;
+
+
+    } catch (googleError) {
+
+        // =====================================
+        // GOOGLE RECUSADO / CANCELADO / ERRO
+        // =====================================
+
+        console.error(
+            "Google login not completed:",
+            googleError
+        );
+
+
+        // =====================================
+        // 6. ATUALIZA COMO VISITANTE
+        // =====================================
+
+        if (conversationRef) {
+
+            try {
+
+                await updateDoc(
+                    conversationRef,
+                    {
+                        role: "client",
+
+                        authenticated: false,
+
+                        method: "visitor",
+
+                        whatsappOpened: true
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Error updating visitor:",
+                    error
+                );
+            }
+        }
+
+
+        // =====================================
+        // 7. ABRE WHATSAPP MESMO SEM GOOGLE
+        // =====================================
+
+        const message =
+            "Oii, Vinicius! Gostaria de falar sobre meu projeto.";
+
+
+        window.location.href =
+            `https://wa.me/${telefone}?text=${encodeURIComponent(message)}`;
+    }
+
+});
 
 loadNotifications();
 bindNavigation(); 

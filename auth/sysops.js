@@ -5,9 +5,7 @@ import {
 
 import {
   doc,
-  getDoc,
-  setDoc,
-  serverTimestamp
+  getDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
@@ -15,61 +13,57 @@ import {
   db
 } from "../firebase/config.js";
 
+
 const googleProvider = new GoogleAuthProvider();
 
-const button = document.getElementById("continueWithGoogle");
-const status = document.getElementById("loginStatus");
+const button =
+  document.getElementById("continueWithGoogle");
+
+const status =
+  document.getElementById("loginStatus");
+
 
 button.addEventListener("click", async () => {
 
   button.disabled = true;
   status.textContent = "Entrando...";
 
+
   try {
 
-    // LOGIN GOOGLE
-    const result = await signInWithPopup(
-      auth,
-      googleProvider
-    );
+    // ===============================
+    // GOOGLE LOGIN
+    // ===============================
+
+    const result =
+      await signInWithPopup(
+        auth,
+        googleProvider
+      );
 
     const user = result.user;
 
-    // DOCUMENTO DO USUÁRIO
-    const userRef = doc(
-      db,
-      "usuarios",
-      user.uid
-    );
 
-    const userSnap = await getDoc(userRef);
+    // ===============================
+    // BUSCA ADMIN
+    // ===============================
 
-    // USUÁRIO AINDA NÃO CADASTRADO
-    if (!userSnap.exists()) {
+    const adminRef =
+      doc(
+        db,
+        "admins",
+        user.uid
+      );
 
-      await setDoc(userRef, {
-        uid: user.uid,
-        nome: user.displayName || "",
-        email: user.email || "",
-        role: "cliente",
-        criadoEm: serverTimestamp()
-      });
+    const adminSnap =
+      await getDoc(adminRef);
 
-      status.textContent =
-        "Sua conta foi criada, mas você não tem acesso ao Hub.";
 
-      await auth.signOut();
+    // ===============================
+    // NÃO É ADMIN
+    // ===============================
 
-      button.disabled = false;
-
-      return;
-    }
-
-    // DADOS DO USUÁRIO
-    const dados = userSnap.data();
-
-    // SOMENTE ROLE VA
-    if (dados.role !== "va") {
+    if (!adminSnap.exists()) {
 
       status.textContent =
         "Acesso não autorizado.";
@@ -81,7 +75,32 @@ button.addEventListener("click", async () => {
       return;
     }
 
-    // ADMIN AUTORIZADO
+
+    // ===============================
+    // VERIFICA ROLE
+    // ===============================
+
+    const admin =
+      adminSnap.data();
+
+
+    if (admin.role !== "va") {
+
+      status.textContent =
+        "Acesso não autorizado.";
+
+      await auth.signOut();
+
+      button.disabled = false;
+
+      return;
+    }
+
+
+    // ===============================
+    // ACESSO AUTORIZADO
+    // ===============================
+
     localStorage.setItem(
       "uid",
       user.uid
@@ -92,10 +111,14 @@ button.addEventListener("click", async () => {
       "va"
     );
 
+
     status.textContent =
       "Acesso autorizado.";
 
-    window.location.href = "/hub/";
+
+    window.location.href =
+      "/hub/";
+
 
   } catch (error) {
 
@@ -109,4 +132,5 @@ button.addEventListener("click", async () => {
 
     button.disabled = false;
   }
+
 });
