@@ -550,23 +550,18 @@ button.addEventListener("click", async () => {
         conversationRef = await addDoc(
             collection(db, "conversations"),
             {
+    
                 uid: null,
                 name: "",
                 email: "",
-
                 role: "client",
-
                 authenticated: false,
                 method: "visitor",
-
                 action: "Falar sobre meu projeto agora",
-
                 page: window.location.pathname,
-
                 whatsappOpened: false,
-
                 createdAt: serverTimestamp()
-            }
+           }
         );
 
         console.log(

@@ -15,45 +15,29 @@ async function carregarUsuarios() {
         document.getElementById("usersList");
 
     if (!usersList) {
-        console.error(
-            "Elemento 'usersList' não encontrado."
-        );
+        console.error("Elemento 'usersList' não encontrado.");
         return;
     }
 
-
-    console.log(
-        "Elemento 'usersList' encontrado."
-    );
-
+    console.log("Elemento 'usersList' encontrado.");
 
     usersList.innerHTML = "";
 
 
     try {
 
-        // ===============================
-        // BUSCA CONVERSATIONS
-        // ===============================
+        const snapshot = await getDocs(
+            collection(db, "conversations")
+        );
 
-        const snapshot =
-            await getDocs(
-                collection(db, "conversations")
-            );
-
-
-        // ===============================
-        // LISTA USUÁRIOS
-        // ===============================
 
         snapshot.forEach((document) => {
 
-            const user =
-                document.data();
+            const user = document.data();
 
 
             const name =
-                user.name || "Sem nome";
+                user.name || "Visitante";
 
             const email =
                 user.email || "Sem email";
@@ -64,11 +48,26 @@ async function carregarUsuarios() {
             const method =
                 user.method || "visitor";
 
+            const action =
+                user.action || "Sem intenção";
+
 
             const inicial =
                 name
                     .charAt(0)
                     .toUpperCase();
+
+
+            let createdAt = "—";
+
+            if (user.createdAt?.toDate) {
+
+                createdAt =
+                    user.createdAt
+                        .toDate()
+                        .toLocaleString("pt-BR");
+
+            }
 
 
             usersList.innerHTML += `
@@ -133,6 +132,20 @@ async function carregarUsuarios() {
                     </td>
 
 
+                    <!-- INTENÇÃO -->
+
+                    <td class="px-6 py-4 text-zinc-300">
+                        ${action}
+                    </td>
+
+
+                    <!-- CADASTRO -->
+
+                    <td class="px-6 py-4 text-zinc-400 whitespace-nowrap">
+                        ${createdAt}
+                    </td>
+
+
                     <!-- AÇÕES -->
 
                     <td class="px-6 py-4">
@@ -181,12 +194,13 @@ async function carregarUsuarios() {
             error
         );
 
+
         usersList.innerHTML = `
 
             <tr>
 
                 <td
-                    colspan="5"
+                    colspan="7"
                     class="px-6 py-8
                     text-center
                     text-red-400"
