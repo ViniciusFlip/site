@@ -152,89 +152,131 @@ function initSwiper(){
 async function carregarUsuarios() {
 
     const usersList = document.getElementById("usersList");
+
     if (!usersList) {
-        // console.error("Elemento 'usersList' não encontrado.");
+        console.error("Elemento 'usersList' não encontrado.");
         return;
-    }else{
-        console.log("Elemento 'usersList' encontrado.");
-        
-    usersList.innerHTML = "";
+    }
 
-    const snapshot = await getDocs(collection(db, "users"));
+    try {
 
-    snapshot.forEach((doc) => {
+        usersList.innerHTML = `
+            <tr>
+                <td colspan="6" class="px-6 py-8 text-center text-zinc-400">
+                    Carregando usuários...
+                </td>
+            </tr>
+        `;
 
-        const user = doc.data();
- 
- const inicial = (user.name || user.email).charAt(0).toUpperCase();
+        const snapshot = await getDocs(collection(db, "conversations"));
 
-usersList.innerHTML += `
-<tr class="hover:bg-white/5 transition">
+        if (snapshot.empty) {
+            usersList.innerHTML = `
+                <tr>
+                    <td colspan="6" class="px-6 py-8 text-center text-zinc-400">
+                        Nenhum usuário encontrado.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
 
-    <td class="px-6 py-4">
+        usersList.innerHTML = "";
 
-        <div class="flex items-center gap-3">
+        snapshot.forEach((doc) => {
 
-            <div class="w-10 h-10 rounded-xl bg-[#5864be] text-white flex items-center justify-center font-semibold">
-                ${inicial}
-            </div>
+            const user = doc.data();
 
-            <span class="font-medium">
-                ${user.name}
-            </span>
+            // Aceita "nome" ou "name"
+            const nome = user.nome || user.name || "Usuário";
+            const email = user.email || "—";
+            const role = user.role || "user";
+            const downloads = user.downloads ?? 0;
+            const status = user.status || "active";
 
-        </div>
+            const inicial = nome
+                .charAt(0)
+                .toUpperCase();
 
-    </td>
+            usersList.innerHTML += `
+                <tr class="hover:bg-white/5 transition">
 
-    <td class="px-6 py-4 text-zinc-400">
-        ${user.email}
-    </td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
 
-    <td class="px-6 py-4">
-        ${user.role}
-    </td>
+                            <div class="w-10 h-10 rounded-xl bg-[#5864be] text-white flex items-center justify-center font-semibold">
+                                ${inicial}
+                            </div>
 
-    <td class="px-6 py-4">
-        ${user.downloads ?? 0}
-    </td>
+                            <span class="font-medium">
+                                ${nome}
+                            </span>
 
-    <td class="px-6 py-4">
+                        </div>
+                    </td>
 
-        <span class="px-3 py-1 rounded-full text-xs
-        ${user.status === "active"
-            ? "bg-green-500/20 text-green-400"
-            : "bg-red-500/20 text-red-400"}">
+                    <td class="px-6 py-4 text-zinc-400">
+                        ${email}
+                    </td>
 
-            ${user.status}
+                    <td class="px-6 py-4">
+                        ${role}
+                    </td>
 
-        </span>
+                    <td class="px-6 py-4">
+                        ${downloads}
+                    </td>
 
-    </td>
+                    <td class="px-6 py-4">
 
-    <td class="px-6 py-4">
+                        <span class="px-3 py-1 rounded-full text-xs
+                            ${status === "active"
+                                ? "bg-green-500/20 text-green-400"
+                                : "bg-red-500/20 text-red-400"}">
 
-        <div class="flex justify-end gap-2">
+                            ${status}
 
-            <button class="px-3 py-2 rounded-lg bg-zinc-700 hover:bg-zinc-600">
-                Editar
-            </button>
+                        </span>
 
-            <button class="px-3 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30">
-                Banir
-            </button>
+                    </td>
 
-        </div>
+                    <td class="px-6 py-4">
 
-    </td>
+                        <div class="flex justify-end gap-2">
 
-</tr>
-`;
-    });
+                            <button
+                                class="px-3 py-2 rounded-lg bg-zinc-700 hover:bg-zinc-600">
+                                Editar
+                            </button>
 
+                            <button
+                                class="px-3 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30">
+                                Banir
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+            `;
+        });
+
+        console.log(`Usuários carregados: ${snapshot.size}`);
+
+    } catch (error) {
+
+        console.error("Erro ao carregar usuários:", error);
+
+        usersList.innerHTML = `
+            <tr>
+                <td colspan="6" class="px-6 py-8 text-center text-red-400">
+                    Erro ao carregar usuários.
+                </td>
+            </tr>
+        `;
     }
 }
-
 function setActiveMenu(page) {
     document.querySelectorAll("[data-page]").forEach(el => {
         el.classList.remove("bg-[#5864be]", "text-white");
@@ -272,7 +314,9 @@ async function loadPage(page) {
         const html = await response.text();
         document.getElementById("content").innerHTML = html;
         document.getElementById("sidebar").classList.toggle('collapsed');
-        carregarUsuarios()
+        if (page === "usuarios") {
+            await carregarUsuarios();
+        }
         toggleSidebar()
 
         if (window.lucide) {
