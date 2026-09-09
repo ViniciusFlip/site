@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Login — OMDA Tracker</title>
+  <title>Login — VAHUB</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -27,6 +28,7 @@
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
       background: #171717;
     }
 
@@ -135,159 +137,6 @@
     }
 
     /* =========================
-       INPUT
-    ========================== */
-
-    .input-group {
-      position: relative;
-    }
-
-    .input {
-      width: 100%;
-      height: 58px;
-
-      padding: 18px 56px 8px 18px;
-
-      color: white;
-
-      background: rgba(255, 255, 255, .045);
-
-      border: 1px solid rgba(255, 255, 255, .10);
-
-      border-radius: 17px;
-
-      outline: none;
-
-      font-size: 14px;
-
-      transition:
-        border-color .2s ease,
-        background .2s ease,
-        box-shadow .2s ease;
-    }
-
-    .input:hover {
-      background: rgba(255, 255, 255, .06);
-    }
-
-    .input:focus {
-      border-color: rgba(255, 48, 8, .7);
-
-      background: rgba(255, 255, 255, .065);
-
-      box-shadow:
-        0 0 0 3px rgba(255, 48, 8, .10);
-    }
-
-    .input-label {
-      position: absolute;
-
-      left: 18px;
-      top: 19px;
-
-      font-size: 13px;
-
-      color: rgba(255, 255, 255, .42);
-
-      pointer-events: none;
-
-      transition: all .2s ease;
-    }
-
-    .input:focus + .input-label,
-    .input:not(:placeholder-shown) + .input-label {
-      top: 8px;
-      font-size: 10px;
-      color: #ff3008;
-    }
-
-    /* =========================
-       NEXT BUTTON
-    ========================== */
-
-    .next-button {
-      position: absolute;
-
-      right: 8px;
-      top: 8px;
-
-      width: 42px;
-      height: 42px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border: none;
-      border-radius: 999px;
-
-      background: #ff3008;
-
-      color: white;
-
-      cursor: pointer;
-
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-    }
-
-    .next-button:hover {
-      transform: scale(1.05);
-
-      box-shadow:
-        0 8px 24px rgba(255, 48, 8, .25);
-    }
-
-    /* =========================
-       STATUS
-    ========================== */
-
-    #emailStatus {
-      min-height: 18px;
-
-      padding: 7px 4px 0;
-
-      font-size: 11px;
-
-      color: rgba(255, 255, 255, .35);
-    }
-
-    /* =========================
-       BUTTON
-    ========================== */
-
-    .primary-button {
-      width: 100%;
-      height: 52px;
-
-      margin-top: 16px;
-
-      border: none;
-      border-radius: 999px;
-
-      background: #ff3008;
-
-      color: white;
-
-      font-size: 11px;
-      font-weight: 700;
-
-      cursor: pointer;
-
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-    }
-
-    .primary-button:hover {
-      transform: translateY(-1px);
-
-      box-shadow:
-        0 12px 30px rgba(255, 48, 8, .22);
-    }
-
-    /* =========================
        GOOGLE
     ========================== */
 
@@ -295,10 +144,7 @@
       width: 100%;
       height: 52px;
 
-      margin-top: 10px;
-
       border: 1px solid rgba(255, 255, 255, .10);
-
       border-radius: 999px;
 
       background: rgba(255, 255, 255, .045);
@@ -306,44 +152,45 @@
       color: white;
 
       font-size: 12px;
+      font-weight: 600;
 
       cursor: pointer;
 
       transition:
         background .2s ease,
-        border-color .2s ease;
+        border-color .2s ease,
+        transform .2s ease;
     }
 
     .google-button:hover {
       background: rgba(255, 255, 255, .08);
 
-      border-color: rgba(255, 255, 255, .16);
+      border-color:
+        rgba(255, 255, 255, .16);
+
+      transform: translateY(-1px);
+    }
+
+    .google-button:disabled {
+      opacity: .5;
+      cursor: wait;
+      transform: none;
     }
 
     /* =========================
-       FORGOT
+       STATUS
     ========================== */
 
-    .forgot-button {
-      width: 100%;
+    #loginStatus {
+      min-height: 18px;
 
-      margin-top: 14px;
+      margin-top: 12px;
 
-      border: none;
-
-      background: transparent;
-
-      color: rgba(255, 255, 255, .35);
+      text-align: center;
 
       font-size: 11px;
 
-      cursor: pointer;
-
-      transition: color .2s ease;
-    }
-
-    .forgot-button:hover {
-      color: rgba(255, 255, 255, .70);
+      color: rgba(255, 255, 255, .35);
     }
 
     /* =========================
@@ -372,7 +219,6 @@
 
       .login-card {
         padding: 24px;
-
         border-radius: 24px;
       }
 
@@ -410,7 +256,7 @@
       <div class="title">
 
         <h1>
-          Entrar a sua conta
+          Entrar na sua conta
         </h1>
 
         <p>
@@ -420,102 +266,20 @@
       </div>
 
 
-      <!-- FORM -->
+      <!-- GOOGLE LOGIN -->
 
-      <form id="loginForm">
-
-        <!-- EMAIL -->
-
-        <div id="stepEmail">
-
-          <div class="input-group">
-
-            <input
-              id="email"
-              type="email"
-              placeholder=" "
-              autocomplete="email"
-              class="input"
-            >
-
-            <label
-              for="email"
-              class="input-label"
-            >
-              Email
-            </label>
-
-            <button
-              type="button"
-              id="nextBtn"
-              class="next-button"
-              aria-label="Continuar"
-            >
-              →
-            </button>
-
-          </div>
-
-          <p id="emailStatus"></p>
-
-        </div>
+      <button
+        id="continueWithGoogle"
+        type="button"
+        class="google-button"
+      >
+        Continuar com Google
+      </button>
 
 
-        <!-- PASSWORD -->
+      <!-- STATUS -->
 
-        <div
-          id="stepPassword"
-          class="hidden"
-        >
-
-          <div class="input-group">
-
-            <input
-              id="password"
-              type="password"
-              placeholder=" "
-              autocomplete="current-password"
-              class="input"
-            >
-
-            <label
-              for="password"
-              class="input-label"
-            >
-              Senha
-            </label>
-
-          </div>
-
-
-          <button
-            id="loginBtn"
-            type="submit"
-            class="primary-button"
-          >
-            Entrar
-          </button>
-
-
-          <button
-            id="continueWithGoogle"
-            type="button"
-            class="google-button"
-          >
-            Continuar com Google
-          </button>
-
-
-          <button
-            type="button"
-            class="forgot-button"
-          >
-            Não lembro minha senha
-          </button>
-
-        </div>
-
-      </form>
+      <p id="loginStatus"></p>
 
 
       <!-- VERSION -->
@@ -529,119 +293,13 @@
   </main>
 
 
-  <script>
-
-    const email =
-      document.getElementById("email");
-
-    const status =
-      document.getElementById("emailStatus");
-
-    const nextBtn =
-      document.getElementById("nextBtn");
-
-    const stepEmail =
-      document.getElementById("stepEmail");
-
-    const stepPassword =
-      document.getElementById("stepPassword");
-
-
-    /* =========================
-       EMAIL VALIDATION
-    ========================== */
-
-    function validarEmail() {
-
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        .test(email.value);
-
-    }
-
-
-    email.addEventListener("input", () => {
-
-      if (!email.value) {
-
-        status.textContent = "";
-
-        return;
-
-      }
-
-      status.textContent =
-        validarEmail()
-          ? "✓ email válido"
-          : "email inválido";
-
-    });
-
-
-    /* =========================
-       NEXT
-    ========================== */
-
-    nextBtn.addEventListener("click", () => {
-
-      if (!validarEmail()) {
-
-        email.focus();
-
-        return;
-
-      }
-
-      stepEmail.classList.add("hidden");
-
-      stepPassword.classList.remove("hidden");
-
-      document
-        .getElementById("password")
-        .focus();
-
-    });
-
-
-    /* =========================
-       ENTER NO EMAIL
-    ========================== */
-
-    email.addEventListener("keydown", (event) => {
-
-      if (event.key === "Enter") {
-
-        event.preventDefault();
-
-        nextBtn.click();
-
-      }
-
-    });
-
-
-    /* =========================
-       LOGIN
-    ========================== */
-
-    document
-      .getElementById("loginForm")
-      .addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-        console.log("Login realizado!");
-
-      });
-
-  </script>
-
-
-  <!-- SEU CONTROLLER -->
+  <!-- CONTROLLER -->
 
   <script
     type="module"
-    src="./sysops.js?v=1.0.2">
+    src="./sysops.js?v=1.0.3">
   </script>
 
 </body>
+
 </html>

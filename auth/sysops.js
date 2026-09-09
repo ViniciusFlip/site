@@ -1,76 +1,112 @@
 import {
-signInWithEmailAndPassword
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"
-
+  GoogleAuthProvider,
+  signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
-auth
-}
-from "../firebase/config.js"
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import {
+  auth,
+  db
+} from "../firebase/config.js";
 
+const googleProvider = new GoogleAuthProvider();
 
-const form =
-document.getElementById("loginForm")
+const button = document.getElementById("continueWithGoogle");
+const status = document.getElementById("loginStatus");
 
+button.addEventListener("click", async () => {
 
+  button.disabled = true;
+  status.textContent = "Entrando...";
 
-form.addEventListener(
-"submit",
-async(e)=>{
+  try {
 
+    // LOGIN GOOGLE
+    const result = await signInWithPopup(
+      auth,
+      googleProvider
+    );
 
-e.preventDefault()
+    const user = result.user;
 
+    // DOCUMENTO DO USUÁRIO
+    const userRef = doc(
+      db,
+      "usuarios",
+      user.uid
+    );
 
+    const userSnap = await getDoc(userRef);
 
-const email =
-document.getElementById("email").value
+    // USUÁRIO AINDA NÃO CADASTRADO
+    if (!userSnap.exists()) {
 
+      await setDoc(userRef, {
+        uid: user.uid,
+        nome: user.displayName || "",
+        email: user.email || "",
+        role: "cliente",
+        criadoEm: serverTimestamp()
+      });
 
+      status.textContent =
+        "Sua conta foi criada, mas você não tem acesso ao Hub.";
 
-const password =
-document.getElementById("password").value
+      await auth.signOut();
 
+      button.disabled = false;
 
+      return;
+    }
 
-try{
+    // DADOS DO USUÁRIO
+    const dados = userSnap.data();
 
+    // SOMENTE ROLE VA
+    if (dados.role !== "va") {
 
-const result =
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-)
+      status.textContent =
+        "Acesso não autorizado.";
 
+      await auth.signOut();
 
+      button.disabled = false;
 
-localStorage.setItem(
-"uid",
-result.user.uid
-)
+      return;
+    }
 
+    // ADMIN AUTORIZADO
+    localStorage.setItem(
+      "uid",
+      user.uid
+    );
 
-    simularLogin() 
-       
-         setTimeout(() => {
-        window.location.href = "/";
-    }, 3000);
+    localStorage.setItem(
+      "role",
+      "va"
+    );
 
+    status.textContent =
+      "Acesso autorizado.";
 
-}catch(err){
+    window.location.href = "/hub/";
 
+  } catch (error) {
 
-alert("Login inválido")
+    console.error(
+      "Erro no login Google:",
+      error
+    );
 
+    status.textContent =
+      "Não foi possível entrar.";
 
-console.log(err)
-
-
-}
-
-
-
-})
+    button.disabled = false;
+  }
+});
