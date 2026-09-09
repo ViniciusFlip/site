@@ -1,11 +1,14 @@
 import {
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
+  signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
-  doc,
-  getDoc
+  collection,
+  query,
+  where,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
@@ -28,68 +31,47 @@ button.addEventListener("click", async () => {
   button.disabled = true;
   status.textContent = "Entrando...";
 
-
   try {
 
     // ===============================
     // GOOGLE LOGIN
     // ===============================
 
-    const result =
-      await signInWithPopup(
-        auth,
-        googleProvider
-      );
+    const result = await signInWithPopup(
+      auth,
+      googleProvider
+    );
 
     const user = result.user;
 
 
     // ===============================
-    // BUSCA ADMIN
+    // BUSCA USUÁRIO NO CONVERSATIONS
     // ===============================
 
-    const adminRef =
-      doc(
-        db,
-        "admins",
-        user.uid
-      );
+    const conversationsRef =
+      collection(db, "conversations");
 
-    const adminSnap =
-      await getDoc(adminRef);
+    const q = query(
+      conversationsRef,
+      where("uid", "==", user.uid),
+      where("role", "==", "va")
+    );
+
+    const snapshot =
+      await getDocs(q);
 
 
     // ===============================
-    // NÃO É ADMIN
+    // NÃO AUTORIZADO
     // ===============================
 
-    if (!adminSnap.exists()) {
+    if (snapshot.empty) {
 
       status.textContent =
         "Acesso não autorizado.";
 
-      await auth.signOut();
-
-      button.disabled = false;
-
-      return;
-    }
-
-
-    // ===============================
-    // VERIFICA ROLE
-    // ===============================
-
-    const admin =
-      adminSnap.data();
-
-
-    if (admin.role !== "va") {
-
-      status.textContent =
-        "Acesso não autorizado.";
-
-      await auth.signOut();
+      await signOut(auth);
 
       button.disabled = false;
 
