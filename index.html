@@ -3160,14 +3160,42 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // WhatsApp
-  skipConversation.addEventListener("click", () => {
-    const telefone = "5512981053361";
-    const mensagem = "Olá, Vinicius! Quero falar sobre meu projeto.";
+// WhatsApp
+skipConversation.addEventListener("click", async () => {
 
-    const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+  const telefone = "5512981053361";
 
-    window.open(url, "_blank");
-  });
+  try {
+    await addDoc(
+      collection(db, "conversations"),
+      {
+        uid: null,
+        name: "",
+        email: "",
+        role: "client",
+        authenticated: false,
+        method: "visitor",
+        action: "Falar diretamente pelo WhatsApp",
+        page: window.location.pathname,
+        whatsappOpened: true,
+        createdAt: serverTimestamp()
+      }
+    );
+
+    console.log("Conversation WhatsApp registrada");
+
+  } catch (error) {
+    console.error("Erro ao registrar conversa:", error);
+  }
+
+  const mensagem =
+    "Olá, Vinicius! Quero falar sobre meu projeto.";
+
+  const url =
+    `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+  window.open(url, "_blank");
+});
 </script>
 
   <script>

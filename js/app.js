@@ -538,133 +538,49 @@ button.addEventListener("click", async () => {
 
     const telefone = "5512981053361";
 
-    let conversationRef = null;
-
-
     // =========================================
-    // 1. REGISTRA A INTENÇÃO DE CONVERSA
+    // 1. TENTA LOGIN COM GOOGLE
     // =========================================
 
     try {
 
-        conversationRef = await addDoc(
-            collection(db, "conversations"),
-            {
-    
-                uid: null,
-                name: "",
-                email: "",
-                role: "client",
-                authenticated: false,
-                method: "visitor",
-                action: "Falar sobre meu projeto agora",
-                page: window.location.pathname,
-                whatsappOpened: false,
-                createdAt: serverTimestamp()
-           }
+        const result = await signInWithPopup(
+            auth,
+            googleProvider
         );
-
-        console.log(
-            "Conversation created:",
-            conversationRef.id
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Error creating conversation:",
-            error
-        );
-    }
-
-
-    // =========================================
-    // 2. TENTA LOGIN COM GOOGLE
-    // =========================================
-
-    try {
-
-        const result =
-            await signInWithPopup(
-                auth,
-                googleProvider
-            );
 
         const user = result.user;
 
-
         // =====================================
-        // 3. ATUALIZA A CONVERSA COM GOOGLE
+        // 2. GOOGLE FUNCIONOU → REGISTRA DADOS
         // =====================================
 
-        if (conversationRef) {
-
-            try {
-
-                await updateDoc(
-                    conversationRef,
-                    {
-                        uid: user.uid,
-
-                        name:
-                            user.displayName || "",
-
-                        email:
-                            user.email || "",
-
-                        role: "client",
-
-                        authenticated: true,
-
-                        method: "google"
-                    }
-                );
-
-            } catch (error) {
-
-                console.error(
-                    "Error updating conversation:",
-                    error
-                );
+        await addDoc(
+            collection(db, "conversations"),
+            {
+                uid: user.uid,
+                name: user.displayName || "",
+                email: user.email || "",
+                role: "client",
+                authenticated: true,
+                method: "google",
+                action: "Falar sobre meu projeto agora",
+                page: window.location.pathname,
+                whatsappOpened: true,
+                createdAt: serverTimestamp()
             }
-        }
+        );
 
-
-        // =====================================
-        // 4. MARCA WHATSAPP COMO ABERTO
-        // =====================================
-
-        if (conversationRef) {
-
-            try {
-
-                await updateDoc(
-                    conversationRef,
-                    {
-                        whatsappOpened: true
-                    }
-                );
-
-            } catch (error) {
-
-                console.error(
-                    "Error updating WhatsApp status:",
-                    error
-                );
-            }
-        }
-
+        console.log("Conversation Google registrada");
 
         // =====================================
-        // 5. ABRE WHATSAPP
+        // 3. ABRE WHATSAPP
         // =====================================
 
-        const name =
-            user.displayName || "Olá";
+        const name = user.displayName || "Olá";
 
         const message =
             `Sou ${name}. Quero falar sobre meu projeto.`;
-
 
         window.location.href =
             `https://wa.me/${telefone}?text=${encodeURIComponent(message)}`;
@@ -673,7 +589,7 @@ button.addEventListener("click", async () => {
     } catch (googleError) {
 
         // =====================================
-        // GOOGLE RECUSADO / CANCELADO / ERRO
+        // 4. GOOGLE FALHOU → REGISTRA VISITANTE
         // =====================================
 
         console.error(
@@ -681,52 +597,46 @@ button.addEventListener("click", async () => {
             googleError
         );
 
+        try {
 
-        // =====================================
-        // 6. ATUALIZA COMO VISITANTE
-        // =====================================
+            await addDoc(
+                collection(db, "conversations"),
+                {
+                    uid: null,
+                    name: "",
+                    email: "",
+                    role: "client",
+                    authenticated: false,
+                    method: "visitor",
+                    action: "Falar sobre meu projeto agora",
+                    page: window.location.pathname,
+                    whatsappOpened: true,
+                    createdAt: serverTimestamp()
+                }
+            );
 
-        if (conversationRef) {
+            console.log("Conversation visitante registrada");
 
-            try {
+        } catch (error) {
 
-                await updateDoc(
-                    conversationRef,
-                    {
-                        role: "client",
-
-                        authenticated: false,
-
-                        method: "visitor",
-
-                        whatsappOpened: true
-                    }
-                );
-
-            } catch (error) {
-
-                console.error(
-                    "Error updating visitor:",
-                    error
-                );
-            }
+            console.error(
+                "Error creating visitor conversation:",
+                error
+            );
         }
 
-
         // =====================================
-        // 7. ABRE WHATSAPP MESMO SEM GOOGLE
+        // 5. ABRE WHATSAPP MESMO SEM GOOGLE
         // =====================================
 
         const message =
             "Oii, Vinicius! Gostaria de falar sobre meu projeto.";
-
 
         window.location.href =
             `https://wa.me/${telefone}?text=${encodeURIComponent(message)}`;
     }
 
 });
-
 loadNotifications();
 bindNavigation(); 
  initUserMenu();
