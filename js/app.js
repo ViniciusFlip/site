@@ -1,6 +1,7 @@
 import {
     collection,
     getDocs,
+    updateDoc,
     query,
     orderBy,
     onSnapshot,
@@ -524,7 +525,6 @@ function initLogout() {
 
 }
  
-
 const googleProvider = new GoogleAuthProvider();
 
 document
@@ -533,43 +533,88 @@ document
 
         const telefone = "5512981053361";
 
-        try {
-            // Tenta login com Google
-            const result = await signInWithPopup(auth, googleProvider);
+        // 1. Registra a intenção ANTES do login
+        let conversaRef;
 
+        try {
+            conversaRef = await addDoc(collection(db, "conversas"), {
+                uid: null,
+                nome: "",
+                email: "",
+                autenticado: false,
+                metodo: "visitante",
+                acao: "Falar sobre meu projeto agora",
+                pagina: window.location.pathname,
+                whatsappAberto: false,
+                criadoEm: serverTimestamp()
+            });
+        } catch (error) {
+            console.error("Erro ao criar conversa:", error);
+        }
+
+        // 2. Tenta autenticar com Google
+        try {
+            const result = await signInWithPopup(auth, googleProvider);
             const user = result.user;
 
-            // Tenta salvar o lead no Firestore
-            try {
-                await addDoc(collection(db, "conversas"), {
-                    uid: user.uid,
-                    nome: user.displayName || "",
-                    email: user.email || "",
-                    acao: "Falar sobre meu projeto agora",
-                    pagina: window.location.pathname,
-                    criadoEm: serverTimestamp()
-                });
-
-                console.log("Lead salvo:", user);
-
-            } catch (firestoreError) {
-                // Firestore falhou, mas NÃO impede o WhatsApp
-                console.error("Erro ao salvar lead:", firestoreError);
+            // 3. Atualiza o registro criado anteriormente
+            if (conversaRef) {
+                try {
+                    await updateDoc(conversaRef, {
+                        uid: user.uid,
+                        nome: user.displayName || "",
+                        email: user.email || "",
+                        autenticado: true,
+                        metodo: "google"
+                    });
+                } catch (error) {
+                    console.error("Erro ao atualizar conversa:", error);
+                }
             }
 
+            // 4. Abre WhatsApp
             const nome = user.displayName || "Olá";
 
-            const mensagem = `Sou ${nome}. Quero falar sobre meu projeto.`;
+            const mensagem =
+                `Sou ${nome}. Quero falar sobre meu projeto.`;
 
-            // Google funcionou → WhatsApp com nome
+            if (conversaRef) {
+                try {
+                    await updateDoc(conversaRef, {
+                        whatsappAberto: true
+                    });
+                } catch (error) {
+                    console.error(
+                        "Erro ao registrar abertura do WhatsApp:",
+                        error
+                    );
+                }
+            }
+
             window.location.href =
                 `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
         } catch (googleError) {
-            // Google falhou → WhatsApp continua normalmente
-            console.error("Erro no login Google:", googleError);
 
-            const mensagem = "Oii, Vinicius!  gostaria de falar sobre meu projeto.";
+            console.error("Google não utilizado:", googleError);
+
+            // Cliente recusou/falhou no Google → continua como visitante
+            if (conversaRef) {
+                try {
+                    await updateDoc(conversaRef, {
+                        metodo: "visitante",
+                        whatsappAberto: true
+                    });
+                } catch (error) {
+                    console.error(
+                        "Erro ao atualizar visitante:",
+                        error
+                    );
+                }
+            }
+
+            const mensagem =
+                "Oii, Vinicius! Gostaria de falar sobre meu projeto.";
 
             window.location.href =
                 `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
