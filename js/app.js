@@ -525,22 +525,7 @@ function initLogout() {
 
 }
  
-import {
-    GoogleAuthProvider,
-    signInWithPopup
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-import {
-    collection,
-    addDoc,
-    updateDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-import {
-    auth,
-    db
-} from "../firebase/config.js";
 
 
 const googleProvider = new GoogleAuthProvider();
