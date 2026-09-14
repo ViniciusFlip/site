@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lista — OMDA</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class"
+    }
+  </script>
+</head>
+
+<body class="min-h-screen bg-[#f5f5f3] text-[#171717] antialiased transition-colors dark:bg-[#0b0b0b] dark:text-white">
+
+  <main class="mx-auto w-full max-w-[1480px] px-3 py-8 sm:px-8 lg:px-10 lg:py-16">
+
+    <!-- HEADER -->
+
+    <header class="mb-8 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+
+      <div>
+
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:border-white/10 dark:bg-white/5">
+
+          <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
+
+          Lista
+
+        </div>
+
+        <h1 class="text-[48px] font-medium leading-[.9] tracking-[-.065em] sm:text-[64px] lg:text-[82px]">
+          Projetos.
+        </h1>
+
+      </div>
+
+
+      <div class="max-w-[360px]">
+
+        <p class="text-[12px] leading-[1.7] text-black/45 dark:text-white/45">
+          Uma seleção de marcas, produtos, experiências digitais
+          e software construídos para transformar ideias em algo real.
+        </p>
+
+      </div>
+
+    </header>
+
+
+    <!-- FILTROS -->
+
+    <div class="mb-8 flex flex-wrap gap-2">
+
+      <button
+        class="rounded-full bg-[#171717] px-5 py-3 text-[10px] font-semibold text-white transition hover:-translate-y-0.5 dark:bg-white dark:text-[#171717]"
+      >
+        Todos
+      </button>
+
+      <button
+        class="rounded-full border border-black/10 bg-white px-5 py-3 text-[10px] font-semibold transition hover:bg-black hover:text-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white dark:hover:text-black"
+      >
+        Branding
+      </button>
+
+      <button
+        class="rounded-full border border-black/10 bg-white px-5 py-3 text-[10px] font-semibold transition hover:bg-black hover:text-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white dark:hover:text-black"
+      >
+        Digital
+      </button>
+
+      <button
+        class="rounded-full border border-black/10 bg-white px-5 py-3 text-[10px] font-semibold transition hover:bg-black hover:text-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white dark:hover:text-black"
+      >
+        Software
+      </button>
+
+    </div>
+
+
+    <!-- GRID 3 × 3 EM TODAS AS TELAS -->
+
+    <section class="grid grid-cols-3 gap-1.5 sm:gap-2 lg:gap-3">
+
+
+      <!-- 01 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-white dark:border-white/10 dark:bg-white/5 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <img
+          src="./assets/images/morren.png"
+          alt="Morren Studios"
+          class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        >
+
+        <div class="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/45"></div>
+
+        <div class="absolute inset-x-0 bottom-0 hidden translate-y-3 p-5 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:block">
+
+          <div class="flex items-end justify-between gap-4">
+
+            <div class="text-white">
+
+              <p class="mb-1 text-[8px] uppercase tracking-[.2em] text-white/60">
+                Branding
+              </p>
+
+              <h2 class="text-xl font-medium tracking-tight">
+                Morren Studios
+              </h2>
+
+            </div>
+
+            <button class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black">
+              ↗
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 02 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-white dark:border-white/10 dark:bg-white/5 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <img
+          src="./assets/images/buyed.png"
+          alt="Buyed"
+          class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        >
+
+        <div class="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/45"></div>
+
+        <div class="absolute inset-x-0 bottom-0 hidden translate-y-3 p-5 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:block">
+
+          <div class="flex items-end justify-between gap-4">
+
+            <div class="text-white">
+
+              <p class="mb-1 text-[8px] uppercase tracking-[.2em] text-white/60">
+                Digital
+              </p>
+
+              <h2 class="text-xl font-medium tracking-tight">
+                Buyed
+              </h2>
+
+            </div>
+
+            <button class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black">
+              ↗
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 03 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-white dark:border-white/10 dark:bg-white/5 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <img
+          src="./assets/images/tudoela.png"
+          alt="Tudo pra Ela"
+          class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        >
+
+        <div class="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/45"></div>
+
+        <div class="absolute inset-x-0 bottom-0 hidden translate-y-3 p-5 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:block">
+
+          <div class="flex items-end justify-between gap-4">
+
+            <div class="text-white">
+
+              <p class="mb-1 text-[8px] uppercase tracking-[.2em] text-white/60">
+                E-commerce
+              </p>
+
+              <h2 class="text-xl font-medium tracking-tight">
+                Tudo pra Ela
+              </h2>
+
+            </div>
+
+            <button class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black">
+              ↗
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 04 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-white dark:border-white/10 dark:bg-white/5 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <img
+          src="./assets/images/love.png"
+          alt="Iloveimportados"
+          class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        >
+
+        <div class="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/45"></div>
+
+        <div class="absolute inset-x-0 bottom-0 hidden translate-y-3 p-5 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:block">
+
+          <div class="flex items-end justify-between gap-4">
+
+            <div class="text-white">
+
+              <p class="mb-1 text-[8px] uppercase tracking-[.2em] text-white/60">
+                Branding
+              </p>
+
+              <h2 class="text-xl font-medium tracking-tight">
+                Iloveimportados
+              </h2>
+
+            </div>
+
+            <button class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black">
+              ↗
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 05 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-white dark:border-white/10 dark:bg-white/5 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <img
+          src="./assets/images/omda.png"
+          alt="OMDA Tracker"
+          class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        >
+
+        <div class="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/45"></div>
+
+        <div class="absolute inset-x-0 bottom-0 hidden translate-y-3 p-5 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:block">
+
+          <div class="flex items-end justify-between gap-4">
+
+            <div class="text-white">
+
+              <p class="mb-1 text-[8px] uppercase tracking-[.2em] text-white/60">
+                Software
+              </p>
+
+              <h2 class="text-xl font-medium tracking-tight">
+                OMDA Tracker
+              </h2>
+
+            </div>
+
+            <button class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black">
+              ↗
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 06 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-white dark:border-white/10 dark:bg-white/5 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <img
+          src="./assets/images/im-2.webp"
+          alt="Experiência Digital"
+          class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        >
+
+        <div class="absolute inset-0 bg-black/0 transition duration-300 group-hover:bg-black/45"></div>
+
+        <div class="absolute inset-x-0 bottom-0 hidden translate-y-3 p-5 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:block">
+
+          <div class="flex items-end justify-between gap-4">
+
+            <div class="text-white">
+
+              <p class="mb-1 text-[8px] uppercase tracking-[.2em] text-white/60">
+                Digital
+              </p>
+
+              <h2 class="text-xl font-medium tracking-tight">
+                Experiência Digital
+              </h2>
+
+            </div>
+
+            <button class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-black">
+              ↗
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <!-- 07 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-[#171717] dark:border-white/10 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <div class="absolute inset-0 grid place-items-center">
+
+          <span class="text-[55px] font-medium leading-none tracking-[-.1em] text-white/10 sm:text-[80px] lg:text-[100px]">
+            07
+          </span>
+
+          <span class="absolute bottom-3 left-3 text-[7px] uppercase tracking-[.16em] text-white/40 sm:bottom-6 sm:left-6 sm:text-[8px]">
+            Em construção
+          </span>
+
+        </div>
+
+      </article>
+
+
+      <!-- 08 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-[#ff3008] dark:border-white/10 sm:rounded-[20px] lg:rounded-[24px]">
+
+        <div class="absolute inset-0 grid place-items-center">
+
+          <span class="text-[55px] font-medium leading-none tracking-[-.1em] text-black/10 sm:text-[80px] lg:text-[100px]">
+            08
+          </span>
+
+          <span class="absolute bottom-3 left-3 text-[7px] uppercase tracking-[.16em] text-black/45 sm:bottom-6 sm:left-6 sm:text-[8px]">
+            Próximo projeto
+          </span>
+
+        </div>
+
+      </article>
+
+
+      <!-- 09 -->
+
+      <article class="group relative aspect-square overflow-hidden rounded-[12px] border border-black/10 bg-white dark:border-white/10 dark:bg-[#171717] sm:rounded-[20px] lg:rounded-[24px]">
+
+        <div class="absolute inset-0 grid place-items-center">
+
+          <span class="text-[55px] font-medium leading-none tracking-[-.1em] text-black/10 dark:text-white/10 sm:text-[80px] lg:text-[100px]">
+            09
+          </span>
+
+          <span class="absolute bottom-3 left-3 text-[7px] uppercase tracking-[.16em] text-black/35 dark:text-white/35 sm:bottom-6 sm:left-6 sm:text-[8px]">
+            Em construção
+          </span>
+
+        </div>
+
+      </article>
+
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <div class="mt-8 flex items-center justify-between border-t border-black/10 pt-5 dark:border-white/10">
+
+      <p class="text-[9px] uppercase tracking-[.18em] text-black/30 dark:text-white/30">
+        09 projetos
+      </p>
+
+      <p class="text-[9px] text-black/30 dark:text-white/30">
+        Brand · Digital · Software
+      </p>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
