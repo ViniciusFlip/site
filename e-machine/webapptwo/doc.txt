@@ -1,0 +1,256 @@
+NEVER. — MOBILE FASHION COMMERCE
+DESIGN SYSTEM v1.0
+
+01 — BRAND
+------------------------------------------------
+Brand: NEVER.
+Concept: Style Never Stops.
+Industry: Fashion / Streetwear / E-commerce.
+
+Personality:
+- Bold
+- Youthful
+- Contemporary
+- Expressive
+- Urban
+- Minimal
+
+Visual direction:
+Mobile-first fashion commerce with editorial
+photography, oversized typography and a
+minimal shopping experience.
+
+02 — COLOR PALETTE
+------------------------------------------------
+PRIMARY
+Black:              #171717
+White:              #FFFFFF
+Orange:             #F47735
+
+NEUTRAL
+Background:         #E8E8E8
+Surface:            #F5F5F5
+Gray 100:           #F3F4F6
+Gray 200:           #E5E7EB
+Gray 400:           #9CA3AF
+Gray 500:           #6B7280
+
+FEEDBACK
+Success:            #16A34A
+Error:              #DC2626
+
+Color application:
+Black = primary actions and typography.
+Orange = highlights, active states and badges.
+White = cards and primary surfaces.
+Light gray = page background and secondary surfaces.
+
+03 — TYPOGRAPHY
+------------------------------------------------
+Font: Inter
+Fallback: sans-serif
+
+DISPLAY
+Weight: 800–900
+Letter spacing: -0.05em
+Line height: 0.95–1.05
+
+HEADINGS
+Weight: 700–800
+Letter spacing: -0.035em
+
+BODY
+Weight: 400–500
+Size: 11–14px
+Line height: 1.5–1.7
+
+LABELS
+Weight: 600–700
+Size: 9–10px
+Letter spacing: 0.12em
+Uppercase.
+
+04 — SPACING
+------------------------------------------------
+Base unit: 4px
+
+4px  — Micro
+8px  — Compact
+12px — Small
+16px — Standard
+20px — Medium
+24px — Large
+32px — Section
+40px — Large section
+48px — Editorial
+
+Mobile horizontal padding: 16–20px.
+
+05 — RESPONSIVE SYSTEM
+------------------------------------------------
+Mobile first.
+
+Mobile:
+- Maximum application width: 430px.
+- Full-height application experience.
+- 2-column product grid.
+- Horizontal category navigation.
+- Fixed bottom navigation.
+- Large touch-friendly controls.
+
+Tablet:
+- Centered application.
+- Maximum width: 430px for mobile simulation.
+- Optional expanded layout.
+
+Desktop:
+- Adapt application to full-width commerce
+  when desired, preserving component hierarchy.
+
+06 — COMPONENTS
+------------------------------------------------
+HEADER
+- White background.
+- User greeting.
+- Notification icon.
+- Shopping bag with counter.
+- Search input.
+- Category shortcuts.
+
+PROMOTION CARD
+- Black background.
+- White typography.
+- Product photography.
+- Orange promotional highlight.
+- Rounded corners: 16px.
+
+CATEGORY PILLS
+- Height: 40px.
+- Fully rounded.
+- Active: black background / white text.
+- Inactive: light gray / black text.
+
+PRODUCT CARD
+- Image ratio: 0.78.
+- Rounded corners: 12px.
+- Product title: 12px.
+- Price: 13–14px.
+- Optional badge.
+- Favorite action.
+
+PRODUCT DETAIL
+- Large editorial product image.
+- Floating back and bag controls.
+- Vertical image thumbnails.
+- Product name and price.
+- Rating.
+- Size selector.
+- Color selector.
+- Composition information.
+- Quantity control.
+- Add-to-bag button.
+- Expandable product information.
+
+BOTTOM NAVIGATION
+- Fixed bottom.
+- White background.
+- Four primary destinations.
+- Lucide outline icons.
+- Orange active state.
+- Compact labels.
+
+07 — BORDER & RADIUS
+------------------------------------------------
+Small:       8px
+Standard:    12px
+Large:       16px
+XL:          20px
+Panel:       28px
+Pill:        9999px
+
+08 — ICONOGRAPHY
+------------------------------------------------
+Library: Lucide
+Style: Outline
+Stroke width: 1.8px
+Standard size: 18–20px.
+
+09 — IMAGE DIRECTION
+------------------------------------------------
+Editorial fashion photography.
+Urban streetwear aesthetics.
+Natural lighting.
+Neutral backgrounds.
+Strong model positioning.
+Product-focused composition.
+
+Product photography:
+- Consistent aspect ratio.
+- High-resolution imagery.
+- Object-fit: cover.
+- Avoid unnecessary visual decoration.
+
+10 — INTERACTION
+------------------------------------------------
+Navigation:
+- index.html = storefront.
+- list.html = product catalog.
+- details.html = product information.
+
+Catalog:
+- Search.
+- Category filters.
+- Price sorting.
+- Product navigation.
+- Empty state.
+
+Product:
+- Image selection.
+- Size selection.
+- Color selection.
+- Quantity selection.
+- Add to bag.
+- Persistent cart using localStorage.
+
+Feedback:
+- Immediate interaction response.
+- Clear selected states.
+- Simple confirmation messages.
+
+11 — ACCESSIBILITY
+------------------------------------------------
+- Semantic HTML.
+- Descriptive image alt.
+- Keyboard-friendly controls.
+- Visible focus states.
+- Readable contrast.
+- Minimum touch target: 44px.
+
+12 — PERFORMANCE
+------------------------------------------------
+- Tailwind CSS CDN.
+- Lucide icons.
+- Inter font.
+- Native JavaScript.
+- Lazy loading for catalog images.
+- localStorage for cart persistence.
+- No unnecessary dependencies.
+
+13 — FILE STRUCTURE
+------------------------------------------------
+/
+├── index.html
+├── details.html
+├── list.html
+└── DESIGN-SYSTEM.txt
+
+14 — DESIGN PRINCIPLE
+------------------------------------------------
+Fashion first.
+Product always visible.
+Simple interactions.
+Bold visual identity.
+Frictionless mobile shopping.
+
+NEVER.
+STYLE NEVER STOPS.

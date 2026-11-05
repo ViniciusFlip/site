@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details — CORE</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{font-family:Inter,sans-serif}.thumb{cursor:pointer;border:1px solid transparent}.thumb.active{border-color:#171717}</style>
+</head>
+<body class="text-[#171717]">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+<div class="max-w-7xl mx-auto h-16 px-5 flex items-center justify-between">
+<a href="index.html" class="text-2xl font-extrabold tracking-tighter">CORE.</a>
+<nav class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest">
+<a href="list.html">New arrivals</a><a href="list.html?category=clothing">Clothing</a><a href="list.html?category=shoes">Shoes</a>
+</nav>
+<a href="list.html" class="relative"><i data-lucide="shopping-bag" class="w-5"></i><span id="cartCount" class="absolute -top-2 -right-2 bg-black text-white rounded-full w-4 h-4 text-[9px] flex items-center justify-center">0</span></a>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-12">
+<div class="text-[10px] text-gray-400 mb-7 flex gap-2 uppercase tracking-wider">
+<a href="index.html">Home</a><span>/</span><a href="list.html">Shop</a><span>/</span><span class="text-black">Product</span>
+</div>
+
+<div class="grid md:grid-cols-2 gap-7 md:gap-14">
+<!-- GALLERY -->
+<div>
+<div class="relative bg-[#f5f5f3] rounded-lg overflow-hidden aspect-[.83]">
+<img id="mainImage" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1100&q=90" class="w-full h-full object-cover">
+<span class="absolute top-4 left-4 bg-white px-3 py-2 text-[9px] font-bold uppercase tracking-wider">New arrival</span>
+<button onclick="changeImage(-1)" class="absolute top-1/2 left-3 -translate-y-1/2 bg-white/90 rounded-full p-3"><i data-lucide="chevron-left" class="w-4"></i></button>
+<button onclick="changeImage(1)" class="absolute top-1/2 right-3 -translate-y-1/2 bg-white/90 rounded-full p-3"><i data-lucide="chevron-right" class="w-4"></i></button>
+</div>
+<div class="grid grid-cols-4 gap-3 mt-3">
+<img onclick="selectImage(0)" class="thumb active w-full aspect-square object-cover bg-gray-100 rounded" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=300&q=80">
+<img onclick="selectImage(1)" class="thumb w-full aspect-square object-cover bg-gray-100 rounded" src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=300&q=80">
+<img onclick="selectImage(2)" class="thumb w-full aspect-square object-cover bg-gray-100 rounded" src="https://images.unsplash.com/photo-1627225924765-552d49cf47ad?auto=format&fit=crop&w=300&q=80">
+<img onclick="selectImage(3)" class="thumb w-full aspect-square object-cover bg-gray-100 rounded" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=300&q=80">
+</div>
+</div>
+
+<!-- PRODUCT INFO -->
+<div class="md:pt-8">
+<p class="text-[10px] uppercase tracking-[3px] text-gray-400">CORE / Essentials</p>
+<div class="flex justify-between items-start mt-4">
+<h1 id="productName" class="text-3xl md:text-4xl font-bold tracking-tight">Essential Knit Sweater</h1>
+<button onclick="this.classList.toggle('text-red-500')" class="p-2"><i data-lucide="heart" class="w-5"></i></button>
+</div>
+<div class="flex gap-3 items-center mt-4">
+<span id="productPrice" class="text-lg font-semibold">$164.00</span>
+<span class="text-xs text-gray-400 line-through">$199.00</span>
+<span class="bg-[#f5f5f3] px-2 py-1 text-[9px] font-bold">-18%</span>
+</div>
+<div class="flex items-center gap-2 mt-5 text-xs">
+<div class="flex text-amber-500 gap-0.5">★★★★★</div>
+<span class="text-gray-400">(48 reviews)</span>
+</div>
+<p class="text-sm text-gray-500 leading-7 mt-6">Designed for everyday comfort and effortless styling. A premium essential featuring a relaxed silhouette, soft-touch fabric and a timeless look.</p>
+
+<div class="mt-8">
+<div class="flex justify-between items-center mb-4"><span class="text-xs font-bold">Color</span><span id="colorName" class="text-xs text-gray-400">Light Grey</span></div>
+<div class="flex gap-3">
+<button onclick="setColor('Light Grey',this)" class="color-btn w-7 h-7 rounded-full bg-[#d4d4d4] ring-2 ring-offset-2 ring-black"></button>
+<button onclick="setColor('Black',this)" class="color-btn w-7 h-7 rounded-full bg-black"></button>
+<button onclick="setColor('Cream',this)" class="color-btn w-7 h-7 rounded-full bg-[#e9dfca]"></button>
+</div>
+</div>
+
+<div class="mt-8">
+<div class="flex justify-between items-center mb-4"><span class="text-xs font-bold">Select size</span><button class="text-[10px] underline text-gray-500">Size guide</button></div>
+<div class="grid grid-cols-5 gap-2">
+<button class="size-btn border border-gray-200 rounded py-3 text-xs hover:border-black" onclick="setSize(this)">XS</button>
+<button class="size-btn border border-gray-200 rounded py-3 text-xs hover:border-black" onclick="setSize(this)">S</button>
+<button class="size-btn border border-black bg-black text-white rounded py-3 text-xs" onclick="setSize(this)">M</button>
+<button class="size-btn border border-gray-200 rounded py-3 text-xs hover:border-black" onclick="setSize(this)">L</button>
+<button class="size-btn border border-gray-200 rounded py-3 text-xs hover:border-black" onclick="setSize(this)">XL</button>
+</div>
+</div>
+
+<div class="flex gap-3 mt-9">
+<div class="border border-gray-200 rounded-full flex items-center px-3 gap-4">
+<button onclick="quantity(-1)"><i data-lucide="minus" class="w-3"></i></button>
+<span id="qty" class="text-xs">1</span>
+<button onclick="quantity(1)"><i data-lucide="plus" class="w-3"></i></button>
+</div>
+<button onclick="addToCart()" class="flex-1 rounded-full bg-black text-white py-4 text-xs font-bold uppercase tracking-wider hover:bg-neutral-800 transition">Add to cart — <span id="buttonPrice">$164.00</span></button>
+</div>
+<p id="feedback" class="text-xs text-green-600 mt-3 hidden">Product added to your bag!</p>
+
+<div class="border-t border-gray-100 mt-9">
+<details open class="border-b border-gray-100 py-5">
+<summary class="text-xs font-bold cursor-pointer flex justify-between">Product description <i data-lucide="plus" class="w-4"></i></summary>
+<p class="text-xs text-gray-500 leading-6 mt-4">A versatile wardrobe essential with a comfortable fit and carefully selected materials. Perfect for layering or wearing on its own.</p>
+</details>
+<details class="border-b border-gray-100 py-5">
+<summary class="text-xs font-bold cursor-pointer flex justify-between">Shipping & returns <i data-lucide="plus" class="w-4"></i></summary>
+<p class="text-xs text-gray-500 leading-6 mt-4">Orders are carefully packed and shipped with tracking. Returns are subject to our store policy.</p>
+</details>
+<details class="border-b border-gray-100 py-5">
+<summary class="text-xs font-bold cursor-pointer flex justify-between">Care instructions <i data-lucide="plus" class="w-4"></i></summary>
+<p class="text-xs text-gray-500 leading-6 mt-4">Follow the care label. Wash with similar colors and avoid excessive heat.</p>
+</details>
+</div>
+</div>
+</div>
+
+<section class="mt-20">
+<div class="flex justify-between items-end mb-7"><h2 class="text-2xl font-bold">You may also like</h2><a href="list.html" class="text-xs underline">Shop all</a></div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<a href="details.html?id=2"><img class="aspect-[.8] w-full object-cover rounded bg-gray-100" src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=500&q=80"><p class="text-xs font-semibold mt-3">Relaxed Denim</p><p class="text-xs text-gray-500 mt-1">$120.00</p></a>
+<a href="details.html?id=3"><img class="aspect-[.8] w-full object-cover rounded bg-gray-100" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80"><p class="text-xs font-semibold mt-3">Urban Sneakers</p><p class="text-xs text-gray-500 mt-1">$155.00</p></a>
+<a href="details.html?id=4"><img class="aspect-[.8] w-full object-cover rounded bg-gray-100" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80"><p class="text-xs font-semibold mt-3">Minimal Watch</p><p class="text-xs text-gray-500 mt-1">$89.00</p></a>
+<a href="details.html?id=1"><img class="aspect-[.8] w-full object-cover rounded bg-gray-100" src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=500&q=80"><p class="text-xs font-semibold mt-3">Classic Knit</p><p class="text-xs text-gray-500 mt-1">$164.00</p></a>
+</div>
+</section>
+</main>
+
+<footer class="bg-[#171717] text-white mt-20 py-9 text-center">
+<a href="index.html" class="text-2xl font-extrabold">CORE.</a>
+<p class="text-[10px] text-gray-500 mt-3">© 2026 CORE. All rights reserved.</p>
+</footer>
+
+<script>
+const gallery=[
+'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=1100&q=90',
+'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=1100&q=90',
+'https://images.unsplash.com/photo-1627225924765-552d49cf47ad?auto=format&fit=crop&w=1100&q=90',
+'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1100&q=90'
+];
+let current=0,qty=1,selectedSize='M',selectedColor='Light Grey';
+const products={
+1:{name:'Essential Knit Sweater',price:164},
+2:{name:'Relaxed Denim',price:120},
+3:{name:'Urban Sneakers',price:155},
+4:{name:'Minimal Watch',price:89}
+};
+const product=products[new URLSearchParams(location.search).get('id')]||products[1];
+document.getElementById('productName').textContent=product.name;
+document.getElementById('productPrice').textContent='$'+product.price.toFixed(2);
+document.getElementById('buttonPrice').textContent='$'+product.price.toFixed(2);
+function selectImage(i){current=i;document.getElementById('mainImage').src=gallery[i];document.querySelectorAll('.thumb').forEach((e,n)=>e.classList.toggle('active',n===i))}
+function changeImage(d){selectImage((current+d+gallery.length)%gallery.length)}
+function quantity(n){qty=Math.max(1,qty+n);document.getElementById('qty').textContent=qty}
+function setSize(el){selectedSize=el.textContent;document.querySelectorAll('.size-btn').forEach(b=>b.className='size-btn border border-gray-200 rounded py-3 text-xs');el.className='size-btn border border-black bg-black text-white rounded py-3 text-xs'}
+function setColor(c,el){selectedColor=c;document.getElementById('colorName').textContent=c;document.querySelectorAll('.color-btn').forEach(b=>b.classList.remove('ring-2','ring-offset-2','ring-black'));el.classList.add('ring-2','ring-offset-2','ring-black')}
+function addToCart(){
+let cart=JSON.parse(localStorage.getItem('core-cart')||'[]');
+let item=cart.find(p=>p.name===product.name&&p.size===selectedSize&&p.color===selectedColor);
+if(item)item.qty+=qty;else cart.push({name:product.name,price:product.price,size:selectedSize,color:selectedColor,qty});
+localStorage.setItem('core-cart',JSON.stringify(cart));
+updateCart();document.getElementById('feedback').classList.remove('hidden');
+}
+function updateCart(){document.getElementById('cartCount').textContent=JSON.parse(localStorage.getItem('core-cart')||'[]').reduce((a,b)=>a+b.qty,0)}
+updateCart();lucide.createIcons();
+</script>
+</body>
+</html>

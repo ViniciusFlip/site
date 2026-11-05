@@ -1,0 +1,272 @@
+CORE. — DESIGN SYSTEM
+Version 1.0 / 2026
+
+01. BRAND IDENTITY
+--------------------------------------------------
+Brand: CORE.
+Concept: Modern essentials. Timeless style.
+Positioning: Contemporary fashion / Minimal premium.
+Personality:
+- Minimalist
+- Confident
+- Contemporary
+- Functional
+- Sophisticated
+
+Visual direction:
+Premium editorial fashion combined with modern
+mobile commerce usability.
+
+02. COLOR PALETTE
+--------------------------------------------------
+PRIMARY
+Ink Black:       #171717
+Pure White:      #FFFFFF
+
+NEUTRALS
+Surface:         #F5F5F3
+Gray 100:        #F3F4F6
+Gray 200:        #E5E7EB
+Gray 400:        #9CA3AF
+Gray 500:        #6B7280
+Gray 600:        #858585
+
+FEEDBACK
+Success:         #16A34A
+Error:           #DC2626
+Warning:         #F59E0B
+
+Usage:
+- Black: primary actions, headings and navigation.
+- White: backgrounds and contrast.
+- Surface: product cards and editorial sections.
+- Gray: descriptions, metadata and secondary text.
+- Feedback colors: system messages only.
+
+03. TYPOGRAPHY
+--------------------------------------------------
+Font family: Inter
+Fallback: sans-serif
+
+Display:
+Font weight: 700 / 800
+Letter spacing: -0.04em
+Line height: 0.98–1.10
+
+Heading:
+Font weight: 600 / 700
+Letter spacing: -0.03em
+Line height: 1.15
+
+Body:
+Font weight: 400
+Size: 12–14px
+Line height: 1.6–1.8
+
+Labels:
+Font weight: 600
+Size: 9–11px
+Letter spacing: 0.12em
+Text transform: uppercase
+
+04. SPACING SYSTEM
+--------------------------------------------------
+Base unit: 4px
+
+Scale:
+4px   — Micro
+8px   — Compact
+12px  — Small
+16px  — Standard
+20px  — Medium
+24px  — Large
+32px  — Section compact
+40px  — Section medium
+48px  — Section large
+64px  — Desktop sections
+80px  — Editorial sections
+
+05. GRID & RESPONSIVENESS
+--------------------------------------------------
+Approach: Mobile First
+
+Mobile:
+- 2 product columns.
+- 3 category columns.
+- 16–20px horizontal padding.
+- Full-width product details.
+- Sticky header.
+- Horizontal scroll for category filters.
+
+Tablet:
+- 3 product columns.
+- Increased section spacing.
+
+Desktop:
+- Maximum content width: 1280px.
+- 4 product columns.
+- 2-column product details.
+- Horizontal navigation.
+- Larger editorial sections.
+
+Breakpoints:
+Mobile:     < 640px
+Tablet:     640px–1023px
+Desktop:    >= 1024px
+
+06. COMPONENTS
+--------------------------------------------------
+HEADER
+- White background.
+- 64px height.
+- Thin bottom border.
+- Sticky positioning.
+- Logo aligned left.
+- Navigation centered.
+- Shopping bag aligned right.
+
+BUTTONS
+Primary:
+- Black background.
+- White text.
+- Fully rounded.
+- 44–52px height.
+- Bold uppercase label.
+
+Secondary:
+- White or neutral background.
+- Black text.
+- Thin border when needed.
+
+PRODUCT CARD
+- Image ratio: 0.78.
+- Rounded corners: 8px.
+- Object-fit: cover.
+- Product title: 12px.
+- Price: 12px.
+- Optional product badge.
+
+CATEGORY CARD
+- Image ratio: 0.80.
+- Rounded corners: 8px.
+- Full-image presentation.
+- Dark overlay.
+- White bottom-aligned title.
+
+INPUT
+- White background.
+- Neutral border.
+- Rounded full or 8px.
+- Minimum touch height: 44px.
+
+PRODUCT DETAIL
+- Large product gallery.
+- Thumbnail navigation.
+- Clear product title and price.
+- Color selector.
+- Size selector.
+- Quantity selector.
+- Primary add-to-cart action.
+- Expandable information sections.
+
+07. BORDER & RADIUS
+--------------------------------------------------
+Small:       4px
+Standard:    8px
+Large:       12px
+Pill:        9999px
+
+Borders:
+Default:     #E5E7EB
+Subtle:      #F3F4F6
+
+Use borders sparingly.
+
+08. ICONOGRAPHY
+--------------------------------------------------
+Library: Lucide Icons
+Style: Outline
+Stroke width: 1.8px
+Standard size: 18–20px
+
+Icons should communicate function,
+never replace essential labels.
+
+09. IMAGE DIRECTION
+--------------------------------------------------
+Style:
+- Editorial fashion photography.
+- Natural lighting.
+- Neutral environments.
+- Minimal visual noise.
+- Premium composition.
+- Realistic textures.
+
+Product photography:
+- Consistent image ratios.
+- Clear product visibility.
+- Neutral backgrounds.
+- Object-fit: cover.
+
+10. INTERACTION & UX
+--------------------------------------------------
+Navigation:
+- Direct links between all pages.
+- Sticky header.
+- Clear active states.
+
+Shopping:
+- Product detail navigation.
+- Quantity selection.
+- Color selection.
+- Size selection.
+- Add-to-cart interaction.
+- Persistent cart data using localStorage.
+
+Catalog:
+- Category filtering.
+- Product search.
+- Price sorting.
+- Empty search state.
+
+Feedback:
+- Immediate visual response.
+- Clear action confirmation.
+- No unnecessary modal dialogs.
+
+11. ACCESSIBILITY
+--------------------------------------------------
+- Semantic HTML5.
+- Descriptive image alt attributes.
+- Keyboard-friendly controls.
+- Visible interaction states.
+- Sufficient contrast.
+- Minimum touch target: 44px.
+- Responsive typography.
+
+12. PERFORMANCE
+--------------------------------------------------
+- Tailwind CSS CDN.
+- Lucide icons.
+- Google Fonts: Inter.
+- Lazy loading for catalog images.
+- Native JavaScript.
+- No unnecessary frameworks.
+- Shared localStorage cart.
+
+13. PROJECT STRUCTURE
+--------------------------------------------------
+/
+├── index.html
+├── details.html
+├── list.html
+└── DESIGN-SYSTEM.txt
+
+14. DESIGN PRINCIPLE
+--------------------------------------------------
+Less interface.
+More product.
+Clear decisions.
+Frictionless shopping.
+
+CORE. — Modern essentials. Timeless style.

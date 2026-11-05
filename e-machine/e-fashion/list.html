@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mixtas — Shop All</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{font-family:Inter,sans-serif;color:#20252c}.serif{font-family:'Playfair Display',serif}button,a{transition:.2s}button:hover,a:hover{opacity:.7}</style>
+</head>
+<body class="bg-white">
+<header class="border-b px-5 md:px-10 py-5 flex items-center justify-between">
+<a href="index.html" class="serif text-3xl">Mixtas</a><nav class="hidden md:flex gap-7 text-xs"><a href="index.html">Home</a><a href="list.html">Shop</a><a href="#footer">Contact Us</a></nav><a href="list.html" class="text-lg">♡　♧</a>
+</header>
+<main class="max-w-7xl mx-auto px-4 md:px-10 py-10">
+<div class="text-center mb-10"><p class="text-[10px] uppercase tracking-widest text-gray-400">Explore the collection</p><h1 class="text-4xl font-medium mt-3">Shop All</h1><p class="text-xs text-gray-400 mt-3"><a href="index.html">Home</a> / Shop</p></div>
+<div class="flex flex-col md:flex-row gap-6">
+<aside class="md:w-48 shrink-0">
+<div class="flex justify-between items-center mb-4"><b class="text-xs uppercase tracking-wider">Categories</b><button onclick="reset()" class="text-[10px] underline">Clear</button></div>
+<div class="flex md:flex-col gap-2 flex-wrap text-xs" id="categories">
+<button onclick="filter('All')" class="category text-left py-2 border-b">All products</button>
+<button onclick="filter('Women')" class="category text-left py-2 border-b">Women</button>
+<button onclick="filter('Men')" class="category text-left py-2 border-b">Men</button>
+<button onclick="filter('Shoes')" class="category text-left py-2 border-b">Shoes</button>
+<button onclick="filter('Accessories')" class="category text-left py-2 border-b">Accessories</button>
+</div>
+<div class="mt-8 hidden md:block"><b class="text-xs uppercase">Price</b><div class="flex items-center gap-2 mt-4"><input id="max" type="range" min="35" max="150" value="150" class="w-full" oninput="filterPrice()"></div><p class="text-xs mt-2">Up to $<span id="maxval">150</span></p></div>
+</aside>
+<section class="flex-1 min-w-0">
+<div class="flex flex-wrap justify-between items-center gap-3 border-b pb-4 mb-5">
+<p class="text-xs text-gray-500"><span id="count">8</span> products</p>
+<div class="flex gap-3 items-center"><input id="search" oninput="render()" placeholder="Search products..." class="border rounded-sm px-3 py-2 text-xs w-36 md:w-48"><select id="sort" onchange="render()" class="border rounded-sm p-2 text-xs"><option value="default">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="az">Name: A to Z</option></select></div>
+</div>
+<div id="products" class="grid grid-cols-2 md:grid-cols-3 gap-x-3 md:gap-x-5 gap-y-8"></div>
+<p id="empty" class="hidden text-center text-sm text-gray-400 py-16">No products found.</p>
+</section>
+</div>
+</main>
+<footer id="footer" class="bg-[#f6f7f8] py-10 text-center"><a href="index.html" class="serif text-3xl">Mixtas</a><p class="text-[10px] text-gray-400 mt-4">© 2026 Mixtas. All rights reserved.</p></footer>
+<script>
+const items=[
+['01','adidas X Pop Polo shirt, navy / blue',69.99,'Jackets','https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=700&auto=format&fit=crop&q=80','Men'],
+['02','adidas x Pop TRX Vintage, navy / white',69.99,'Shoes','https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&auto=format&fit=crop&q=80','Shoes'],
+['03','adidas x Pop Beckenbauer Track jacket',120,'Jackets','https://images.unsplash.com/photo-1551028719-00167b16eac5?w=700&auto=format&fit=crop&q=80','Men'],
+['04','adidas X Pop Classic t-shirt, grey / navy',120,'Jackets','https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700&auto=format&fit=crop&q=80','Women'],
+['05','adidas X Pop SL Cap, navy / white',35,'Accessories','https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=700&auto=format&fit=crop&q=80','Accessories'],
+['06','Butter Yard Pullover Hood, denim',120,'Jackets','https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700&auto=format&fit=crop&q=80','Men'],
+['07','Parra Rug Pull t-shirt, white',60,'Jackets','https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=700&auto=format&fit=crop&q=80','Women'],
+['08','Carhartt L/S Knock Knock Sweat',130,'Jackets','https://images.unsplash.com/photo-1578681994506-b8f463449011?w=700&auto=format&fit=crop&q=80','Women']];
+let category='All';
+function filter(c){category=c;render();document.querySelectorAll('.category').forEach(b=>b.classList.toggle('font-bold',b.textContent.toLowerCase().startsWith(c.toLowerCase())))}
+function filterPrice(){maxval.textContent=max.value;render()}
+function reset(){category='All';search.value='';max.value=150;maxval.textContent=150;sort.value='default';render()}
+function render(){let data=items.filter(p=>(category==='All'||p[5]===category)&&p[1].toLowerCase().includes(search.value.toLowerCase())&&p[2]<=Number(max.value));if(sort.value==='low')data.sort((a,b)=>a[2]-b[2]);if(sort.value==='high')data.sort((a,b)=>b[2]-a[2]);if(sort.value==='az')data.sort((a,b)=>a[1].localeCompare(b[1]));count.textContent=data.length;empty.classList.toggle('hidden',data.length>0);products.innerHTML=data.map(p=>`<a href="details.html?id=${p[0]}" class="group"><div class="bg-[#f2f2f2] aspect-square overflow-hidden"><img loading="lazy" src="${p[4]}" alt="${p[1]}" class="w-full h-full object-cover group-hover:scale-105 duration-300"></div><p class="text-[9px] uppercase text-gray-400 mt-3">${p[3]}</p><h2 class="text-[11px] leading-relaxed mt-1">${p[1]}</h2><p class="text-xs mt-2">$${p[2].toFixed(2)}</p></a>`).join('')}
+render();
+</script>
+</body></html>

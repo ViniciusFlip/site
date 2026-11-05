@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All — CORE</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{font-family:Inter,sans-serif}.product-card img{transition:transform .4s}.product-card:hover img{transform:scale(1.04)}.hide-scroll::-webkit-scrollbar{display:none}</style>
+</head>
+<body class="text-[#171717]">
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
+<div class="max-w-7xl mx-auto h-16 px-5 flex items-center justify-between">
+<button class="md:hidden" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"><i data-lucide="menu"></i></button>
+<a href="index.html" class="text-2xl font-extrabold tracking-tighter">CORE.</a>
+<nav class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest"><a href="list.html">New arrivals</a><a href="list.html?category=clothing">Clothing</a><a href="list.html?category=shoes">Shoes</a><a href="list.html?category=accessories">Accessories</a></nav>
+<div class="flex gap-5 items-center"><button onclick="document.getElementById('searchBox').classList.toggle('hidden')"><i data-lucide="search" class="w-5"></i></button><a href="index.html" class="relative"><i data-lucide="shopping-bag" class="w-5"></i><span id="cartCount" class="absolute -top-2 -right-2 bg-black text-white rounded-full w-4 h-4 text-[9px] flex items-center justify-center">0</span></a></div>
+</div>
+<div id="mobileMenu" class="hidden md:hidden px-5 pb-5 space-y-4 text-xs"><a class="block" href="list.html">All products</a><a class="block" href="list.html?category=clothing">Clothing</a><a class="block" href="list.html?category=shoes">Shoes</a><a class="block" href="list.html?category=accessories">Accessories</a></div>
+</header>
+
+<main class="max-w-7xl mx-auto px-5">
+<div class="py-6 text-[10px] text-gray-400 uppercase tracking-wider"><a href="index.html">Home</a> / Shop</div>
+
+<section class="bg-[#f5f5f3] rounded-lg p-7 md:p-12 mb-9">
+<p class="text-[10px] uppercase tracking-[3px] text-gray-400 mb-3">The CORE collection</p>
+<h1 class="text-4xl md:text-6xl font-bold tracking-[-2px]">Find your<br class="md:hidden"> essentials.</h1>
+<p class="text-xs text-gray-500 mt-4 max-w-sm leading-6">Explore timeless pieces designed to make everyday dressing effortless.</p>
+</section>
+
+<div id="searchBox" class="hidden mb-6">
+<div class="flex border border-gray-200 rounded-full px-5 py-3 items-center gap-3"><i data-lucide="search" class="w-4 text-gray-400"></i><input id="search" oninput="render()" placeholder="Search products..." class="outline-none text-xs w-full"><button onclick="document.getElementById('search').value='';render()"><i data-lucide="x" class="w-4"></i></button></div>
+</div>
+
+<div class="flex justify-between items-center gap-3 mb-7">
+<div class="flex gap-2 overflow-x-auto hide-scroll">
+<button onclick="setCategory('all')" class="filter px-4 py-2 rounded-full bg-black text-white text-[10px] whitespace-nowrap">All products</button>
+<button onclick="setCategory('clothing')" class="filter px-4 py-2 rounded-full bg-[#f5f5f3] text-xs whitespace-nowrap">Clothing</button>
+<button onclick="setCategory('shoes')" class="filter px-4 py-2 rounded-full bg-[#f5f5f3] text-xs whitespace-nowrap">Shoes</button>
+<button onclick="setCategory('accessories')" class="filter px-4 py-2 rounded-full bg-[#f5f5f3] text-xs whitespace-nowrap">Accessories</button>
+</div>
+<select id="sort" onchange="render()" class="bg-white border border-gray-200 rounded-full px-3 py-2 text-[10px] outline-none">
+<option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option>
+</select>
+</div>
+
+<div class="flex justify-between items-center mb-5">
+<p id="resultCount" class="text-[10px] text-gray-400">8 products</p>
+<span class="text-[10px] text-gray-400 uppercase tracking-wider">CORE / Shop</span>
+</div>
+
+<div id="products" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-9 md:gap-x-5"></div>
+<p id="empty" class="hidden text-center py-20 text-sm text-gray-400">No products found. Try another search.</p>
+
+<section class="my-20 bg-[#f5f5f3] rounded-lg p-8 md:p-12 text-center">
+<p class="text-[10px] tracking-[3px] uppercase text-gray-400">Stay in the loop</p>
+<h2 class="text-2xl md:text-3xl font-bold mt-3">Good things are coming.</h2>
+<p class="text-xs text-gray-500 mt-3">Discover new arrivals and curated essentials.</p>
+<a href="index.html" class="inline-block bg-black text-white px-7 py-4 rounded-full text-[10px] uppercase font-bold tracking-wider mt-6">Back to home</a>
+</section>
+</main>
+
+<footer class="bg-[#171717] text-white py-10">
+<div class="max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between gap-6">
+<div><a href="index.html" class="text-2xl font-extrabold">CORE.</a><p class="text-[10px] text-gray-500 mt-3">Modern essentials. Timeless style.</p></div>
+<div class="flex gap-6 text-xs text-gray-400"><a href="index.html">Home</a><a href="list.html">Shop</a><a href="mailto:hello@core.store">Contact</a></div>
+<p class="text-[10px] text-gray-500">© 2026 CORE.</p>
+</div>
+</footer>
+
+<script>
+const data=[
+{id:1,name:'Essential Knit Sweater',price:164,category:'clothing',tag:'New',image:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=700&q=85'},
+{id:2,name:'Relaxed Denim',price:120,category:'clothing',tag:'Popular',image:'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=700&q=85'},
+{id:3,name:'Urban Sneakers',price:155,category:'shoes',tag:'',image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85'},
+{id:4,name:'Minimal Watch',price:89,category:'accessories',tag:'New',image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85'},
+{id:5,name:'Classic Jacket',price:210,category:'clothing',tag:'',image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=85'},
+{id:6,name:'Everyday Sneakers',price:130,category:'shoes',tag:'',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=85'},
+{id:7,name:'Essential T-Shirt',price:45,category:'clothing',tag:'Popular',image:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85'},
+{id:8,name:'Classic Accessories',price:65,category:'accessories',tag:'',image:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85'}
+];
+let category='all';
+function setCategory(c){
+category=c;
+document.querySelectorAll('.filter').forEach((b,i)=>{
+let active=['all','clothing','shoes','accessories'][i]===c;
+b.className='filter px-4 py-2 rounded-full text-[10px] whitespace-nowrap '+(active?'bg-black text-white':'bg-[#f5f5f3] text-black');
+});
+render();
+}
+function render(){
+let q=document.getElementById('search').value.toLowerCase();
+let products=data.filter(p=>(category==='all'||p.category===category)&&p.name.toLowerCase().includes(q));
+let sort=document.getElementById('sort').value;
+if(sort==='low')products.sort((a,b)=>a.price-b.price);
+if(sort==='high')products.sort((a,b)=>b.price-a.price);
+document.getElementById('resultCount').textContent=products.length+' products';
+document.getElementById('empty').classList.toggle('hidden',products.length>0);
+document.getElementById('products').innerHTML=products.map(p=>`
+<a href="details.html?id=${p.id}" class="product-card group">
+<div class="relative aspect-[.78] overflow-hidden rounded-lg bg-[#f5f5f3]">
+<img src="${p.image}" loading="lazy" class="w-full h-full object-cover">
+${p.tag?`<span class="absolute top-3 left-3 bg-white px-2 py-1 text-[9px] uppercase font-bold">${p.tag}</span>`:''}
+</div>
+<div class="pt-3"><p class="text-xs font-semibold">${p.name}</p><p class="text-xs text-gray-500 mt-1">$${p.price.toFixed(2)}</p></div>
+</a>`).join('');
+}
+function updateCart(){document.getElementById('cartCount').textContent=JSON.parse(localStorage.getItem('core-cart')||'[]').reduce((a,b)=>a+b.qty,0)}
+const initialCategory=new URLSearchParams(location.search).get('category');
+if(['clothing','shoes','accessories'].includes(initialCategory))setCategory(initialCategory);else render();
+updateCart();lucide.createIcons();
+</script>
+</body>
+</html>

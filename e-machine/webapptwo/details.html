@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#e8e8e8">
+<title>Product — NEVER</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{font-family:Inter,sans-serif;background:#e8e8e8}.phone{max-width:430px;min-height:100dvh;margin:auto;background:white;position:relative;overflow:hidden}.hide-scroll::-webkit-scrollbar{display:none}</style>
+</head>
+<body>
+<div class="phone shadow-2xl">
+
+<header class="absolute top-0 z-20 w-full flex justify-between p-5">
+<a href="index.html" class="w-10 h-10 bg-white/90 rounded-full grid place-items-center"><i data-lucide="chevron-left"></i></a>
+<a href="list.html" class="w-10 h-10 bg-white/90 rounded-full grid place-items-center"><i data-lucide="shopping-bag"></i></a>
+</header>
+
+<!-- PRODUCT GALLERY -->
+<section class="relative h-[540px] bg-[#eeeeee]">
+<img id="mainImage" src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1000&q=90" class="w-full h-full object-cover object-center">
+<div class="absolute bottom-5 left-5 flex gap-2">
+<span class="bg-white rounded-full px-3 py-2 text-[9px] font-bold uppercase">New collection</span>
+</div>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+<button onclick="selectImage(0)" class="w-12 h-14 rounded-lg border-2 border-white overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=200&q=70"></button>
+<button onclick="selectImage(1)" class="w-12 h-14 rounded-lg border-2 border-white/70 overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=200&q=70"></button>
+<button onclick="selectImage(2)" class="w-12 h-14 rounded-lg border-2 border-white/70 overflow-hidden"><img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=200&q=70"></button>
+</div>
+</section>
+
+<!-- PRODUCT PANEL -->
+<main class="relative -mt-5 bg-white rounded-t-[28px] px-5 pt-5 pb-10">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[9px] uppercase tracking-[3px] text-gray-400">NEVER / Streetwear</p>
+<h1 id="productName" class="text-xl font-extrabold mt-2">Oversized Hoodie</h1>
+<div class="flex items-center gap-2 mt-2">
+<div class="flex text-orange-400 text-xs">★★★★★</div>
+<span class="text-[10px] text-gray-400">4.9 (128 reviews)</span>
+</div>
+</div>
+<div class="text-right"><p id="price" class="font-extrabold text-lg">$59.99</p><p class="text-[10px] text-gray-400 line-through">$79.99</p></div>
+</div>
+
+<div class="border-t border-gray-100 mt-5 pt-5">
+<div class="flex justify-between mb-3"><span class="text-xs font-bold">Select size</span><button class="text-[10px] underline text-gray-400">Size guide</button></div>
+<div class="flex gap-2">
+<button onclick="size(this)" class="size bg-orange-500 text-white">S</button>
+<button onclick="size(this)" class="size">M</button>
+<button onclick="size(this)" class="size">L</button>
+<button onclick="size(this)" class="size">XL</button>
+<button onclick="size(this)" class="size">XXL</button>
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-5">
+<div class="border border-gray-100 rounded-2xl p-4">
+<p class="text-[10px] font-bold mb-4">Select color</p>
+<div class="flex gap-3">
+<button onclick="color(this,'#e64b4b')" class="w-4 h-4 rounded-full bg-red-600 ring-2 ring-offset-2 ring-red-500"></button>
+<button onclick="color(this,'#b9b9b9')" class="w-4 h-4 rounded-full bg-gray-400"></button>
+<button onclick="color(this,'#315fba')" class="w-4 h-4 rounded-full bg-blue-600"></button>
+<button onclick="color(this,'#171717')" class="w-4 h-4 rounded-full bg-black"></button>
+</div>
+</div>
+<div class="border border-gray-100 rounded-2xl p-4">
+<p class="text-[10px] font-bold mb-2">Composition</p>
+<p class="text-xs font-semibold">Premium Cotton</p>
+<p class="text-[9px] text-gray-400 mt-1">Soft & breathable</p>
+</div>
+</div>
+
+<div class="flex gap-3 mt-5">
+<div class="border border-gray-200 rounded-full flex items-center px-3 gap-4">
+<button onclick="changeQty(-1)"><i data-lucide="minus" class="w-3"></i></button>
+<span id="qty" class="text-xs font-bold">01</span>
+<button onclick="changeQty(1)"><i data-lucide="plus" class="w-3"></i></button>
+</div>
+<button onclick="addCart()" class="flex-1 bg-black text-white rounded-full py-4 text-xs font-bold flex justify-center items-center gap-3">ADD TO BAG <i data-lucide="shopping-bag" class="w-4"></i></button>
+</div>
+<p id="feedback" class="hidden text-center text-xs text-green-600 mt-3">Added to your shopping bag!</p>
+
+<div class="mt-7 space-y-0">
+<details class="border-t border-gray-100 py-4" open>
+<summary class="text-xs font-bold flex justify-between cursor-pointer">Product description <i data-lucide="plus" class="w-4"></i></summary>
+<p class="text-xs text-gray-500 leading-6 mt-3">A statement piece designed for everyday comfort. Relaxed fit, premium fabric and contemporary streetwear style.</p>
+</details>
+<details class="border-t border-gray-100 py-4">
+<summary class="text-xs font-bold flex justify-between cursor-pointer">Shipping & returns <i data-lucide="plus" class="w-4"></i></summary>
+<p class="text-xs text-gray-500 leading-6 mt-3">Fast shipping with tracking. Easy returns according to our store policy.</p>
+</details>
+<details class="border-t border-gray-100 py-4">
+<summary class="text-xs font-bold flex justify-between cursor-pointer">Care instructions <i data-lucide="plus" class="w-4"></i></summary>
+<p class="text-xs text-gray-500 leading-6 mt-3">Machine wash cold with similar colors. Do not bleach.</p>
+</details>
+</div>
+</main>
+</div>
+
+<style>
+.size{width:42px;height:42px;border:1px solid #eee;border-radius:12px;font-size:11px;font-weight:600}
+.size.active{background:#f47735;color:white;border-color:#f47735}
+</style>
+<script>
+const products={
+1:{name:'Oversized Hoodie',price:59.99,image:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1000&q=90'},
+2:{name:'Essential T-Shirt',price:34.99,image:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=90'},
+3:{name:'Street Jacket',price:89.99,image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=1000&q=90'},
+4:{name:'Street Sneakers',price:119.99,image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=90'},
+5:{name:'Classic Sweatshirt',price:69.99,image:'https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=1000&q=90'}
+};
+const product=products[new URLSearchParams(location.search).get('id')]||products[1];
+document.getElementById('productName').textContent=product.name;
+document.getElementById('price').textContent='$'+product.price.toFixed(2);
+document.getElementById('mainImage').src=product.image;
+let qty=1,selectedSize='S',selectedColor='Red';
+function size(el){document.querySelectorAll('.size').forEach(b=>b.classList.remove('active'));el.classList.add('active');selectedSize=el.textContent}
+function color(el,c){document.querySelectorAll('[onclick^="color"]').forEach(b=>b.classList.remove('ring-2','ring-offset-2','ring-red-500'));el.classList.add('ring-2','ring-offset-2','ring-red-500');selectedColor=c}
+function changeQty(n){qty=Math.max(1,qty+n);document.getElementById('qty').textContent=String(qty).padStart(2,'0')}
+function selectImage(i){let imgs=[product.image,'https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=1000&q=85','https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=1000&q=85'];document.getElementById('mainImage').src=imgs[i]}
+function addCart(){
+let cart=JSON.parse(localStorage.getItem('never-cart')||'[]');
+let item=cart.find(x=>x.id===Object.keys(products).find(k=>products[k].name===product.name)&&x.size===selectedSize&&x.color===selectedColor);
+if(item)item.qty+=qty;else cart.push({id:Object.keys(products).find(k=>products[k].name===product.name),name:product.name,price:product.price,size:selectedSize,color:selectedColor,qty});
+localStorage.setItem('never-cart',JSON.stringify(cart));
+document.getElementById('feedback').classList.remove('hidden');
+}
+lucide.createIcons();
+</script>
+</body>
+</html>

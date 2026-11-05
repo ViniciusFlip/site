@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shop — NEVER</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{font-family:Inter,sans-serif;background:#e8e8e8}.phone{max-width:430px;min-height:100dvh;margin:auto;background:white;overflow:hidden}.hide-scroll::-webkit-scrollbar{display:none}.product-image{transition:transform .4s}.product-card:hover .product-image{transform:scale(1.04)}</style>
+</head>
+<body>
+<div class="phone shadow-2xl">
+
+<header class="sticky top-0 z-30 bg-white px-5 pt-7 pb-4">
+<div class="flex justify-between items-center">
+<a href="index.html" class="flex items-center gap-2"><i data-lucide="chevron-left"></i><span class="font-extrabold text-lg">NEVER<span class="text-orange-500">.</span></span></a>
+<a href="index.html" class="relative"><i data-lucide="shopping-bag" class="w-5"></i><span id="cartCount" class="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full w-4 h-4 text-[9px] grid place-items-center">0</span></a>
+</div>
+<div class="mt-6">
+<p class="text-[9px] uppercase tracking-[3px] text-gray-400">Discover your style</p>
+<h1 class="text-3xl font-black tracking-tight mt-1">Explore collection<span class="text-orange-500">.</span></h1>
+</div>
+<div class="flex gap-3 mt-5">
+<div class="flex items-center gap-3 bg-[#f5f5f5] rounded-full px-4 h-12 flex-1">
+<i data-lucide="search" class="w-4 text-gray-400"></i>
+<input id="search" oninput="render()" placeholder="Search products..." class="bg-transparent outline-none text-xs w-full">
+</div>
+<button onclick="document.getElementById('sort').classList.toggle('hidden')" class="w-12 h-12 bg-[#f5f5f5] rounded-full grid place-items-center"><i data-lucide="sliders-horizontal" class="w-5"></i></button>
+</div>
+<select id="sort" onchange="render()" class="hidden mt-3 w-full p-3 bg-gray-100 rounded-xl text-xs outline-none"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+</header>
+
+<div class="flex gap-2 px-5 pb-5 overflow-x-auto hide-scroll">
+<button class="filter bg-black text-white" onclick="setCategory('all',this)">ALL</button>
+<button class="filter" onclick="setCategory('clothing',this)">CLOTHING</button>
+<button class="filter" onclick="setCategory('shoes',this)">SHOES</button>
+<button class="filter" onclick="setCategory('accessories',this)">ACCESSORIES</button>
+</div>
+
+<main class="px-5 pb-28">
+<div class="flex justify-between items-center mb-5">
+<p class="text-xs font-bold">All products</p>
+<p id="count" class="text-[10px] text-gray-400">5 items</p>
+</div>
+<div id="products" class="grid grid-cols-2 gap-x-3 gap-y-7"></div>
+<p id="empty" class="hidden text-center text-xs text-gray-400 py-16">No products found.</p>
+</main>
+
+<nav class="fixed bottom-0 z-40 w-full max-w-[430px] bg-white border-t border-gray-100 px-8 py-3 flex justify-between">
+<a href="index.html" class="flex flex-col items-center gap-1 text-gray-400"><i data-lucide="house" class="w-5"></i><span class="text-[9px]">Home</span></a>
+<a href="list.html" class="flex flex-col items-center gap-1 text-orange-500"><i data-lucide="store" class="w-5"></i><span class="text-[9px] font-bold">Shop</span></a>
+<a href="list.html?category=favorites" class="flex flex-col items-center gap-1 text-gray-400"><i data-lucide="heart" class="w-5"></i><span class="text-[9px]">Wishlist</span></a>
+<a href="index.html" class="flex flex-col items-center gap-1 text-gray-400"><i data-lucide="user-round" class="w-5"></i><span class="text-[9px]">Account</span></a>
+</nav>
+</div>
+
+<style>
+.filter{background:#f4f4f4;padding:12px 18px;border-radius:30px;font-size:9px;font-weight:700;white-space:nowrap}
+.filter.active{background:#171717;color:white}
+</style>
+
+<script>
+const data=[
+{id:1,name:'Oversized Hoodie',price:59.99,category:'clothing',tag:'BESTSELLER',image:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=85'},
+{id:2,name:'Essential T-Shirt',price:34.99,category:'clothing',tag:'NEW',image:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=85'},
+{id:3,name:'Street Jacket',price:89.99,category:'clothing',tag:'',image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=85'},
+{id:4,name:'Street Sneakers',price:119.99,category:'shoes',tag:'TRENDING',image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=85'},
+{id:5,name:'Classic Sweatshirt',price:69.99,category:'clothing',tag:'NEW',image:'https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=600&q=85'},
+{id:6,name:'Urban Sneakers',price:99.99,category:'shoes',tag:'',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=85'},
+{id:7,name:'Minimal Watch',price:79.99,category:'accessories',tag:'',image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=85'},
+{id:8,name:'Street Cap',price:24.99,category:'accessories',tag:'NEW',image:'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=85'}
+];
+let category=new URLSearchParams(location.search).get('category')||'all';
+function setCategory(c,el){
+category=c;
+document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+el.classList.add('active');render();
+}
+function render(){
+let q=document.getElementById('search').value.toLowerCase();
+let arr=data.filter(p=>(category==='all'||category==='favorites'||p.category===category)&&p.name.toLowerCase().includes(q));
+let sort=document.getElementById('sort').value;
+if(sort==='low')arr.sort((a,b)=>a.price-b.price);
+if(sort==='high')arr.sort((a,b)=>b.price-a.price);
+document.getElementById('count').textContent=arr.length+' items';
+document.getElementById('empty').classList.toggle('hidden',arr.length!==0);
+document.getElementById('products').innerHTML=arr.map(p=>`
+<a href="details.html?id=${p.id}" class="product-card">
+<div class="relative aspect-[.78] rounded-xl overflow-hidden bg-gray-100">
+<img src="${p.image}" loading="lazy" class="product-image w-full h-full object-cover">
+${p.tag?`<span class="absolute top-3 left-3 bg-white px-2 py-1 rounded-full text-[8px] font-bold">${p.tag}</span>`:''}
+</div>
+<div class="pt-3"><p class="text-xs font-bold">${p.name}</p><p class="text-[10px] text-gray-400 mt-1">${p.category}</p><p class="text-sm font-extrabold mt-2">$${p.price.toFixed(2)}</p></div>
+</a>`).join('');
+}
+document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===category||category==='all'&&b.textContent==='ALL'));
+function cartCount(){document.getElementById('cartCount').textContent=JSON.parse(localStorage.getItem('never-cart')||'[]').reduce((n,p)=>n+p.qty,0)}
+render();cartCount();lucide.createIcons();
+</script>
+</body>
+</html>

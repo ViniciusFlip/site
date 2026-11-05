@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mixtas — Product Details</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box}body{font-family:Inter,sans-serif;color:#20252c}.serif{font-family:'Playfair Display',serif}</style>
+</head>
+<body class="bg-white">
+<header class="border-b px-5 md:px-10 py-5 flex items-center justify-between">
+<a href="index.html" class="serif text-3xl">Mixtas</a><nav class="hidden md:flex gap-7 text-xs"><a href="index.html">Home</a><a href="list.html">Shop</a><a href="list.html">Pages</a><a href="#footer">Contact Us</a></nav><a href="list.html" class="text-lg">♡　♧</a>
+</header>
+<main class="max-w-7xl mx-auto px-5 md:px-10 py-7">
+<nav class="text-xs text-gray-400 mb-7"><a href="index.html">Home</a> / <a href="list.html">Shop</a> / <span id="crumb">Product</span></nav>
+<div class="grid md:grid-cols-2 gap-8 md:gap-14">
+<section class="grid grid-cols-4 gap-2">
+<div class="col-span-4 bg-[#f3f4f5] aspect-square"><img id="photo" class="w-full h-full object-cover" alt="Product"></div>
+</section>
+<section class="py-2 md:py-8">
+<p class="text-[10px] uppercase tracking-widest text-gray-400" id="category">COLLECTION</p>
+<h1 id="name" class="text-3xl md:text-4xl font-semibold mt-3">Product name</h1>
+<div class="flex gap-1 text-sm mt-4 text-amber-500">★★★★★ <span class="text-gray-400 text-xs ml-2">(12 reviews)</span></div>
+<p id="price" class="text-2xl font-medium mt-6">$69.99</p>
+<p class="text-sm text-gray-500 leading-relaxed mt-5">A contemporary essential designed for everyday style. Discover the collection and find your perfect fit.</p>
+<div class="mt-7">
+<label class="text-xs font-semibold block mb-3">SIZE</label>
+<div class="flex gap-2" id="sizes"><button class="size border px-5 py-3 text-xs">S</button><button class="size border px-5 py-3 text-xs">M</button><button class="size border px-5 py-3 text-xs">L</button><button class="size border px-5 py-3 text-xs">XL</button></div>
+</div>
+<div class="flex gap-3 mt-7">
+<div class="border flex items-center"><button onclick="change(-1)" class="px-4 py-3">−</button><span id="quantity" class="text-xs">1</span><button onclick="change(1)" class="px-4 py-3">+</button></div>
+<button onclick="addCart()" class="bg-[#20252c] text-white flex-1 text-xs font-semibold uppercase tracking-wider">Add to cart</button>
+</div>
+<button onclick="this.textContent=this.textContent==='♡ Add to wishlist'?'♥ Added to wishlist':'♡ Add to wishlist'" class="border w-full py-4 mt-3 text-xs">♡ Add to wishlist</button>
+<div class="border-t mt-8 divide-y text-sm">
+<details class="py-4"><summary class="cursor-pointer font-medium">Product description</summary><p class="text-xs text-gray-500 mt-3">Designed for comfort, quality and everyday versatility.</p></details>
+<details class="py-4"><summary class="cursor-pointer font-medium">Size guide</summary><p class="text-xs text-gray-500 mt-3">Choose your usual size for a comfortable fit.</p></details>
+<details class="py-4"><summary class="cursor-pointer font-medium">Shipping & returns</summary><p class="text-xs text-gray-500 mt-3">Shipping options and delivery estimates are calculated at checkout.</p></details>
+</div>
+</section>
+</div>
+<section class="py-16"><div class="flex justify-between items-center mb-7"><h2 class="text-2xl font-medium">You may also like</h2><a href="list.html" class="text-xs underline">View all</a></div><div id="related" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div></section>
+</main>
+<footer id="footer" class="bg-[#f6f7f8] py-10 text-center"><a href="index.html" class="serif text-3xl">Mixtas</a><p class="text-[10px] text-gray-400 mt-4">© 2026 Mixtas. All rights reserved.</p></footer>
+<script>
+const items=[
+['01','adidas X Pop Polo shirt, navy / blue','69.99','Jackets','https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=900&auto=format&fit=crop&q=80'],
+['02','adidas x Pop TRX Vintage, navy / white','69.99','Shoes','https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&auto=format&fit=crop&q=80'],
+['03','adidas x Pop Beckenbauer Track jacket','120.00','Jackets','https://images.unsplash.com/photo-1551028719-00167b16eac5?w=900&auto=format&fit=crop&q=80'],
+['04','adidas X Pop Classic t-shirt, grey / navy','120.00','Jackets','https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&auto=format&fit=crop&q=80'],
+['05','adidas X Pop SL Cap, navy / white','35.00','Accessories','https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=900&auto=format&fit=crop&q=80'],
+['06','Butter Yard Pullover Hood, denim','120.00','Jackets','https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900&auto=format&fit=crop&q=80'],
+['07','Parra Rug Pull t-shirt, white','60.00','Jackets','https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=900&auto=format&fit=crop&q=80'],
+['08','Carhartt L/S Knock Knock Sweat','130.00','Jackets','https://images.unsplash.com/photo-1578681994506-b8f463449011?w=900&auto=format&fit=crop&q=80']];
+const p=items.find(x=>x[0]===new URLSearchParams(location.search).get('id'))||items[0];
+document.title='Mixtas — '+p[1];document.querySelector('#name').textContent=p[1];document.querySelector('#crumb').textContent=p[1];document.querySelector('#category').textContent=p[3];document.querySelector('#price').textContent='$'+p[2];document.querySelector('#photo').src=p[4];
+let q=1;function change(v){q=Math.max(1,q+v);quantity.textContent=q}
+document.querySelectorAll('.size').forEach(b=>b.onclick=()=>{document.querySelectorAll('.size').forEach(x=>x.classList.remove('bg-gray-900','text-white'));b.classList.add('bg-gray-900','text-white')});
+function addCart(){alert(q+' item(s) added to cart.')}
+related.innerHTML=items.filter(x=>x[0]!==p[0]).slice(0,4).map(x=>`<a href="details.html?id=${x[0]}"><div class="bg-gray-100 aspect-square"><img src="${x[4]}" class="w-full h-full object-cover" loading="lazy"></div><p class="text-[10px] mt-3">${x[1]}</p><p class="text-xs mt-1">$${x[2]}</p></a>`).join('');
+</script>
+</body></html>

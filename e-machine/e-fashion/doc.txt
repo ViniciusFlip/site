@@ -1,0 +1,57 @@
+
+DESIGN SYSTEM — JUVEE
+
+Referência: imagem original Juvee.
+Estilo: ecommerce editorial, minimalista, energético e premium.
+
+CORES
+Background: #F5F5EF
+Texto: #111111
+Laranja: #FF5A16
+Amarelo: #FFF0A0
+Kiwi: #C5FF8B
+Tropical: #FFF28C
+Watermelon: #FFB6D6
+
+TIPOGRAFIA
+Inter
+Headlines: bold / extra-bold
+Produtos: uppercase / bold
+Texto: pequeno, objetivo e legível
+
+LAYOUT
+Mobile-first
+Tailwind CSS CDN
+HTML independente por página
+CSS inline mínimo
+JavaScript apenas quando necessário
+Cards com gradientes suaves
+Botões arredondados
+Espaçamento generoso
+Responsividade sem overflow
+
+ARQUIVOS
+index.html = Home
+details.html = Produto
+list.html = Coleção
+
+LINKS
+Home → list.html
+Produto → details.html
+Coleção → list.html
+Logo → index.html
+
+IMAGENS
+Usar placeholders CDN temporários.
+Imagens finais serão substituídas manualmente.
+
+PROMPT PARA REPLICAR
+
+Crie um ecommerce baseado na referência visual Juvee.
+Entregue somente HTML completo, pronto para copiar e colar.
+Use Tailwind CSS CDN, design system compartilhado,
+mobile-first, máxima UX, código mínimo e legível.
+Gere apenas index.html, details.html, list.html
+e este DESIGN-SYSTEM.txt.
+Linke todas as páginas corretamente.
+Não explique. Entregue os blocos diretamente.
