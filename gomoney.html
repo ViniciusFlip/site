@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gomoney | Atendimento</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-[#f8fafc] text-gray-800 antialiased">
+
+<!-- LOGIN -->
+<div id="login-screen" class="min-h-screen flex items-center justify-center p-5">
+  <form id="login-form" class="w-full max-w-sm space-y-5 rounded-2xl bg-white p-7 shadow-sm border border-gray-100">
+    <div>
+      <h1 class="text-2xl font-bold tracking-tight">Gomoney.</h1>
+      <p class="mt-1 text-sm text-gray-500">Painel de atendimento</p>
+    </div>
+
+    <input id="login-email" type="email" required placeholder="Seu e-mail"
+      class="w-full rounded-xl border border-gray-200 p-3 text-sm outline-none focus:border-green-500">
+
+    <input id="login-password" type="password" required placeholder="Sua senha"
+      class="w-full rounded-xl border border-gray-200 p-3 text-sm outline-none focus:border-green-500">
+
+    <p id="login-error" class="hidden text-sm text-red-500"></p>
+
+    <button id="login-button" class="w-full rounded-xl bg-[#075e54] py-3 text-sm font-semibold text-white hover:bg-[#064c44]">
+      Entrar no atendimento
+    </button>
+  </form>
+</div>
+
+<!-- APLICAÇÃO -->
+<div id="gomoney-app" class="hidden h-[100dvh] overflow-hidden">
+
+  <div class="flex h-full">
+
+    <!-- LISTA -->
+    <aside id="chat-sidebar" class="flex w-full shrink-0 flex-col border-r border-gray-200 bg-white md:w-[360px]">
+
+      <header class="flex items-center justify-between border-b border-gray-100 px-5 py-5">
+        <div>
+          <h1 class="text-xl font-bold tracking-tight">Gomoney.</h1>
+          <p class="text-xs text-gray-400">Vinicius Araujo</p>
+        </div>
+
+        <button id="logout-button" title="Sair"
+          class="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-800">
+          <i data-lucide="log-out" class="h-5 w-5"></i>
+        </button>
+      </header>
+
+      <div class="px-4 py-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-semibold">Conversas</h2>
+          <span id="total-chats" class="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-500">0</span>
+        </div>
+
+        <div class="mt-4 flex gap-2">
+          <button data-filter="todas" class="filter-btn rounded-full bg-[#075e54] px-4 py-2 text-xs font-medium text-white">
+            Todas
+          </button>
+          <button data-filter="aberta" class="filter-btn rounded-full bg-gray-100 px-4 py-2 text-xs text-gray-600">
+            Abertas
+          </button>
+          <button data-filter="finalizada" class="filter-btn rounded-full bg-gray-100 px-4 py-2 text-xs text-gray-600">
+            Finalizadas
+          </button>
+        </div>
+      </div>
+
+      <div id="conversation-list" class="flex-1 overflow-y-auto">
+        <div class="p-8 text-center text-sm text-gray-400">
+          Aguardando conversas...
+        </div>
+      </div>
+
+      <footer class="border-t border-gray-100 px-5 py-3">
+        <p class="text-[11px] text-gray-400">Gomoney · Atendimento privado</p>
+      </footer>
+    </aside>
+
+    <!-- CONVERSA -->
+    <main id="chat-panel" class="hidden min-w-0 flex-1 flex-col bg-[#efeae2] md:flex">
+
+      <!-- ESTADO VAZIO -->
+      <div id="empty-state" class="flex flex-1 flex-col items-center justify-center bg-[#f8fafc] text-center">
+        <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+          <i data-lucide="message-circle" class="h-8 w-8 text-gray-400"></i>
+        </div>
+        <h2 class="font-semibold text-gray-700">Seu atendimento</h2>
+        <p class="mt-2 text-sm text-gray-400">Selecione uma conversa para começar.</p>
+      </div>
+
+      <!-- CONTEÚDO DA CONVERSA -->
+      <div id="conversation-content" class="hidden h-full min-h-0 flex-col">
+
+        <header class="flex shrink-0 items-center gap-3 border-b border-gray-200 bg-white px-4 py-3">
+
+          <button id="back-button" class="rounded-lg p-2 hover:bg-gray-100 md:hidden">
+            <i data-lucide="arrow-left" class="h-5 w-5"></i>
+          </button>
+
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[#d9fdd3] font-semibold text-[#075e54]">
+            <i data-lucide="user-round" class="h-5 w-5"></i>
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <h2 id="conversation-name" class="truncate text-sm font-semibold">Visitante</h2>
+            <p id="conversation-date" class="text-xs text-gray-400">Início da conversa</p>
+          </div>
+
+          <span id="conversation-status" class="rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-700">
+            Aberta
+          </span>
+
+          <button id="finish-button" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100" title="Finalizar conversa">
+            <i data-lucide="check-check" class="h-5 w-5"></i>
+          </button>
+
+        </header>
+
+        <!-- MENSAGENS -->
+        <div id="admin-messages"
+          class="flex-1 space-y-3 overflow-y-auto p-4 md:p-6"
+          style="background-color:#efeae2;background-image:radial-gradient(#d8d1c7 .6px,transparent .6px);background-size:14px 14px;">
+        </div>
+
+        <!-- RESPOSTA -->
+        <footer class="shrink-0 bg-[#f0f0f0] p-3">
+          <form id="reply-form" class="flex items-end gap-2">
+
+            <div class="flex min-h-[46px] flex-1 items-center rounded-3xl bg-white px-4">
+              <textarea id="reply-input" rows="1" maxlength="2000"
+                placeholder="Digite sua resposta..."
+                class="max-h-28 min-h-[24px] w-full resize-none bg-transparent py-3 text-sm outline-none"></textarea>
+            </div>
+
+            <button id="reply-button" type="submit"
+              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#075e54] text-white hover:bg-[#064c44] disabled:opacity-50">
+              <i data-lucide="send" class="h-5 w-5"></i>
+            </button>
+
+          </form>
+          <p id="reply-error" class="hidden px-2 pt-2 text-xs text-red-600"></p>
+        </footer>
+
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<!-- MÓDULO GOMONEY: COLE O BLOCO 2 AQUI -->
+
+<script type="module">
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  query,
+  orderBy,
+  onSnapshot,
+  addDoc,
+  updateDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+// ==========================================
+// FIREBASE - SUAS CREDENCIAIS
+// ==========================================
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD-xzRjMRVUpey19g745DvPjjpCApqSHVE",
+  authDomain: "myops-d7525.firebaseapp.com",
+  projectId: "myops-d7525",
+  storageBucket: "myops-d7525.firebasestorage.app",
+  messagingSenderId: "247824192162",
+  appId: "1:247824192162:web:77c91ab1e3df855dc7fdfb"
+};
+
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+
+// ==========================================
+// ELEMENTOS
+// ==========================================
+
+const $ = id => document.getElementById(id);
+
+const loginScreen = $("login-screen");
+const loginForm = $("login-form");
+const loginError = $("login-error");
+const loginButton = $("login-button");
+
+const application = $("gomoney-app");
+const sidebar = $("chat-sidebar");
+const panel = $("chat-panel");
+const emptyState = $("empty-state");
+const conversationContent = $("conversation-content");
+
+const list = $("conversation-list");
+const messages = $("admin-messages");
+
+let conversations = [];
+let selectedId = null;
+let selectedConversation = null;
+let activeFilter = "todas";
+
+let unsubscribeConversations = null;
+let unsubscribeMessages = null;
+
+
+// ==========================================
+// DATA E HORA
+// ==========================================
+
+function formatarData(timestamp) {
+  if (!timestamp) return "Aguardando data";
+
+  const date = timestamp.toDate();
+
+  return date.toLocaleDateString("pt-BR") + " às " +
+    date.toLocaleTimeString("pt-BR", {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+}
+
+function formatarHora(timestamp) {
+  if (!timestamp) return "";
+
+  return timestamp.toDate().toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+
+// ==========================================
+// LOGIN
+// ==========================================
+
+loginForm.addEventListener("submit", async e => {
+  e.preventDefault();
+
+  loginButton.disabled = true;
+  loginButton.textContent = "Entrando...";
+  loginError.classList.add("hidden");
+
+  try {
+    await signInWithEmailAndPassword(
+      auth,
+      $("login-email").value.trim(),
+      $("login-password").value
+    );
+  } catch (error) {
+    console.error(error);
+
+    loginError.textContent = "E-mail ou senha inválidos.";
+    loginError.classList.remove("hidden");
+  } finally {
+    loginButton.disabled = false;
+    loginButton.textContent = "Entrar no atendimento";
+  }
+});
+
+
+// ==========================================
+// AUTENTICAÇÃO
+// ==========================================
+
+onAuthStateChanged(auth, user => {
+
+  if (!user || user.isAnonymous) {
+
+    if (user?.isAnonymous) signOut(auth);
+
+    loginScreen.classList.remove("hidden");
+    application.classList.add("hidden");
+
+    pararListeners();
+    return;
+  }
+
+  loginScreen.classList.add("hidden");
+  application.classList.remove("hidden");
+
+  iniciarConversas();
+
+  if (window.lucide) lucide.createIcons();
+});
+
+
+// ==========================================
+// SAIR
+// ==========================================
+
+$("logout-button").addEventListener("click", async () => {
+  pararListeners();
+  await signOut(auth);
+});
+
+
+// ==========================================
+// LISTENER DAS CONVERSAS
+// ==========================================
+
+function iniciarConversas() {
+
+  if (unsubscribeConversations) return;
+
+  const q = query(
+    collection(db, "conversas"),
+    orderBy("criadoEm", "desc")
+  );
+
+  unsubscribeConversations = onSnapshot(q, snapshot => {
+
+    conversations = snapshot.docs.map(item => ({
+      id: item.id,
+      ...item.data()
+    }));
+
+    renderizarLista();
+
+  }, error => {
+    console.error("Erro ao receber conversas:", error);
+    list.textContent = "Não foi possível carregar as conversas.";
+  });
+}
+
+
+// ==========================================
+// LISTA DE CONVERSAS
+// ==========================================
+
+function renderizarLista() {
+
+  const filtradas = conversations.filter(c => {
+
+    if (activeFilter === "todas") return true;
+
+    if (activeFilter === "aberta") {
+      return c.status !== "finalizada";
+    }
+
+    return c.status === "finalizada";
+  });
+
+  $("total-chats").textContent = conversations.length;
+
+  list.innerHTML = "";
+
+  if (!filtradas.length) {
+    list.innerHTML = `
+      <div class="p-8 text-center">
+        <p class="text-sm text-gray-400">Nenhuma conversa encontrada.</p>
+      </div>
+    `;
+    return;
+  }
+
+  filtradas.forEach(c => {
+
+    const aberta = c.status !== "finalizada";
+    const selecionada = c.id === selectedId;
+
+    const item = document.createElement("button");
+
+    item.className = `
+      flex w-full items-center gap-3 border-b border-gray-100 px-4 py-4 text-left transition
+      ${selecionada ? "bg-green-50" : "hover:bg-gray-50"}
+    `;
+
+    const avatar = document.createElement("div");
+    avatar.className = "flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-500";
+    avatar.innerHTML = '<i data-lucide="user-round" class="h-5 w-5"></i>';
+
+    const content = document.createElement("div");
+    content.className = "min-w-0 flex-1";
+
+    const title = document.createElement("p");
+    title.className = "truncate text-sm font-semibold";
+
+    const uid = c.visitanteUid || "Visitante";
+    title.textContent = "Visitante #" + uid.slice(-6);
+
+    const date = document.createElement("p");
+    date.className = "mt-1 text-xs text-gray-400";
+    date.textContent = formatarData(c.criadoEm);
+
+    const meta = document.createElement("div");
+    meta.className = "mt-2 flex items-center gap-2";
+
+    const badge = document.createElement("span");
+    badge.className = aberta
+      ? "rounded-full bg-green-50 px-2 py-1 text-[10px] font-medium text-green-700"
+      : "rounded-full bg-gray-100 px-2 py-1 text-[10px] font-medium text-gray-500";
+
+    badge.textContent = aberta ? "Aberta" : "Finalizada";
+
+    meta.appendChild(badge);
+
+    if (selectedId === c.id) {
+      const active = document.createElement("span");
+      active.className = "text-[10px] text-green-700";
+      active.textContent = "Selecionada";
+      meta.appendChild(active);
+    }
+
+    content.append(title, date, meta);
+    item.append(avatar, content);
+
+    item.addEventListener("click", () => abrirConversa(c));
+
+    list.appendChild(item);
+  });
+
+  if (window.lucide) lucide.createIcons();
+}
+
+
+// ==========================================
+// FILTROS
+// ==========================================
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    activeFilter = button.dataset.filter;
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.className = btn === button
+        ? "filter-btn rounded-full bg-[#075e54] px-4 py-2 text-xs font-medium text-white"
+        : "filter-btn rounded-full bg-gray-100 px-4 py-2 text-xs text-gray-600";
+    });
+
+    renderizarLista();
+  });
+});
+
+
+// ==========================================
+// ABRIR CONVERSA
+// ==========================================
+
+function abrirConversa(c) {
+
+  selectedId = c.id;
+  selectedConversation = c;
+
+  emptyState.classList.add("hidden");
+  conversationContent.classList.remove("hidden");
+  conversationContent.classList.add("flex");
+
+  // Mobile
+  sidebar.classList.add("hidden");
+  panel.classList.remove("hidden");
+
+  const uid = c.visitanteUid || "";
+
+  $("conversation-name").textContent =
+    "Visitante #" + uid.slice(-6);
+
+  $("conversation-date").textContent =
+    "Iniciada em " + formatarData(c.criadoEm);
+
+  atualizarStatusVisual(c.status);
+
+  $("finish-button").title =
+    c.status === "finalizada"
+      ? "Reabrir conversa"
+      : "Finalizar conversa";
+
+  $("finish-button").innerHTML =
+    c.status === "finalizada"
+      ? '<i data-lucide="refresh-cw" class="h-5 w-5"></i>'
+      : '<i data-lucide="check-check" class="h-5 w-5"></i>';
+
+  $("reply-input").disabled = false;
+  $("reply-button").disabled = false;
+
+  if (unsubscribeMessages) unsubscribeMessages();
+
+  messages.innerHTML = `
+    <div class="p-5 text-center text-sm text-gray-500">
+      Carregando mensagens...
+    </div>
+  `;
+
+  const q = query(
+    collection(db, "conversas", c.id, "mensagens"),
+    orderBy("criadoEm", "asc")
+  );
+
+  unsubscribeMessages = onSnapshot(q, snapshot => {
+
+    messages.innerHTML = "";
+
+    snapshot.forEach(item => {
+      renderizarMensagem(item.data());
+    });
+
+    messages.scrollTop = messages.scrollHeight;
+
+  }, error => {
+    console.error("Erro nas mensagens:", error);
+    messages.textContent = "Não foi possível carregar as mensagens.";
+  });
+
+  renderizarLista();
+
+  if (window.lucide) lucide.createIcons();
+}
+
+
+// ==========================================
+// MENSAGENS
+// ==========================================
+
+function renderizarMensagem(m) {
+
+  const admin = m.autor === "admin";
+
+  const linha = document.createElement("div");
+  linha.className = admin ? "flex justify-end" : "flex justify-start";
+
+  const bolha = document.createElement("div");
+
+  bolha.className = admin
+    ? "max-w-[85%] rounded-lg rounded-tr-none bg-[#d9fdd3] px-3 py-2 shadow-sm"
+    : "max-w-[85%] rounded-lg rounded-tl-none bg-white px-3 py-2 shadow-sm";
+
+  const autor = document.createElement("p");
+  autor.className = "mb-1 text-[10px] font-semibold text-gray-500";
+  autor.textContent = admin ? "Vinicius Araujo" : "Visitante";
+
+  const texto = document.createElement("p");
+  texto.className = "whitespace-pre-wrap break-words text-sm leading-relaxed text-gray-800";
+  texto.textContent = m.texto || "";
+
+  const hora = document.createElement("p");
+  hora.className = "mt-1 text-right text-[10px] text-gray-400";
+  hora.textContent = formatarHora(m.criadoEm);
+
+  bolha.append(autor, texto, hora);
+  linha.appendChild(bolha);
+  messages.appendChild(linha);
+}
+
+
+// ==========================================
+// STATUS DA CONVERSA
+// ==========================================
+
+function atualizarStatusVisual(status) {
+
+  const badge = $("conversation-status");
+
+  if (status === "finalizada") {
+
+    badge.textContent = "Finalizada";
+    badge.className = "rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600";
+
+    $("reply-input").disabled = true;
+    $("reply-input").placeholder = "Conversa finalizada";
+
+    $("reply-button").disabled = true;
+
+  } else {
+
+    badge.textContent = "Aberta";
+    badge.className = "rounded-full bg-green-50 px-3 py-1 text-xs font-medium text-green-700";
+
+    $("reply-input").disabled = false;
+    $("reply-input").placeholder = "Digite sua resposta...";
+
+    $("reply-button").disabled = false;
+  }
+}
+
+
+// ==========================================
+// FINALIZAR / REABRIR
+// ==========================================
+
+$("finish-button").addEventListener("click", async () => {
+
+  if (!selectedId || !selectedConversation) return;
+
+  const novoStatus =
+    selectedConversation.status === "finalizada"
+      ? "aberta"
+      : "finalizada";
+
+  try {
+
+    await updateDoc(
+      doc(db, "conversas", selectedId),
+      { status: novoStatus }
+    );
+
+    selectedConversation.status = novoStatus;
+
+    atualizarStatusVisual(novoStatus);
+    $("finish-button").title =
+      novoStatus === "finalizada" ? "Reabrir conversa" : "Finalizar conversa";
+
+    renderizarLista();
+
+  } catch (error) {
+    console.error(error);
+    alert("Não foi possível alterar o status.");
+  }
+});
+
+
+// ==========================================
+// RESPONDER CLIENTE
+// ==========================================
+
+$("reply-form").addEventListener("submit", async e => {
+
+  e.preventDefault();
+
+  const input = $("reply-input");
+  const texto = input.value.trim();
+  const button = $("reply-button");
+
+  if (!texto || !selectedId || !selectedConversation) return;
+
+  if (selectedConversation.status === "finalizada") return;
+
+  button.disabled = true;
+  $("reply-error").classList.add("hidden");
+
+  try {
+
+    const id = selectedId;
+
+    await addDoc(
+      collection(db, "conversas", id, "mensagens"),
+      {
+        texto,
+        autor: "admin",
+        nome: "Vinicius Araujo",
+        criadoEm: serverTimestamp()
+      }
+    );
+
+    await updateDoc(
+      doc(db, "conversas", id),
+      {
+        status: "aberta",
+        ultimaMensagem: texto,
+        ultimaMensagemEm: serverTimestamp()
+      }
+    );
+
+    input.value = "";
+    input.style.height = "auto";
+
+  } catch (error) {
+
+    console.error("Erro ao responder:", error);
+
+    $("reply-error").textContent = "Não foi possível enviar a resposta.";
+    $("reply-error").classList.remove("hidden");
+
+  } finally {
+
+    button.disabled = false;
+    input.focus();
+
+  }
+});
+
+
+// ==========================================
+// CAMPO ADAPTÁVEL
+// ==========================================
+
+$("reply-input").addEventListener("input", function() {
+  this.style.height = "auto";
+  this.style.height = Math.min(this.scrollHeight, 112) + "px";
+});
+
+$("reply-input").addEventListener("keydown", function(e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    $("reply-form").requestSubmit();
+  }
+});
+
+
+// ==========================================
+// VOLTAR NO MOBILE
+// ==========================================
+
+$("back-button").addEventListener("click", () => {
+
+  panel.classList.add("hidden");
+  sidebar.classList.remove("hidden");
+
+  if (unsubscribeMessages) {
+    unsubscribeMessages();
+    unsubscribeMessages = null;
+  }
+
+  selectedId = null;
+  selectedConversation = null;
+
+  renderizarLista();
+});
+
+
+// ==========================================
+// LIMPAR LISTENERS
+// ==========================================
+
+function pararListeners() {
+
+  if (unsubscribeConversations) {
+    unsubscribeConversations();
+    unsubscribeConversations = null;
+  }
+
+  if (unsubscribeMessages) {
+    unsubscribeMessages();
+    unsubscribeMessages = null;
+  }
+
+}
+
+</script>
+
+</body>
+</html>
