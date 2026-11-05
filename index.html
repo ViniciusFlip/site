@@ -2908,6 +2908,8 @@
         </script>
 
 
+
+
 <script type="module">
 import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
@@ -2922,12 +2924,15 @@ import {
   doc,
   setDoc,
   addDoc,
+  getDoc,
+  onSnapshot,
+  query,
+  orderBy,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-
 // ======================================
-// CONFIGURAÇÃO FIREBASE
+// FIREBASE
 // ======================================
 
 const firebaseConfig = {
@@ -2946,18 +2951,13 @@ const app = getApps().length
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-
 // ======================================
 // PERSONALIZAÇÃO
 // ======================================
 
-const ATENDENTE = "Vinicius";
-const FOTO = "SUA_FOTO_AQUI.jpg";
-
+const ATENDENTE = "Vinicius Araujo";
+const FOTO = "foto.png";
 const STORAGE_KEY = "vinicius_chat_conversa";
-
-let enviando = false;
-
 
 // ======================================
 // ABRIR CHAT
@@ -2970,6 +2970,11 @@ window.abrirChat = function() {
   const previousOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
 
+  let enviando = false;
+  let conversaId = null;
+  let unsubscribeMensagens = null;
+  let fechado = false;
+
   const chat = document.createElement("div");
   chat.id = "chat-app";
 
@@ -2978,7 +2983,6 @@ window.abrirChat = function() {
 
       <section class="flex h-[100dvh] w-full flex-col overflow-hidden bg-[#efeae2] md:h-[min(680px,85vh)] md:w-[400px] md:rounded-2xl md:shadow-2xl">
 
-        <!-- CABEÇALHO -->
         <header class="flex shrink-0 items-center gap-3 bg-[#075e54] px-4 py-3 text-white">
 
           <button id="chat-back" class="flex h-9 w-7 items-center justify-center md:hidden">
@@ -2988,11 +2992,8 @@ window.abrirChat = function() {
           </button>
 
           <div class="relative shrink-0">
-            <img
-              src="${FOTO}"
-              alt="${ATENDENTE}"
-              class="h-11 w-11 rounded-full border border-white/20 object-cover"
-            >
+            <img src="${FOTO}" alt="${ATENDENTE}"
+              class="h-11 w-11 rounded-full border border-white/20 object-cover">
 
             <span id="chat-online-indicator"
               class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#075e54] bg-green-400">
@@ -3001,10 +3002,11 @@ window.abrirChat = function() {
 
           <div class="min-w-0 flex-1">
             <h2 class="text-sm font-semibold">${ATENDENTE}</h2>
-            <p id="chat-status-text" class="text-xs text-green-100">Online</p>
+            <p id="chat-status-text" class="text-xs text-green-100">Conectando...</p>
           </div>
 
-          <button id="chat-close" class="hidden h-9 w-9 items-center justify-center rounded-full hover:bg-white/10 md:flex">
+          <button id="chat-close"
+            class="hidden h-9 w-9 items-center justify-center rounded-full hover:bg-white/10 md:flex">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
               <path d="M18 6 6 18M6 6l12 12"/>
             </svg>
@@ -3012,29 +3014,24 @@ window.abrirChat = function() {
 
         </header>
 
-        <!-- MENSAGENS -->
         <main id="chat-messages"
           class="flex-1 space-y-3 overflow-y-auto p-4"
           style="background-color:#efeae2;background-image:radial-gradient(#d8d1c7 .6px,transparent .6px);background-size:14px 14px;">
         </main>
 
-        <!-- ERROS -->
-        <div id="chat-error" class="hidden bg-red-50 px-4 py-2 text-xs text-red-600"></div>
+        <div id="chat-error"
+          class="hidden bg-red-50 px-4 py-2 text-xs text-red-600">
+        </div>
 
-        <!-- CAMPO -->
         <footer class="shrink-0 bg-[#f0f0f0] px-3 py-3"
           style="padding-bottom:max(12px,env(safe-area-inset-bottom))">
 
           <form id="chat-form" class="flex items-end gap-2">
 
             <div class="flex min-h-[46px] flex-1 items-center rounded-3xl bg-white px-4">
-              <textarea
-                id="chat-input"
-                rows="1"
-                maxlength="2000"
+              <textarea id="chat-input" rows="1" maxlength="2000"
                 placeholder="Digite uma mensagem"
-                class="max-h-28 min-h-[24px] w-full resize-none bg-transparent py-3 text-sm outline-none placeholder:text-gray-500"
-              ></textarea>
+                class="max-h-28 min-h-[24px] w-full resize-none bg-transparent py-3 text-sm outline-none placeholder:text-gray-500"></textarea>
             </div>
 
             <button type="submit" id="chat-send"
@@ -3059,6 +3056,7 @@ window.abrirChat = function() {
   const form = chat.querySelector("#chat-form");
   const error = chat.querySelector("#chat-error");
   const sendButton = chat.querySelector("#chat-send");
+  const statusText = chat.querySelector("#chat-status-text");
 
   // ======================================
   // STATUS VISUAL
@@ -3067,7 +3065,6 @@ window.abrirChat = function() {
   window.atualizarStatusChat = function(status) {
 
     const indicator = chat.querySelector("#chat-online-indicator");
-    const text = chat.querySelector("#chat-status-text");
 
     const estados = {
       online: {
@@ -3097,18 +3094,26 @@ window.abrirChat = function() {
 
     indicator.classList.add(atual.cor);
 
-    text.textContent = atual.texto;
-    text.className = `text-xs ${atual.textoCor}`;
+    statusText.textContent = atual.texto;
+    statusText.className = `text-xs ${atual.textoCor}`;
   };
 
-
   // ======================================
-  // FECHAR
+  // FECHAR CHAT
   // ======================================
 
   function fecharChat() {
+
+    fechado = true;
+
+    if (unsubscribeMensagens) {
+      unsubscribeMensagens();
+      unsubscribeMensagens = null;
+    }
+
     document.body.style.overflow = previousOverflow;
     document.removeEventListener("keydown", escapeHandler);
+
     chat.remove();
   }
 
@@ -3121,12 +3126,9 @@ window.abrirChat = function() {
   chat.querySelector("#chat-back").onclick = fecharChat;
   chat.querySelector("#chat-close").onclick = fecharChat;
 
-
   // ======================================
   // AUTENTICAÇÃO E CONVERSA
   // ======================================
-
-  let conversaId = null;
 
   async function obterConversa() {
 
@@ -3134,17 +3136,43 @@ window.abrirChat = function() {
       await signInAnonymously(auth);
     }
 
-    if (conversaId) return conversaId;
-
-    conversaId = localStorage.getItem(STORAGE_KEY);
+    const uid = auth.currentUser.uid;
 
     if (conversaId) return conversaId;
 
+    let salvo = localStorage.getItem(STORAGE_KEY);
+
+    // Verifica se a conversa salva pertence ao visitante atual.
+    if (salvo) {
+
+      try {
+
+        const existente = await getDoc(
+          doc(db, "conversas", salvo)
+        );
+
+        if (
+          existente.exists() &&
+          existente.data().visitanteUid === uid
+        ) {
+          conversaId = salvo;
+          return conversaId;
+        }
+
+      } catch (e) {
+        console.warn("Não foi possível recuperar a conversa salva.", e);
+      }
+
+      localStorage.removeItem(STORAGE_KEY);
+      salvo = null;
+    }
+
+    // Cria uma conversa nova.
     const ref = doc(collection(db, "conversas"));
 
     await setDoc(ref, {
       atendente: ATENDENTE,
-      visitanteUid: auth.currentUser.uid,
+      visitanteUid: uid,
       status: "aberta",
       criadoEm: serverTimestamp()
     });
@@ -3156,37 +3184,148 @@ window.abrirChat = function() {
     return conversaId;
   }
 
-
   // ======================================
-  // MENSAGEM VISUAL
+  // FORMATA HORA
   // ======================================
 
-  function mostrarMensagem(texto) {
+  function formatarHora(timestamp) {
 
-    const linha = document.createElement("div");
-    linha.className = "flex justify-end";
+    if (!timestamp || !timestamp.toDate) return "";
 
-    const bolha = document.createElement("div");
-    bolha.className = "max-w-[85%] rounded-lg rounded-tr-none bg-[#d9fdd3] px-3 py-2 shadow-sm";
-
-    const conteudo = document.createElement("p");
-    conteudo.className = "whitespace-pre-wrap break-words text-sm text-gray-800";
-    conteudo.textContent = texto;
-
-    const hora = document.createElement("span");
-    hora.className = "mt-1 block text-right text-[10px] text-gray-500";
-    hora.textContent = new Date().toLocaleTimeString("pt-BR", {
+    return timestamp.toDate().toLocaleTimeString("pt-BR", {
       hour: "2-digit",
       minute: "2-digit"
-    }) + " ✓";
-
-    bolha.append(conteudo, hora);
-    linha.appendChild(bolha);
-    messages.appendChild(linha);
-
-    messages.scrollTop = messages.scrollHeight;
+    });
   }
 
+  // ======================================
+  // DESENHAR MENSAGEM
+  // ======================================
+
+  function desenharMensagem(mensagem) {
+
+    const visitante = mensagem.autor === "visitante";
+
+    const linha = document.createElement("div");
+
+    linha.className = visitante
+      ? "flex justify-end"
+      : "flex justify-start";
+
+    const bolha = document.createElement("div");
+
+    bolha.className = visitante
+      ? "max-w-[85%] rounded-lg rounded-tr-none bg-[#d9fdd3] px-3 py-2 shadow-sm"
+      : "max-w-[85%] rounded-lg rounded-tl-none bg-white px-3 py-2 shadow-sm";
+
+    const nome = document.createElement("p");
+
+    nome.className = "mb-1 text-[10px] font-semibold text-[#075e54]";
+
+    nome.textContent = visitante
+      ? "Você"
+      : (mensagem.nome || ATENDENTE);
+
+    const conteudo = document.createElement("p");
+
+    conteudo.className = "whitespace-pre-wrap break-words text-sm text-gray-800";
+    conteudo.textContent = mensagem.texto || "";
+
+    const hora = document.createElement("span");
+
+    hora.className = "mt-1 block text-right text-[10px] text-gray-500";
+    hora.textContent = formatarHora(mensagem.criadoEm);
+
+    bolha.append(nome, conteudo, hora);
+    linha.appendChild(bolha);
+
+    return linha;
+  }
+
+  // ======================================
+  // RECEBER MENSAGENS EM TEMPO REAL
+  // ======================================
+
+  function escutarMensagens(id) {
+
+    if (unsubscribeMensagens) {
+      unsubscribeMensagens();
+    }
+
+    const mensagensRef = collection(
+      db,
+      "conversas",
+      id,
+      "mensagens"
+    );
+
+    const consulta = query(
+      mensagensRef,
+      orderBy("criadoEm", "asc")
+    );
+
+    unsubscribeMensagens = onSnapshot(
+      consulta,
+      (snapshot) => {
+
+        if (fechado) return;
+
+        messages.innerHTML = "";
+
+        snapshot.forEach((documento) => {
+
+          const mensagem = documento.data();
+
+          if (!mensagem.texto) return;
+
+          messages.appendChild(
+            desenharMensagem(mensagem)
+          );
+
+        });
+
+        messages.scrollTop = messages.scrollHeight;
+      },
+      (err) => {
+
+        console.error("Erro ao receber mensagens:", err);
+
+        error.textContent = "Não foi possível carregar as mensagens.";
+        error.classList.remove("hidden");
+
+      }
+    );
+  }
+
+  // ======================================
+  // INICIALIZAR CHAT
+  // ======================================
+
+  async function iniciarChat() {
+
+    try {
+
+      statusText.textContent = "Conectando...";
+
+      const id = await obterConversa();
+
+      if (fechado) return;
+
+      escutarMensagens(id);
+
+      statusText.textContent = "Online";
+
+    } catch (err) {
+
+      console.error("Erro ao iniciar chat:", err);
+
+      error.textContent = "Não foi possível conectar ao atendimento. Tente novamente.";
+      error.classList.remove("hidden");
+
+      statusText.textContent = "Conexão indisponível";
+
+    }
+  }
 
   // ======================================
   // ENVIAR MENSAGEM
@@ -3202,6 +3341,7 @@ window.abrirChat = function() {
 
     enviando = true;
     sendButton.disabled = true;
+
     error.classList.add("hidden");
 
     try {
@@ -3218,14 +3358,13 @@ window.abrirChat = function() {
         }
       );
 
-      mostrarMensagem(texto);
-
+      // O onSnapshot desenha a mensagem automaticamente.
       input.value = "";
       input.style.height = "auto";
 
     } catch (err) {
 
-      console.error("Erro no chat:", err);
+      console.error("Erro ao enviar mensagem:", err);
 
       error.textContent = "Não foi possível enviar sua mensagem. Tente novamente.";
       error.classList.remove("hidden");
@@ -3240,7 +3379,6 @@ window.abrirChat = function() {
 
   });
 
-
   // ======================================
   // CAMPO ADAPTÁVEL
   // ======================================
@@ -3251,16 +3389,20 @@ window.abrirChat = function() {
   });
 
   input.addEventListener("keydown", function(e) {
+
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       form.requestSubmit();
     }
+
   });
 
-  input.focus();
+  // Inicia automaticamente ao abrir.
+  iniciarChat();
 
 };
 </script>
+
 
 
     </body>

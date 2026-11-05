@@ -156,6 +156,7 @@
 
 <!-- MÓDULO GOMONEY: COLE O BLOCO 2 AQUI -->
 
+
 <script type="module">
 import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
@@ -178,9 +179,8 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-
 // ==========================================
-// FIREBASE - SUAS CREDENCIAIS
+// FIREBASE
 // ==========================================
 
 const firebaseConfig = {
@@ -195,7 +195,6 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
 
 // ==========================================
 // ELEMENTOS
@@ -225,13 +224,15 @@ let activeFilter = "todas";
 let unsubscribeConversations = null;
 let unsubscribeMessages = null;
 
+let typingTimer = null;
+let typingActive = false;
 
 // ==========================================
 // DATA E HORA
 // ==========================================
 
 function formatarData(timestamp) {
-  if (!timestamp) return "Aguardando data";
+  if (!timestamp?.toDate) return "Aguardando data";
 
   const date = timestamp.toDate();
 
@@ -243,14 +244,13 @@ function formatarData(timestamp) {
 }
 
 function formatarHora(timestamp) {
-  if (!timestamp) return "";
+  if (!timestamp?.toDate) return "";
 
   return timestamp.toDate().toLocaleTimeString("pt-BR", {
     hour: "2-digit",
     minute: "2-digit"
   });
 }
-
 
 // ==========================================
 // LOGIN
@@ -271,7 +271,6 @@ loginForm.addEventListener("submit", async e => {
     );
   } catch (error) {
     console.error(error);
-
     loginError.textContent = "E-mail ou senha inválidos.";
     loginError.classList.remove("hidden");
   } finally {
@@ -280,7 +279,6 @@ loginForm.addEventListener("submit", async e => {
   }
 });
 
-
 // ==========================================
 // AUTENTICAÇÃO
 // ==========================================
@@ -288,7 +286,6 @@ loginForm.addEventListener("submit", async e => {
 onAuthStateChanged(auth, user => {
 
   if (!user || user.isAnonymous) {
-
     if (user?.isAnonymous) signOut(auth);
 
     loginScreen.classList.remove("hidden");
@@ -306,16 +303,15 @@ onAuthStateChanged(auth, user => {
   if (window.lucide) lucide.createIcons();
 });
 
-
 // ==========================================
 // SAIR
 // ==========================================
 
 $("logout-button").addEventListener("click", async () => {
+  await pararDigitacao();
   pararListeners();
   await signOut(auth);
 });
-
 
 // ==========================================
 // LISTENER DAS CONVERSAS
@@ -337,6 +333,16 @@ function iniciarConversas() {
       ...item.data()
     }));
 
+    // Mantém a conversa selecionada sincronizada.
+    if (selectedId) {
+      selectedConversation =
+        conversations.find(c => c.id === selectedId) || selectedConversation;
+
+      if (selectedConversation) {
+        atualizarStatusVisual(selectedConversation.status);
+      }
+    }
+
     renderizarLista();
 
   }, error => {
@@ -344,7 +350,6 @@ function iniciarConversas() {
     list.textContent = "Não foi possível carregar as conversas.";
   });
 }
-
 
 // ==========================================
 // LISTA DE CONVERSAS
@@ -364,7 +369,6 @@ function renderizarLista() {
   });
 
   $("total-chats").textContent = conversations.length;
-
   list.innerHTML = "";
 
   if (!filtradas.length) {
@@ -405,6 +409,10 @@ function renderizarLista() {
     date.className = "mt-1 text-xs text-gray-400";
     date.textContent = formatarData(c.criadoEm);
 
+    const preview = document.createElement("p");
+    preview.className = "mt-1 truncate text-xs text-gray-500";
+    preview.textContent = c.ultimaMensagem || "Iniciou uma conversa";
+
     const meta = document.createElement("div");
     meta.className = "mt-2 flex items-center gap-2";
 
@@ -417,14 +425,14 @@ function renderizarLista() {
 
     meta.appendChild(badge);
 
-    if (selectedId === c.id) {
+    if (selecionada) {
       const active = document.createElement("span");
       active.className = "text-[10px] text-green-700";
       active.textContent = "Selecionada";
       meta.appendChild(active);
     }
 
-    content.append(title, date, meta);
+    content.append(title, date, preview, meta);
     item.append(avatar, content);
 
     item.addEventListener("click", () => abrirConversa(c));
@@ -434,7 +442,6 @@ function renderizarLista() {
 
   if (window.lucide) lucide.createIcons();
 }
-
 
 // ==========================================
 // FILTROS
@@ -456,12 +463,13 @@ document.querySelectorAll(".filter-btn").forEach(button => {
   });
 });
 
-
 // ==========================================
 // ABRIR CONVERSA
 // ==========================================
 
-function abrirConversa(c) {
+async function abrirConversa(c) {
+
+  await pararDigitacao();
 
   selectedId = c.id;
   selectedConversation = c;
@@ -470,7 +478,6 @@ function abrirConversa(c) {
   conversationContent.classList.remove("hidden");
   conversationContent.classList.add("flex");
 
-  // Mobile
   sidebar.classList.add("hidden");
   panel.classList.remove("hidden");
 
@@ -485,19 +492,17 @@ function abrirConversa(c) {
   atualizarStatusVisual(c.status);
 
   $("finish-button").title =
-    c.status === "finalizada"
-      ? "Reabrir conversa"
-      : "Finalizar conversa";
+    c.status === "finalizada" ? "Reabrir conversa" : "Finalizar conversa";
 
   $("finish-button").innerHTML =
     c.status === "finalizada"
       ? '<i data-lucide="refresh-cw" class="h-5 w-5"></i>'
       : '<i data-lucide="check-check" class="h-5 w-5"></i>';
 
-  $("reply-input").disabled = false;
-  $("reply-button").disabled = false;
-
-  if (unsubscribeMessages) unsubscribeMessages();
+  if (unsubscribeMessages) {
+    unsubscribeMessages();
+    unsubscribeMessages = null;
+  }
 
   messages.innerHTML = `
     <div class="p-5 text-center text-sm text-gray-500">
@@ -510,15 +515,38 @@ function abrirConversa(c) {
     orderBy("criadoEm", "asc")
   );
 
-  unsubscribeMessages = onSnapshot(q, snapshot => {
+  unsubscribeMessages = onSnapshot(q, async snapshot => {
 
     messages.innerHTML = "";
 
+    let temMensagemVisitante = false;
+
     snapshot.forEach(item => {
-      renderizarMensagem(item.data());
+      const mensagem = item.data();
+
+      if (mensagem.autor === "visitante") {
+        temMensagemVisitante = true;
+      }
+
+      renderizarMensagem(mensagem);
     });
 
     messages.scrollTop = messages.scrollHeight;
+
+    // Ao receber as mensagens com a conversa aberta,
+    // registra que o atendimento visualizou o conteúdo.
+    if (temMensagemVisitante && selectedId === c.id) {
+      try {
+        await updateDoc(
+          doc(db, "conversas", c.id),
+          {
+            visitanteLidoAte: serverTimestamp()
+          }
+        );
+      } catch (error) {
+        console.error("Erro ao confirmar leitura:", error);
+      }
+    }
 
   }, error => {
     console.error("Erro nas mensagens:", error);
@@ -530,9 +558,8 @@ function abrirConversa(c) {
   if (window.lucide) lucide.createIcons();
 }
 
-
 // ==========================================
-// MENSAGENS
+// RENDERIZAR MENSAGENS
 // ==========================================
 
 function renderizarMensagem(m) {
@@ -565,6 +592,61 @@ function renderizarMensagem(m) {
   messages.appendChild(linha);
 }
 
+// ==========================================
+// DIGITANDO... NO PAINEL
+// ==========================================
+
+async function atualizarDigitacao(ativo) {
+
+  if (!selectedId || !auth.currentUser) return;
+
+  try {
+    await updateDoc(
+      doc(db, "conversas", selectedId),
+      {
+        atendenteDigitando: ativo
+      }
+    );
+
+    typingActive = ativo;
+
+  } catch (error) {
+    console.error("Erro ao atualizar digitação:", error);
+  }
+}
+
+async function pararDigitacao() {
+
+  clearTimeout(typingTimer);
+
+  if (typingActive && selectedId) {
+    await atualizarDigitacao(false);
+  }
+
+  typingActive = false;
+}
+
+$("reply-input").addEventListener("input", () => {
+
+  const texto = $("reply-input").value.trim();
+
+  clearTimeout(typingTimer);
+
+  if (texto && !typingActive) {
+    atualizarDigitacao(true);
+  }
+
+  if (!texto && typingActive) {
+    atualizarDigitacao(false);
+    return;
+  }
+
+  if (texto) {
+    typingTimer = setTimeout(() => {
+      atualizarDigitacao(false);
+    }, 1800);
+  }
+});
 
 // ==========================================
 // STATUS DA CONVERSA
@@ -581,7 +663,6 @@ function atualizarStatusVisual(status) {
 
     $("reply-input").disabled = true;
     $("reply-input").placeholder = "Conversa finalizada";
-
     $("reply-button").disabled = true;
 
   } else {
@@ -591,11 +672,9 @@ function atualizarStatusVisual(status) {
 
     $("reply-input").disabled = false;
     $("reply-input").placeholder = "Digite sua resposta...";
-
     $("reply-button").disabled = false;
   }
 }
-
 
 // ==========================================
 // FINALIZAR / REABRIR
@@ -620,17 +699,24 @@ $("finish-button").addEventListener("click", async () => {
     selectedConversation.status = novoStatus;
 
     atualizarStatusVisual(novoStatus);
+
     $("finish-button").title =
       novoStatus === "finalizada" ? "Reabrir conversa" : "Finalizar conversa";
 
+    $("finish-button").innerHTML =
+      novoStatus === "finalizada"
+        ? '<i data-lucide="refresh-cw" class="h-5 w-5"></i>'
+        : '<i data-lucide="check-check" class="h-5 w-5"></i>';
+
     renderizarLista();
+
+    if (window.lucide) lucide.createIcons();
 
   } catch (error) {
     console.error(error);
     alert("Não foi possível alterar o status.");
   }
 });
-
 
 // ==========================================
 // RESPONDER CLIENTE
@@ -645,15 +731,16 @@ $("reply-form").addEventListener("submit", async e => {
   const button = $("reply-button");
 
   if (!texto || !selectedId || !selectedConversation) return;
-
   if (selectedConversation.status === "finalizada") return;
 
   button.disabled = true;
   $("reply-error").classList.add("hidden");
 
+  const id = selectedId;
+
   try {
 
-    const id = selectedId;
+    await pararDigitacao();
 
     await addDoc(
       collection(db, "conversas", id, "mensagens"),
@@ -670,7 +757,8 @@ $("reply-form").addEventListener("submit", async e => {
       {
         status: "aberta",
         ultimaMensagem: texto,
-        ultimaMensagemEm: serverTimestamp()
+        ultimaMensagemEm: serverTimestamp(),
+        atendenteDigitando: false
       }
     );
 
@@ -692,7 +780,6 @@ $("reply-form").addEventListener("submit", async e => {
   }
 });
 
-
 // ==========================================
 // CAMPO ADAPTÁVEL
 // ==========================================
@@ -709,12 +796,13 @@ $("reply-input").addEventListener("keydown", function(e) {
   }
 });
 
-
 // ==========================================
 // VOLTAR NO MOBILE
 // ==========================================
 
-$("back-button").addEventListener("click", () => {
+$("back-button").addEventListener("click", async () => {
+
+  await pararDigitacao();
 
   panel.classList.add("hidden");
   sidebar.classList.remove("hidden");
@@ -729,7 +817,6 @@ $("back-button").addEventListener("click", () => {
 
   renderizarLista();
 });
-
 
 // ==========================================
 // LIMPAR LISTENERS
@@ -747,9 +834,12 @@ function pararListeners() {
     unsubscribeMessages = null;
   }
 
+  clearTimeout(typingTimer);
+  typingActive = false;
 }
 
 </script>
+
 
 </body>
 </html>
