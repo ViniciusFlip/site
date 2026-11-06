@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Uthao — Quote</title><script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{font-family:Inter,sans-serif;color:#171717}.btn{background:#171717;color:white;padding:14px 22px;font-size:12px;font-weight:600;border-radius:4px}</style>
+</head>
+<body>
+<header class="border-b"><div class="max-w-7xl mx-auto px-5 py-5 flex justify-between items-center"><a href="index.html" class="text-2xl font-extrabold">Uthao.</a><div class="flex items-center gap-4"><select id="lang" class="text-xs bg-transparent"><option value="pt">PT</option><option value="en">EN</option></select><a href="list.html" class="text-xs" data-i="services"></a><a href="index.html" class="text-xs" data-i="back"></a></div></div></header>
+<section class="bg-[#eaf1ff] px-5 py-16 text-center"><p class="text-xs text-blue-700 font-semibold tracking-widest" data-i="eyebrow"></p><h1 class="text-4xl md:text-5xl font-bold mt-4" data-i="title"></h1><p class="text-sm text-gray-500 mt-4" data-i="intro"></p></section>
+<main class="max-w-6xl mx-auto px-5 py-14 grid md:grid-cols-2 gap-12">
+<section><h2 class="text-3xl font-bold" data-i="quote"></h2><p class="text-sm text-gray-500 leading-7 mt-4" data-i="description"></p><div class="mt-8 space-y-6 text-sm"><div><b data-i="benefit1"></b><p class="text-gray-500 mt-2" data-i="benefit1text"></p></div><div><b data-i="benefit2"></b><p class="text-gray-500 mt-2" data-i="benefit2text"></p></div><div><b data-i="benefit3"></b><p class="text-gray-500 mt-2" data-i="benefit3text"></p></div></div></section>
+<form id="form" class="bg-[#f7f8fa] rounded-xl p-6 md:p-8 space-y-4">
+<div><label class="text-xs font-semibold" data-i="name"></label><input required name="name" class="w-full border rounded bg-white p-3 mt-2 text-sm"></div>
+<div><label class="text-xs font-semibold" data-i="email"></label><input required type="email" name="email" class="w-full border rounded bg-white p-3 mt-2 text-sm"></div>
+<div><label class="text-xs font-semibold" data-i="company"></label><input name="company" class="w-full border rounded bg-white p-3 mt-2 text-sm"></div>
+<div><label class="text-xs font-semibold" data-i="service"></label><select id="service" name="service" class="w-full border rounded bg-white p-3 mt-2 text-sm"></select></div>
+<div><label class="text-xs font-semibold" data-i="details"></label><textarea name="message" rows="4" class="w-full border rounded bg-white p-3 mt-2 text-sm"></textarea></div>
+<button class="btn w-full" data-i="submit"></button><p id="status" class="text-xs text-gray-500"></p>
+</form></main>
+<footer class="border-t px-5 py-10 text-center text-xs"><a href="index.html" class="font-bold text-xl">Uthao.</a><p class="text-gray-400 mt-4" data-i="copyright"></p></footer>
+<script>
+const T={
+pt:{services:'Serviços',back:'← Voltar',eyebrow:'VAMOS CONVERSAR',title:'Pronto para enviar com inteligência?',intro:'Conte-nos sobre sua remessa. Encontraremos a solução ideal.',quote:'Solicite um orçamento',description:'Compartilhe suas necessidades de transporte e nossa equipe entrará em contato com uma solução logística personalizada.',benefit1:'01 — Entrega confiável',benefit1text:'Opções flexíveis de transporte para seu prazo.',benefit2:'02 — Alcance global',benefit2text:'Conectamos sua empresa a destinos no mundo todo.',benefit3:'03 — Atendimento especializado',benefit3text:'Orientação profissional do envio à entrega.',name:'Nome completo',email:'E-mail profissional',company:'Empresa',service:'Serviço desejado',details:'Detalhes da remessa',submit:'Solicitar orçamento →',copyright:'© 2026 Uthao Logistics. Todos os direitos reservados.',options:['Frete aéreo padrão','Frete aéreo expresso','Frete aéreo premium','Logística global','Carga especial'],placeholders:['Seu nome','voce@empresa.com','Nome da empresa','Origem, destino, carga e prazo...'],success:'Solicitação preparada. Conecte um backend para enviar.'},
+en:{services:'Services',back:'← Back Home',eyebrow:"LET'S GET MOVING",title:'Ready to ship smarter?',intro:'Tell us about your shipment. We will find the right solution.',quote:'Request a quote',description:'Share your shipping requirements and our team will contact you with a tailored logistics solution.',benefit1:'01 — Reliable delivery',benefit1text:'Flexible shipping options for your timeline.',benefit2:'02 — Global reach',benefit2text:'Connecting your business to worldwide destinations.',benefit3:'03 — Personal support',benefit3text:'Expert guidance from shipment to delivery.',name:'Full name',email:'Business email',company:'Company',service:'Service',details:'Shipment details',submit:'Request a Quote →',copyright:'© 2026 Uthao Logistics. All rights reserved.',options:['Standard Air Freight','Express Air Freight','Premium Air Freight','Global Logistics','Special Cargo'],placeholders:['Your name','you@company.com','Company name','Origin, destination, cargo and timeline...'],success:'Request prepared. Connect a backend to submit.'}};
+function setLang(l){localStorage.setItem('uthao-lang',l);document.documentElement.lang=l==='pt'?'pt-BR':'en';document.querySelectorAll('[data-i]').forEach(e=>e.textContent=T[l][e.dataset.i]||'');lang.value=l;[...form.elements].forEach(e=>{if(e.name&&T[l].placeholders[['name','email','company','message'].indexOf(e.name)])e.placeholder=T[l].placeholders[['name','email','company','message'].indexOf(e.name)]});service.innerHTML=T[l].options.map(x=>`<option>${x}</option>`).join('');document.querySelectorAll('a[href]').forEach(a=>{let u=new URL(a.href,location.href);if(['index.html','list.html','details.html'].includes(u.pathname.split('/').pop())){u.searchParams.set('lang',l);a.href=u.pathname+u.search+u.hash}})}
+let l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('uthao-lang')||(navigator.language.toLowerCase().startsWith('pt')?'pt':'en');setLang(l);lang.onchange=()=>{l=lang.value;setLang(l)};
+form.onsubmit=e=>{e.preventDefault();status.textContent=T[l].success;console.log(Object.fromEntries(new FormData(form)))};
+</script>
+</body></html>

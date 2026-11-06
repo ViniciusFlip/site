@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Store — Product</title><script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{font-family:Inter,sans-serif;color:#171717}*{box-sizing:border-box}.btn{background:#171717;color:white;padding:15px 20px;font-size:12px;font-weight:600;border-radius:4px}</style>
+</head>
+<body>
+<div class="bg-pink-600 text-white text-center text-xs py-2" data-i="announce"></div>
+<header class="border-b px-4 py-5 flex justify-between items-center"><a href="index.html" class="text-xl font-extrabold">STORE.</a><div class="flex gap-4 items-center"><select id="lang" class="text-xs bg-transparent"><option value="pt">PT</option><option value="en">EN</option></select><a href="list.html" class="text-xs" data-i="shop"></a><a href="index.html" class="text-xs" data-i="back"></a></div></header>
+<main class="max-w-7xl mx-auto px-4 py-8">
+<p class="text-xs text-gray-400 mb-6"><a href="index.html" data-i="home"></a> / <a href="list.html" data-i="shop"></a> / <span id="crumb"></span></p>
+<div class="grid md:grid-cols-2 gap-8 md:gap-14">
+<div><img id="image" class="w-full aspect-[4/5] object-cover" alt=""><div id="thumbs" class="grid grid-cols-4 gap-2 mt-3"></div></div>
+<div class="md:py-8"><p class="text-xs text-gray-500" data-i="collection"></p><h1 id="name" class="text-3xl font-bold mt-3"></h1><p id="price" class="text-lg mt-4"></p><p class="text-sm text-gray-500 leading-7 mt-6" data-i="description"></p>
+<div class="mt-8"><label class="text-xs font-semibold" data-i="size"></label><div class="flex gap-2 mt-3"><button class="border px-4 py-3 text-xs" onclick="pick(this)">S</button><button class="border px-4 py-3 text-xs" onclick="pick(this)">M</button><button class="border px-4 py-3 text-xs" onclick="pick(this)">L</button><button class="border px-4 py-3 text-xs" onclick="pick(this)">XL</button></div></div>
+<div class="flex gap-3 mt-7"><input id="qty" type="number" min="1" value="1" class="border w-20 p-3 text-sm"><button id="add" class="btn flex-1" data-i="add"></button></div><p id="status" class="text-sm text-green-700 mt-4"></p>
+<div class="border-t mt-8 pt-5 text-xs leading-7 text-gray-500"><p data-i="shipping"></p><p data-i="returns"></p><p data-i="secure"></p></div></div></div>
+</main>
+<section class="max-w-7xl mx-auto px-4 py-12"><div class="flex justify-between items-center mb-6"><h2 class="text-xl font-bold" data-i="related"></h2><a href="list.html" class="text-xs underline" data-i="viewAll"></a></div><div id="related" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div></section>
+<footer class="border-t px-4 py-10 text-xs flex justify-between"><a href="index.html" class="font-bold text-xl">STORE.</a><a href="list.html" data-i="shop"></a><span>© 2026 STORE.</span></footer>
+<script>
+const T={pt:{announce:'Frete grátis em pedidos selecionados',shop:'Loja',back:'← Voltar',home:'Início',collection:'COLEÇÃO',description:'Uma peça criada para combinar conforto, qualidade e estilo no seu dia a dia.',size:'Selecione o tamanho',add:'Adicionar ao carrinho',shipping:'✓ Envio para todo o Brasil',returns:'✓ Trocas e devoluções facilitadas',secure:'✓ Compra segura',related:'Você também pode gostar',viewAll:'Ver todos →',success:'Produto adicionado ao carrinho!',choose:'Selecione um tamanho.'},en:{announce:'Free shipping on selected orders',shop:'Shop',back:'← Back',home:'Home',collection:'COLLECTION',description:'A piece designed to combine comfort, quality and everyday style.',size:'Select size',add:'Add to cart',shipping:'✓ Worldwide shipping',returns:'✓ Easy returns and exchanges',secure:'✓ Secure checkout',related:'You may also like',viewAll:'View all →',success:'Product added to cart!',choose:'Please select a size.'}};
+const P=[['Classic Tee',29.90,'women','https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=85'],['Everyday Sneakers',79.90,'shoes','https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=85'],['Urban Jacket',119.90,'men','https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=85'],['Daily Bag',59.90,'accessories','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=900&q=85'],['Essential Shirt',39.90,'men','https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=900&q=85'],['Street Shoes',89.90,'shoes','https://images.unsplash.com/photo-1549298916-b41d501d3772?w=900&q=85'],['Minimal Bag',69.90,'accessories','https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=85'],['Basic Top',24.90,'women','https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=900&q=85']];
+let l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('store-lang')||(navigator.language.toLowerCase().startsWith('pt')?'pt':'en'),p=P[Number(new URLSearchParams(location.search).get('id'))]||P[0],size='';
+function money(v){return v.toLocaleString(l==='pt'?'pt-BR':'en-US',{style:'currency',currency:l==='pt'?'BRL':'USD'})}
+function pick(b){document.querySelectorAll('[onclick="pick(this)"]').forEach(x=>x.classList.remove('bg-black','text-white'));b.classList.add('bg-black','text-white');size=b.textContent}
+function setLang(x){l=x;localStorage.setItem('store-lang',l);document.documentElement.lang=l==='pt'?'pt-BR':'en';document.querySelectorAll('[data-i]').forEach(e=>e.textContent=T[l][e.dataset.i]||'');lang.value=l;name.textContent=p[0];crumb.textContent=p[0];price.textContent=money(p[1]);image.src=p[3];image.alt=p[0];document.querySelectorAll('a[href]').forEach(a=>{let u=new URL(a.href,location.href);if(['index.html','list.html','details.html'].includes(u.pathname.split('/').pop())){u.searchParams.set('lang',l);a.href=u.pathname+u.search+u.hash}});related.innerHTML=P.filter(x=>x!==p).slice(0,4).map(x=>`<a href="details.html?id=${P.indexOf(x)}&lang=${l}"><img src="${x[3]}" class="w-full aspect-[3/4] object-cover"><p class="text-xs mt-2">${x[0]}</p><p class="text-xs mt-1">${money(x[1])}</p></a>`).join('')}
+setLang(l);lang.onchange=()=>setLang(lang.value);add.onclick=()=>{if(!size){status.textContent=T[l].choose;return}let cart=JSON.parse(localStorage.getItem('store-cart')||'[]');cart.push({id:P.indexOf(p),size,qty:Number(qty.value)});localStorage.setItem('store-cart',JSON.stringify(cart));status.textContent=T[l].success};
+</script></body></html>
