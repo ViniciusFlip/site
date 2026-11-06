@@ -1488,77 +1488,22 @@
                 <div class=" mt-16" data-group="intelligent">
                  
 
-                    <!-- SWIPER -->
+<!-- SWIPER DINÂMICO -->
+<div class="swiper intelligentSwiper" id="intelligentSwiper">
+    <div class="swiper-wrapper" id="intelligentProjects"></div>
 
-                    <div class="swiper intelligentSwiper">
-                        <div class="swiper-wrapper">
-                           
-                           
-   <!-- juice store -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="traki"
-                                    style="background-image: url('/e-machine/e-fashion/screens.png')"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
+    <!-- CONTROLES -->
+    <div class="mt-6 flex items-center justify-between">
+        <div class="intelligent-pagination !static !flex !w-auto items-center gap-1.5"></div>
 
-                                     <div class="flex flex-wrap gap-3">
- 
-  <button data-obj="e-fashion" class="preview-theme">
-    Quero
-  </button>
+        <div class="flex items-center gap-2">
+            <button type="button" class="intelligent-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Aplicação anterior"></button>
+
+            <button type="button" class="intelligent-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Próxima aplicação"></button>
+        </div>
+    </div>
 </div>
-                                </article>
-                            </div>
-                           
-                            <!-- juice store -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="traki"
-                                    style="background-image: url('/e-machine/e-juice/brand.jpg')"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
 
-                                     <div class="flex flex-wrap gap-3">
- 
-  <button data-obj="e-juice" class="preview-theme">
-    Quero
-  </button>
-</div>
-                                </article>
-                            </div>
-                        </div>
-
-                        <!-- CONTROLES -->
-
-                        <div class="mt-6 flex items-center justify-between">
-                            <div class="intelligent-pagination !static !flex !w-auto items-center gap-1.5"></div>
-
-                            <div class="flex items-center gap-2">
-                                <button
-                                    type="button"
-                                    class="intelligent-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
-                                    aria-label="Aplicação anterior"
-                                ></button>
-
-                                <button
-                                    type="button"
-                                    class="intelligent-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
-                                    aria-label="Próxima aplicação"
-                                ></button>
-                            </div>
-                        </div>
-                    </div>
                    
                 </div>
             </section>
@@ -3249,6 +3194,76 @@ window.abrirChat = function() {
   });
 })();
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    const swiperElement = document.querySelector("#intelligentSwiper");
+    if (!swiperElement) return;
+
+    // TEMAS — PREENCHA OS DEMAIS
+    const intelligentArray = [
+        "e-vogue",
+        "e-finger",
+        "e-garden",
+        "e-juice",
+        "e-fit",
+        "e-beauty",
+        "e-fashion",
+         
+    ];
+
+    const container = swiperElement.querySelector("#intelligentProjects");
+
+    container.innerHTML = intelligentArray.map(theme => `
+        <div class="swiper-slide">
+            <article
+                class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                data-category="brand"
+                data-project="${theme}"
+                style="background-image: url('/e-machine/${theme}/screens.png')"
+            >
+                <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                <div class="relative z-10 flex flex-wrap gap-3 p-4">
+                    <button
+                        type="button"
+                        data-obj="${theme}"
+                        class="preview-theme"
+                    >
+                        Quero
+                    </button>
+                </div>
+            </article>
+        </div>
+    `).join("");
+
+    if (swiperElement.swiper) {
+        swiperElement.swiper.destroy(true, true);
+    }
+
+    new Swiper(swiperElement, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        pagination: {
+            el: swiperElement.querySelector(".intelligent-pagination"),
+            clickable: true
+        },
+        navigation: {
+            nextEl: swiperElement.querySelector(".intelligent-next"),
+            prevEl: swiperElement.querySelector(".intelligent-prev")
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 3
+            }
+        }
+    });
+
+});
+</script>
     </body>
 </html>
