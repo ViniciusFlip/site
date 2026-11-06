@@ -3133,74 +3133,80 @@ window.abrirChat = function() {
 
 };
 </script>
-
+<!-- PREVIEW DOS TEMAS -->
 <script>
-    (() => {
-  const modal = document.getElementById('themePreview');
-  const frame = document.getElementById('themeFrame');
-  const viewport = document.getElementById('previewFrame');
+(() => {
+    const modal = document.getElementById('themePreview');
+    const frame = document.getElementById('themeFrame');
+    const viewport = document.getElementById('previewFrame');
 
-  const devices = {
-    desktop: '100%',
-    tablet: '768px',
-    mobile: '390px'
-  };
+    if (!modal || !frame || !viewport) return;
 
-  // ABRIR PREVIEW PELO DATA-OBJ
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-obj]');
+    const baseURL = 'https://viniciusflip.github.io/site/';
 
-    if (!btn) return;
+    const devices = {
+        desktop: '100%',
+        tablet: '768px',
+        mobile: '390px'
+    };
 
-    const theme = btn.dataset.obj;
+    // ABRIR PREVIEW PELO DATA-OBJ
+    document.addEventListener('click', e => {
+        const btn = e.target.closest('[data-obj]');
+        if (!btn) return;
 
-    frame.src = `e-machine/${encodeURIComponent(theme)}/index.html`;
+        const theme = btn.dataset.obj;
 
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+        frame.src = `${baseURL}e-machine/${encodeURIComponent(theme)}/index.html`;
 
-    setDevice('desktop');
-  });
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
 
-  // ALTERNAR DISPOSITIVOS
-  function setDevice(device) {
-    viewport.style.width = devices[device];
+        setDevice('desktop');
+    });
+
+    // ALTERNAR DISPOSITIVOS
+    function setDevice(device) {
+        viewport.style.width = devices[device];
+
+        document.querySelectorAll('[data-device]').forEach(btn => {
+            btn.classList.toggle('bg-neutral-900', btn.dataset.device === device);
+            btn.classList.toggle('text-white', btn.dataset.device === device);
+        });
+    }
 
     document.querySelectorAll('[data-device]').forEach(btn => {
-      btn.classList.toggle('bg-neutral-900', btn.dataset.device === device);
-      btn.classList.toggle('text-white', btn.dataset.device === device);
+        btn.addEventListener('click', () => setDevice(btn.dataset.device));
     });
-  }
 
-  document.querySelectorAll('[data-device]').forEach(btn => {
-    btn.addEventListener('click', () => setDevice(btn.dataset.device));
-  });
+    // FECHAR
+    function closePreview() {
+        modal.classList.add('hidden');
+        frame.src = 'about:blank';
+        document.body.style.overflow = '';
+    }
 
-  // FECHAR
-  function closePreview() {
-    modal.classList.add('hidden');
-    frame.src = 'about:blank';
-    document.body.style.overflow = '';
-  }
+    document.getElementById('closePreview')?.addEventListener('click', closePreview);
 
-  document.getElementById('closePreview').addEventListener('click', closePreview);
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closePreview();
+    });
 
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closePreview();
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closePreview();
-  });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closePreview();
+    });
 })();
-    </script>
+</script>
+
+
+<!-- SWIPER INTELIGENTE -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
     const swiperElement = document.querySelector("#intelligentSwiper");
     if (!swiperElement) return;
 
-    // TEMAS — PREENCHA OS DEMAIS
+    // TEMAS
     const intelligentArray = [
         "e-vogue",
         "e-finger",
@@ -3208,19 +3214,21 @@ document.addEventListener("DOMContentLoaded", () => {
         "e-juice",
         "e-fit",
         "e-beauty",
-        "e-fashion",
-         
+        "e-fashion"
     ];
+
+    const baseURL = 'https://viniciusflip.github.io/site/';
 
     const container = swiperElement.querySelector("#intelligentProjects");
 
+    // GERAR CARDS
     container.innerHTML = intelligentArray.map(theme => `
         <div class="swiper-slide">
             <article
                 class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
                 data-category="brand"
                 data-project="${theme}"
-                style="background-image: url('/e-machine/${theme}/screens.png')"
+                style="background-image: url('${baseURL}e-machine/${theme}/screens.png')"
             >
                 <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
 
@@ -3237,6 +3245,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `).join("");
 
+    // INICIALIZAR SWIPER
     if (swiperElement.swiper) {
         swiperElement.swiper.destroy(true, true);
     }
@@ -3245,14 +3254,17 @@ document.addEventListener("DOMContentLoaded", () => {
         slidesPerView: 1,
         spaceBetween: 20,
         loop: true,
+
         pagination: {
             el: swiperElement.querySelector(".intelligent-pagination"),
             clickable: true
         },
+
         navigation: {
             nextEl: swiperElement.querySelector(".intelligent-next"),
             prevEl: swiperElement.querySelector(".intelligent-prev")
         },
+
         breakpoints: {
             640: {
                 slidesPerView: 2
