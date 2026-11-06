@@ -253,1126 +253,326 @@
                 <!-- SWIPER -->
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-                <section>
-                    <div class="swiper meuSwiper">
-                        <div class="swiper-wrapper">
-                            <!-- MORREN -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="morren"
-                                    style="background-image: url(&quot;./assets/images/morren.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <!-- Linha 1: Informações -->
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Morren Studios
-                                            </p>
-                                        </div>
-
-                                        <!-- Linha 2: Controles -->
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <!-- ESQUERDA — Likes -->
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <!-- Like -->
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 49 </span>
-                                                </button>
-
-                                                <!-- Dislike -->
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <!-- DIREITA — Preview -->
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('morren')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!-- BUYED -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="buyed"
-                                    style="background-image: url(&quot;./assets/images/buyed.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <!-- Linha 1 -->
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Buyed
-                                            </p>
-                                        </div>
-
-                                        <!-- Linha 2 -->
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <!-- Likes -->
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 36 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <!-- Preview -->
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('buyed')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!-- ela -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="traki"
-                                    style="background-image: url(&quot;./assets/images/tudoela.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Tudo pra Ela - Loja de Cosméticos
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 36 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('traki')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <!-- Evo -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="traki"
-                                    style="background-image: url(&quot;./assets/images/love.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Iloveimportados
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 326 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('traki')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <!-- Evo -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="traki"
-                                    style="background-image: url(&quot;./assets/images/evo.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Evo
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 36 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('traki')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <!-- Journey -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="traki"
-                                    style="background-image: url(&quot;./assets/images/journey.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Magic Journey Shop
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 36 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('traki')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <!-- TRAKI -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="traki"
-                                    style="background-image: url(&quot;./assets/images/traki.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Traki App
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 36 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('traki')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!-- VERASPAY -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="veraspay"
-                                    style="background-image: url(&quot;./assets/images/veraspay.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade Visual Brand
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Veraspay
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 21 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('veraspay')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!-- ALLE MOURAD -->
-                            <div class="swiper-slide">
-                                <article
-                                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
-                                    data-category="brand"
-                                    data-project="alle"
-                                    style="background-image: url(&quot;./assets/images/alle2.png&quot;)"
-                                >
-                                    <!-- Overlay somente desktop -->
-                                    <div
-                                        class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"
-                                    ></div>
-
-                                    <!-- Footer -->
-                                    <div
-                                        class="project-controls hidden absolute inset-x-0 bottom-0 items-center border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex"
-                                    >
-                                        <div class="min-w-0 pb-3 sm:pb-0">
-                                            <p
-                                                class="mb-1 text-[9px] font-medium uppercase tracking-[.2em] text-white/55"
-                                            >
-                                                Identidade Visual
-                                            </p>
-
-                                            <p
-                                                class="truncate text-[13px] font-medium leading-tight text-white/95 sm:text-[14px]"
-                                            >
-                                                Alle Mourad
-                                            </p>
-                                        </div>
-
-                                        <div
-                                            class="flex h-10 w-full items-center border-t border-white/10 pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:border-0 sm:pt-0"
-                                        >
-                                            <div
-                                                class="flex h-full w-1/2 items-center justify-start gap-1 sm:w-auto sm:justify-end"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    aria-label="Curtir projeto"
-                                                    class="flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-full px-2.5 text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M7 10v12" />
-                                                        <path
-                                                            d="M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.1 7A2 2 0 0 1 18.7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3.5l5.1-7.1A1.5 1.5 0 0 1 15 5.9Z"
-                                                        />
-                                                    </svg>
-
-                                                    <span class="text-[10px] tabular-nums text-white/50"> 148 </span>
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    aria-label="Não gostei do projeto"
-                                                    class="flex h-10 w-10 items-center justify-center rounded-full text-white/65 transition-all duration-200 active:scale-95 hover:bg-white/10 hover:text-white"
-                                                >
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M17 14V2" />
-                                                        <path
-                                                            d="m9 18 1-4H4.2a2 2 0 0 1-2-2.3l1.1-7A2 2 0 0 1 5.3 3H20a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3.5l-5.1 7.1A1.5 1.5 0 0 1 9 18Z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="flex h-full w-1/2 items-center justify-end sm:w-auto">
-                                                <button
-                                                    type="button"
-                                                    aria-label="Visualizar projeto"
-                                                    onclick="openProjectPreview('alle')"
-                                                    class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
-                                                >
-                                                    <span>Preview</span>
-
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="16"
-                                                        height="16"
-                                                        viewBox="0 0 24 24"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        stroke-width="1.8"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                    >
-                                                        <path d="M5 12h14" />
-                                                        <path d="m13 6 6 6-6 6" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
+              
+<section>
+    <div class="swiper meuSwiper">
+        <div class="swiper-wrapper">
+
+            <!-- MORREN -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="morren"
+                    style="background-image: url('./assets/images/morren.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Morren"
+                                onclick="openProjectPreview('morren')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
                         </div>
-
-                        <!-- CONTROLES DO SWIPER -->
-                        <div class="mt-6 flex items-center justify-between">
-                            <!-- PAGINAÇÃO -->
-                            <div class="flex items-center gap-1.5">
-                                <div class="swiper-pagination !static !flex !w-auto items-center gap-1.5"></div>
-                            </div>
-
-                            <!-- NAVEGAÇÃO -->
-                            <div class="flex items-center gap-2">
-                                <!-- PREV -->
-                                <button
-                                    type="button"
-                                    class="swiper-button-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
-                                    aria-label="Projeto anterior"
-                                ></button>
-
-                                <!-- NEXT -->
-                                <button
-                                    type="button"
-                                    class="swiper-button-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
-                                    aria-label="Próximo projeto"
-                                ></button>
-                            </div>
-                        </div>
-
-                        <!-- ESTILO DOS CONTROLES -->
-                        <style>
-                            /* PAGINAÇÃO */
-
-                            .swiper-pagination-bullet {
-                                width: 18px;
-                                height: 3px;
-                                border-radius: 999px;
-                                margin: 0 !important;
-                                opacity: 0.18;
-                                background: currentColor;
-                                transition:
-                                    width 0.35s ease,
-                                    opacity 0.35s ease;
-                            }
-
-                            .swiper-pagination-bullet-active {
-                                width: 32px;
-                                opacity: 1;
-                            }
-
-                            /* SETAS */
-
-                            .swiper-button-prev::after,
-                            .swiper-button-next::after {
-                                font-size: 13px;
-                                font-weight: 500;
-                            }
-
-                            /* MOBILE */
-
-                            @media (max-width: 767px) {
-                                .swiper-button-prev,
-                                .swiper-button-next {
-                                    display: none !important;
-                                }
-                            }
-                        </style>
                     </div>
-                
-                </section>
+                </article>
+            </div>
+
+            <!-- BUYED -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="buyed"
+                    style="background-image: url('./assets/images/buyed.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Buyed"
+                                onclick="openProjectPreview('buyed')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- TUDO PRA ELA -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/tudoela.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Tudo pra Ela"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ILOVEIMPORTADOS -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/love.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Iloveimportados"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- EVO -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/evo.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Evo"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- MAGIC JOURNEY -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/journey.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Magic Journey"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- TRAKI -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/traki.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Traki"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- VERASPAY -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="veraspay"
+                    style="background-image: url('./assets/images/veraspay.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Veraspay"
+                                onclick="openProjectPreview('veraspay')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ALLE MOURAD -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="alle"
+                    style="background-image: url('./assets/images/alle2.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Alle Mourad"
+                                onclick="openProjectPreview('alle')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <!-- CONTROLES DO SWIPER -->
+        <div class="mt-6 flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+                <div class="swiper-pagination !static !flex !w-auto items-center gap-1.5"></div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button
+                    type="button"
+                    class="swiper-button-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
+                    aria-label="Projeto anterior"
+                ></button>
+
+                <button
+                    type="button"
+                    class="swiper-button-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
+                    aria-label="Próximo projeto"
+                ></button>
+            </div>
+        </div>
+
+        <style>
+            .swiper-pagination-bullet {
+                width: 18px;
+                height: 3px;
+                border-radius: 999px;
+                margin: 0 !important;
+                opacity: 0.18;
+                background: currentColor;
+                transition: width 0.35s ease, opacity 0.35s ease;
+            }
+
+            .swiper-pagination-bullet-active {
+                width: 32px;
+                opacity: 1;
+            }
+
+            .swiper-button-prev::after,
+            .swiper-button-next::after {
+                font-size: 13px;
+                font-weight: 500;
+            }
+
+            @media (max-width: 767px) {
+                .swiper-button-prev,
+                .swiper-button-next {
+                    display: none !important;
+                }
+            }
+        </style>
+    </div>
+</section>
 
                 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -3200,6 +2400,7 @@ window.abrirChat = function() {
 
 
 <!-- SWIPER INTELIGENTE -->
+<!-- SWIPER INTELIGENTE -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -3220,7 +2421,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const baseURL = 'https://viniciusflip.github.io/site/';
-
     const container = swiperElement.querySelector("#intelligentProjects");
 
     // GERAR CARDS
@@ -3232,17 +2432,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 data-project="${theme}"
                 style="background-image: url('${baseURL}e-machine/${theme}/screens.png')"
             >
+
+                <!-- OVERLAY SOMENTE DESKTOP -->
                 <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
 
-                <div class="relative z-10 flex flex-wrap gap-3 p-4">
-                    <button
-                        type="button"
-                        data-obj="${theme}"
-                        class="preview-theme"
-                    >
-                        Quero
-                    </button>
+                <!-- FOOTER MINIMALISTA -->
+                <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+
+                    <div class="flex h-10 w-full items-center justify-end sm:h-9 sm:w-auto sm:px-2">
+
+                        <button
+                            type="button"
+                            data-obj="${theme}"
+                            aria-label="Ver tema"
+                            class="flex h-10 w-full items-center justify-end rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                        >
+                            Ver
+                        </button>
+
+                    </div>
                 </div>
+
             </article>
         </div>
     `).join("");
