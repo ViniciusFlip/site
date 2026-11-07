@@ -689,7 +689,7 @@
                  
 
 <!-- SWIPER DINÂMICO -->
-<div class="swiper intelligentSwiper" id="intelligentSwiper">
+<div class="swiper webSwiper" id="webSwiper">
     <div class="swiper-wrapper" id="intelligentProjects"></div>
 
     <!-- CONTROLES -->
@@ -704,7 +704,22 @@
     </div>
 </div>
 
-                   
+  <!-- SWIPER DINÂMICO -->
+<div class="swiper intelligentSwiper" id="intelligentSwiper">
+    <div class="swiper-wrapper" id="intelligentProjects"></div>
+
+    <!-- CONTROLES -->
+    <div class="mt-6 flex items-center justify-between">
+        <div class="intelligent-pagination !static !flex !w-auto items-center gap-1.5"></div>
+
+        <div class="flex items-center gap-2">
+            <button type="button" class="intelligent-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Aplicação anterior"></button>
+
+            <button type="button" class="intelligent-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Próxima aplicação"></button>
+        </div>
+    </div>
+</div>
+                 
                 </div>
             </section>
 
@@ -2410,6 +2425,94 @@ document.addEventListener("DOMContentLoaded", () => {
     // TEMAS
     const intelligentArray = [
         "e-vogue",
+        "e-finger",
+        "e-garden",
+        "e-juice",
+        "e-fit",
+        "e-beauty",
+        "e-fashion",
+        "e-shopify",
+        "landing-shopify"
+    ];
+
+    const baseURL = 'https://viniciusflip.github.io/site/';
+    const container = swiperElement.querySelector("#intelligentProjects");
+
+    // GERAR CARDS
+    container.innerHTML = intelligentArray.map(theme => `
+        <div class="swiper-slide">
+            <article
+                class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                data-category="brand"
+                data-project="${theme}"
+                style="background-image: url('${baseURL}e-machine/${theme}/screens.png')"
+            >
+
+                <!-- OVERLAY SOMENTE DESKTOP -->
+                <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                <!-- FOOTER MINIMALISTA -->
+                <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+
+                    <div class="flex h-10 w-full items-center justify-end sm:h-9 sm:w-auto sm:px-2">
+
+                        <button
+                            type="button"
+                            data-obj="${theme}"
+                            aria-label="Ver tema"
+                            class="flex h-10 w-full items-center justify-end rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                        >
+                            Ver
+                        </button>
+
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    `).join("");
+
+    // INICIALIZAR SWIPER
+    if (swiperElement.swiper) {
+        swiperElement.swiper.destroy(true, true);
+    }
+
+    new Swiper(swiperElement, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+
+        pagination: {
+            el: swiperElement.querySelector(".intelligent-pagination"),
+            clickable: true
+        },
+
+        navigation: {
+            nextEl: swiperElement.querySelector(".intelligent-next"),
+            prevEl: swiperElement.querySelector(".intelligent-prev")
+        },
+
+        breakpoints: {
+            640: {
+                slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 3
+            }
+        }
+    });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const swiperElement = document.querySelector("#webSwiper");
+    if (!swiperElement) return;
+
+    // TEMAS
+    const intelligentArray = [
+        "fishercreator",
         "e-finger",
         "e-garden",
         "e-juice",

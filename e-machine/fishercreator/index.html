@@ -1,0 +1,2596 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+
+        <title>Vinicius A. — Criativo Freelancer</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TV98VPVJT6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TV98VPVJT6');
+</script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        boxShadow: {
+                            soft: "0 20px 60px rgba(0,0,0,.08)",
+                            dark: "0 20px 50px rgba(0,0,0,.18)",
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family:
+                    Inter,
+                    ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    sans-serif;
+            }
+
+            ::selection {
+                background: #ff3008;
+                color: white;
+            }
+
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .project-filter.active {
+                background: #171717;
+                color: white;
+            }
+
+            .dark .project-filter.active {
+                background: white;
+                color: #171717;
+            }
+        </style>
+
+        <script>
+            (() => {
+                const saved = localStorage.getItem("vinicius-theme");
+                const dark = saved === "dark";
+                document.documentElement.classList.toggle("dark", dark);
+            })();
+        </script>
+    </head>
+
+    <body
+        class="bg-[#f5f5f3] text-[#171717] antialiased transition-colors duration-300 dark:bg-[#0d0d0d] dark:text-[#f5f5f3]"
+    >
+        <!-- NAV -->
+
+        <header class="absolute top-0 left-0 z-50 w-full bg-transparent">
+            <nav class="mx-auto flex max-w-[1480px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+                <a href="#top" class="flex items-center gap-3">
+                    <span class="grid h-8 w-8 place-items-center rounded-full text-[#ff3008]">
+                        <img src="assets/images/r1-.png" class="h-6" alt="Vinicius Araujo" />
+                    </span>
+
+                    <div class="leading-none">
+                        <p class="text-[11px] font-bold tracking-[-.02em] text-white">VINICIUS A.</p>
+
+                         </div>
+                </a>
+
+                <div class="hidden items-center gap-7 md:flex">
+                    <a
+                        href="#projects"
+                        class="text-[10px] font-medium text-white transition hover:text-black text-white/50 hover:text-white"
+                    >
+                        Projetos
+                    </a>
+
+                    <a
+                        href="#services"
+                        class="text-[10px] font-medium text-white transition hover:text-black text-white/50 hover:text-white"
+                    >
+                        Serviços
+                    </a>
+
+                    <a
+                        href="#about"
+                        class="text-[10px] font-medium text-white transition hover:text-black text-white/50 hover:text-white"
+                    >
+                        Sobre
+                    </a>
+                    <button
+                        id="themeToggle"
+                        type="button"
+                        aria-label="Alternar tema"
+                        class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white/70 transition hover:scale-105 dark:border-white/10 dark:bg-white/10"
+                    >
+                        <i data-lucide="moon" class="theme-icon h-3.5 w-3.5"></i>
+                    </button>
+
+                    <a
+                        href="https://viniciusflip.github.io/superchat/"
+                        target=""
+                        rel="noopener noreferrer"
+                        class=" inline-flex items-center gap-2 rounded-full bg-[#171717] px-4 py-2.5 text-[9px] font-semibold text-white transition hover:scale-[1.03] dark:bg-white dark:text-[#171717]"
+                    >
+                    
+
+                        <span>Fale SuperChat Online </span>
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-2 md:hidden">
+                    <button
+                        id="themeToggleMobile"
+                        type="button"
+                        aria-label="Alternar tema"
+                        class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white/70 dark:border-white/10 dark:bg-white/10"
+                    >
+                        <i data-lucide="moon" class="theme-icon h-3.5 w-3.5"></i>
+                    </button>
+
+                    <a
+                        href=" "
+                        class="start-conversation grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717]"
+                    >
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main id="top">
+            <!-- HERO -->
+
+            <section
+                style="
+                    background-image: linear-gradient(
+                            90deg,
+                            rgba(15, 15, 15, 0.62) 0%,
+                            rgba(15, 15, 15, 0.28) 48%,
+                            rgba(15, 15, 15, 0.18) 100%
+                        ),
+                        linear-gradient(0deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08)),
+                        url(&quot;assets/images/im-2.webp&quot;);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                "
+                class="mx-auto max-w-[1480px] px-5 pb-20 pt-16 text-white sm:px-8 lg:px-10 lg:pb-28 lg:pt-24"
+            >
+                <div class="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+                    <div>
+                       
+                        <h1
+                            class="max-w-[1050px] text-[58px] font-medium leading-[.86] tracking-[-.075em] sm:text-[82px] lg:text-[112px]"
+                        >
+                            Crio Marcas.<br />
+
+                            <span class="text-[red]"> Sites. </span><br />
+
+                            Software.
+                        </h1>
+
+                        <p class="mt-8 max-w-[600px] text-[14px] leading-[1.7] text-white/75 sm:text-[15px]">
+                           
+                            Soluções reais, para solucionar problemas reais.
+                        </p>
+
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <a
+                                href=" "
+                                class="start-conversation inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-[#171717] shadow-dark transition hover:-translate-y-0.5"
+                            >
+                                Falar sobre um projeto
+
+                                <span class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white">
+                                    <i data-lucide="arrow-down" class="h-3.5 w-3.5"></i>
+                                </span>
+                            </a>
+
+                            <a
+                                href="#projects"
+                                class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 py-3 text-[10px] font-semibold text-white backdrop-blur transition hover:bg-white hover:text-black"
+                            >
+                                Ver projetos
+                            </a>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+
+            <section id="projects" class="mx-auto max-w-[1480px] overflow-hidden px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+             <div class="  project-group mt-12" data-group="x">
+
+                    <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+                    <div>
+                         <div class="mb-4 flex items-center justify-between">
+                        <p class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35">
+                         Posso criar Marcas, Identidade e brand para Marcas compromissadas.
+                        </p>
+
+                         
+                    </div>
+
+                         
+                    </div>
+
+                    <div class="max-w-[330px]">
+                       
+
+                        <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold">
+                            Falar sobre um projeto
+
+                            <span class="grid h-7 w-7 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" aria-hidden="true" class="lucide lucide-arrow-up-right h-3.5 w-3.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+      
+                </div>
+                <!-- SWIPER -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+              
+<section>
+    <div class="swiper meuSwiper">
+        <div class="swiper-wrapper">
+
+            <!-- MORREN -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="morren"
+                    style="background-image: url('./assets/images/morren.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Morren"
+                                onclick="openProjectPreview('morren')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- BUYED -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="buyed"
+                    style="background-image: url('./assets/images/buyed.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Buyed"
+                                onclick="openProjectPreview('buyed')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- TUDO PRA ELA -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/tudoela.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Tudo pra Ela"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ILOVEIMPORTADOS -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/love.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Iloveimportados"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- EVO -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/evo.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Evo"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- MAGIC JOURNEY -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/journey.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Magic Journey"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- TRAKI -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="traki"
+                    style="background-image: url('./assets/images/traki.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Traki"
+                                onclick="openProjectPreview('traki')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- VERASPAY -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="veraspay"
+                    style="background-image: url('./assets/images/veraspay.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Veraspay"
+                                onclick="openProjectPreview('veraspay')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ALLE MOURAD -->
+            <div class="swiper-slide">
+                <article
+                    class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                    data-category="brand"
+                    data-project="alle"
+                    style="background-image: url('./assets/images/alle2.png')"
+                >
+                    <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                    <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+                        <div class="flex h-10 w-full items-center justify-end pt-2 sm:absolute sm:bottom-6 sm:right-6 sm:h-auto sm:w-auto sm:pt-0">
+                            <button
+                                type="button"
+                                aria-label="Ver projeto Alle Mourad"
+                                onclick="openProjectPreview('alle')"
+                                class="flex h-10 w-full items-center justify-end gap-2 rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                            >
+                                <span>Ver</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14"/>
+                                    <path d="m13 6 6 6-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <!-- CONTROLES DO SWIPER -->
+        <div class="mt-6 flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+                <div class="swiper-pagination !static !flex !w-auto items-center gap-1.5"></div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button
+                    type="button"
+                    class="swiper-button-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
+                    aria-label="Projeto anterior"
+                ></button>
+
+                <button
+                    type="button"
+                    class="swiper-button-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black"
+                    aria-label="Próximo projeto"
+                ></button>
+            </div>
+        </div>
+
+        <style>
+            .swiper-pagination-bullet {
+                width: 18px;
+                height: 3px;
+                border-radius: 999px;
+                margin: 0 !important;
+                opacity: 0.18;
+                background: currentColor;
+                transition: width 0.35s ease, opacity 0.35s ease;
+            }
+
+            .swiper-pagination-bullet-active {
+                width: 32px;
+                opacity: 1;
+            }
+
+            .swiper-button-prev::after,
+            .swiper-button-next::after {
+                font-size: 13px;
+                font-weight: 500;
+            }
+
+            @media (max-width: 767px) {
+                .swiper-button-prev,
+                .swiper-button-next {
+                    display: none !important;
+                }
+            }
+        </style>
+    </div>
+</section>
+
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        new Swiper(".meuSwiper", {
+                            /* MOBILE */
+                            slidesPerView: 1.5,
+                            spaceBetween: 16,
+
+                            /* LOOP */
+                            loop: true,
+
+                            /* AUTOPLAY */
+                            autoplay: {
+                                delay: 3500,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            },
+
+                            /* PAGINAÇÃO */
+                            pagination: {
+                                el: ".swiper-pagination",
+                                clickable: true,
+                            },
+
+                            /* BOTÕES */
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
+                            },
+
+                            /* TABLET */
+                            breakpoints: {
+                                768: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 20,
+                                },
+
+                                /* DESKTOP */
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 24,
+                                },
+                            },
+                        });
+                    });
+                </script>
+
+               
+                 
+
+               
+
+                <div
+                    class="mt-10 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 sm:flex-row sm:items-center dark:border-white/10"
+                >
+             
+                    <a href="#contact" class="inline-flex shrink-0 items-center gap-2 text-[10px] font-semibold">
+                        Quero construir meu projeto
+                        <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+                    </a>
+                </div>
+                <!-- INTELLIGENT APPLICATIONS -->
+<div class="  project-group mt-12" data-group="x">
+
+                    <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+                    <div>
+                         <div class="mb-4 flex items-center justify-between">
+                        <p class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35">
+                         Sou profissional e faço integração de e-commerces
+                        </p>
+
+                         
+                    </div>
+
+                         
+                    </div>
+
+                    <div class="max-w-[330px]">
+                       
+<!-- BOTÕES DE PREVIEW -->
+
+
+<!-- PREVIEW MODAL -->
+<div id="themePreview" class="hidden fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm">
+  <div class="absolute inset-3 md:inset-6 bg-white rounded-2xl overflow-hidden flex flex-col">
+
+    <header class="h-14 px-4 flex items-center justify-between border-b shrink-0">
+      <span class="font-semibold text-sm text-neutral-900">Preview do tema</span>
+
+      <div class="flex items-center gap-2">
+        <button data-device="desktop" class="device-btn">Desktop</button>
+        <button data-device="tablet" class="device-btn">Tablet</button>
+        <button data-device="mobile" class="device-btn">Mobile</button>
+        <button id="closePreview" class="ml-2 text-xl text-neutral-500">✕</button>
+      </div>
+    </header>
+
+    <main class="flex-1 bg-neutral-100 flex items-center justify-center p-2 md:p-4 overflow-hidden">
+      <div id="previewFrame" class="w-full h-full bg-white shadow-xl rounded-lg overflow-hidden transition-all duration-200">
+        <iframe id="themeFrame" class="w-full h-full border-0" loading="lazy"></iframe>
+      </div>
+    </main>
+
+  </div>
+</div>
+                      
+                    </div>
+                </div>
+      
+                </div>
+                <div class=" mt-16" data-group="intelligent">
+                 
+
+<!-- SWIPER DINÂMICO -->
+<div class="swiper webSwiper" id="webSwiper">
+    <div class="swiper-wrapper" id="intelligentProjects"></div>
+
+    <!-- CONTROLES -->
+    <div class="mt-6 flex items-center justify-between">
+        <div class="intelligent-pagination !static !flex !w-auto items-center gap-1.5"></div>
+
+        <div class="flex items-center gap-2">
+            <button type="button" class="intelligent-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Aplicação anterior"></button>
+
+            <button type="button" class="intelligent-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Próxima aplicação"></button>
+        </div>
+    </div>
+</div>
+
+  <!-- SWIPER DINÂMICO -->
+<div class="swiper intelligentSwiper" id="intelligentSwiper">
+    <div class="swiper-wrapper" id="intelligentProjects"></div>
+
+    <!-- CONTROLES -->
+    <div class="mt-6 flex items-center justify-between">
+        <div class="intelligent-pagination !static !flex !w-auto items-center gap-1.5"></div>
+
+        <div class="flex items-center gap-2">
+            <button type="button" class="intelligent-prev !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Aplicação anterior"></button>
+
+            <button type="button" class="intelligent-next !static !m-0 !flex !h-9 !w-9 !items-center !justify-center !rounded-full !border !border-black/10 !bg-transparent !text-black/50 transition-all duration-300 hover:!border-black hover:!bg-black hover:!text-white dark:!border-white/10 dark:!text-white/50 dark:hover:!border-white dark:hover:!bg-white dark:hover:!text-black" aria-label="Próxima aplicação"></button>
+        </div>
+    </div>
+</div>
+                 
+                </div>
+            </section>
+
+            <style>
+                .intelligent-pagination .swiper-pagination-bullet {
+                    width: 18px;
+                    height: 3px;
+                    border-radius: 999px;
+                    margin: 0 !important;
+                    opacity: 0.18;
+                    background: currentColor;
+                    transition:
+                        width 0.35s ease,
+                        opacity 0.35s ease;
+                }
+
+                .intelligent-pagination .swiper-pagination-bullet-active {
+                    width: 32px;
+                    opacity: 1;
+                }
+
+                .intelligent-prev::after,
+                .intelligent-next::after {
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+
+                @media (max-width: 767px) {
+                    .intelligent-prev,
+                    .intelligent-next {
+                        display: none !important;
+                    }
+                }
+            </style>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    new Swiper(".intelligentSwiper", {
+                        slidesPerView: 1.15,
+                        spaceBetween: 16,
+
+                        loop: true,
+
+                        autoplay: {
+                            delay: 4000,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        },
+
+                        pagination: {
+                            el: ".intelligent-pagination",
+                            clickable: true,
+                        },
+
+                        navigation: {
+                            nextEl: ".intelligent-next",
+                            prevEl: ".intelligent-prev",
+                        },
+
+                        breakpoints: {
+                            640: {
+                                slidesPerView: 1.5,
+                                spaceBetween: 18,
+                            },
+
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+
+                            1024: {
+                                slidesPerView: 3,
+                                spaceBetween: 24,
+                            },
+                        },
+                    });
+                });
+            </script>
+
+            <!-- ABOUT -->
+
+            <section id="about" class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+                <div class="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+                    <div>
+                        <div
+                            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:bg-white/5"
+                        >
+                            <span class="h-1.5 w-1.5 rounded-full bg-[red]"></span>
+
+                            Sobre o trabalho
+                        </div>
+
+                        <h2
+                            class="max-w-[900px] text-[45px] font-medium leading-[.92] tracking-[-.06em] sm:text-[62px] lg:text-[78px]"
+                        >
+                            Não construo apenas<br />
+
+                            <span class="text-black/25 dark:text-white/25"> coisas bonitas. </span>
+                        </h2>
+
+                        <p class="mt-8 max-w-[650px] text-[14px] leading-[1.75] text-black/60 dark:text-white/60">
+                            Sou Vinicius Araujo, criativo freelancer. Trabalho na interseção entre
+                            <strong class="font-semibold text-black dark:text-white">
+                                marca, produto e software
+                            </strong>
+                            para transformar problemas reais em soluções claras, funcionais e prontas para gerar valor.
+                        </p>
+
+                        <p class="mt-5 max-w-[650px] text-[14px] leading-[1.75] text-black/45 dark:text-white/45">
+                            Meu trabalho começa entendendo o problema, o público, o objetivo e a solução mais simples
+                            que pode ser colocada em prática e testada.
+                        </p>
+                    </div>
+
+                    <div class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft dark:bg-white/10 sm:p-9">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-white/40">
+                                Como penso
+                            </span>
+
+                            <i data-lucide="crosshair" class="h-4 w-4 text-white/40"></i>
+                        </div>
+
+                        <div class="mt-12 space-y-5">
+                            <div class="flex items-start gap-4">
+                                <span class="mt-1 text-[9px] text-[#ff3008]">01</span>
+
+                                <div>
+                                    <h3 class="text-lg font-medium">Problema antes da solução</h3>
+
+                                    <p class="mt-1 text-[10px] leading-[1.6] text-white/40">
+                                        Entender o que precisa ser resolvido antes de decidir o que construir.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="h-px bg-white/10"></div>
+
+                            <div class="flex items-start gap-4">
+                                <span class="mt-1 text-[9px] text-[#ff3008]">02</span>
+
+                                <div>
+                                    <h3 class="text-lg font-medium">Validar antes de construir demais</h3>
+
+                                    <p class="mt-1 text-[10px] leading-[1.6] text-white/40">
+                                        Testar a menor solução capaz de gerar evidência real.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="h-px bg-white/10"></div>
+
+                            <div class="flex items-start gap-4">
+                                <span class="mt-1 text-[9px] text-[#ff3008]">03</span>
+
+                                <div>
+                                    <h3 class="text-lg font-medium">Resultado antes de vaidade</h3>
+
+                                    <p class="mt-1 text-[10px] leading-[1.6] text-white/40">
+                                        Clientes, receita, aprendizado e evolução importam mais que aparência de
+                                        sucesso.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </section>
+
+            <!-- SERVICES -->
+
+            <section id="services" class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+                <div class="mb-12 max-w-[900px]">
+                        <span class="text-xs font-semibold uppercase tracking-[.2em] text-[#FF2B16]">
+                                    Meus Serviços
+                                </span>
+
+                    <h2 class="text-[48px] font-medium leading-[.9] tracking-[-.065em] sm:text-[70px] lg:text-[88px]">
+                        Você traz um trabalho.<br />
+
+                        <span class="text-black/25 dark:text-white/25"> Eu construo a solução. </span>
+                    </h2>
+
+                 
+                </div>
+
+                <div class="lg:p-10 ">
+                    <!-- SERVICES -->
+                    <section id="services" class="py-20 sm:py-28 lg:py-36">
+                        
+                        <div class="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+                            <!-- 01 -->
+                            <article class="group">
+                                <div class="mb-5 flex items-center justify-between border-b border-black/10 pb-5">
+                                    <span
+                                        class="grid h-10 w-10 place-items-center rounded-full bg-[#FF2B16] text-white"
+                                    >
+                                        <i data-lucide="refresh-cw" class="h-4 w-4"></i>
+                                    </span>
+
+                                    <span class="text-xs text-black/30"> 01 </span>
+                                </div>
+
+                                <h3 class="text-xl font-bold tracking-tight">Nova Identidade</h3>
+
+                                <p class="mt-3 text-sm leading-6 text-black/45">
+                                    Uma atualização estratégica para marcas que cresceram e precisam ser percebidas em
+                                    outro nível. Direção visual, refinamento e aplicação essencial da nova identidade.
+                                    <!-- <strong class="text-black/70">R$ 1.800 · 7 dias.</strong> -->
+                                </p>
+                            </article>
+
+                            <!-- 02 -->
+                            <article class="group">
+                                <div class="mb-5 flex items-center justify-between border-b border-black/10 pb-5">
+                                    <span
+                                        class="grid h-10 w-10 place-items-center rounded-full bg-[#050505] text-white"
+                                    >
+                                        <i data-lucide="layers-3" class="h-4 w-4"></i>
+                                    </span>
+
+                                    <span class="text-xs text-black/30"> 02 </span>
+                                </div>
+
+                                <h3 class="text-xl font-bold tracking-tight">Marca</h3>
+
+                                <p class="mt-3 text-sm leading-6 text-black/45">
+                                    Construção de uma identidade visual completa, pensada para posicionar sua marca com
+                                    clareza e consistência. Logo, tipografia, cores e direção visual.
+                                    <!-- <strong class="text-black/70">R$ 2.500 · 10 dias.</strong> -->
+                                </p>
+                            </article>
+
+                            <!-- 03 -->
+                            <article class="group">
+                                <div class="mb-5 flex items-center justify-between border-b border-black/10 pb-5">
+                                    <span
+                                        class="grid h-10 w-10 place-items-center rounded-full bg-[#050505] text-white"
+                                    >
+                                        <i data-lucide="monitor" class="h-4 w-4"></i>
+                                    </span>
+
+                                    <span class="text-xs text-black/30"> 03 </span>
+                                </div>
+
+                                <h3 class="text-xl font-bold tracking-tight">Site</h3>
+
+                                <p class="mt-3 text-sm leading-6 text-black/45">
+                                    Um site profissional que transforma sua presença digital em uma experiência que
+                                    transmite confiança e valor. Estrutura, design responsivo, desenvolvimento e
+                                    publicação.
+                                    <!-- <strong class="text-black/70">R$ 2.500 · 7 dias.</strong> -->  
+                                </p>
+                            </article>
+
+                            <!-- 04 -->
+                            <article class="group">
+                                <div class="mb-5 flex items-center justify-between border-b border-black/10 pb-5">
+                                    <span
+                                        class="grid h-10 w-10 place-items-center rounded-full bg-[#050505] text-white"
+                                    >
+                                        <i data-lucide="mouse-pointer-click" class="h-4 w-4"></i>
+                                    </span>
+
+                                    <span class="text-xs text-black/30"> 04 </span>
+                                </div>
+
+                                <h3 class="text-xl font-bold tracking-tight">Landing Page</h3>
+
+                                <p class="mt-3 text-sm leading-6 text-black/45">
+                                    Uma página criada com foco em uma única ação: transformar visitantes em
+                                    oportunidades. Estratégia de conteúdo, design, desenvolvimento e integração com
+                                    WhatsApp.
+                                    <!-- <strong class="text-black/70">R$ 1.200 · 3–5 dias.</strong> -->
+                                </p>
+                            </article>
+
+                       
+                        </div>
+                    </section>
+                </div>
+
+                <div class="grid gap-4 lg:grid-cols-3">
+                    <article
+                        class="group rounded-[30px] bg-[#171717] p-7 text-white shadow-dark transition duration-500 hover:-translate-y-1 sm:p-9"
+                    >
+                        <div class="flex items-center justify-between">
+                            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-white/40">
+                                01 / Brand
+                            </span>
+
+                            <i data-lucide="layers" class="h-4 w-4 text-[#ff3008]"></i>
+                        </div>
+
+                        <h3 class="mt-20 text-[36px] font-medium leading-[.95] tracking-[-.04em]">
+                            Uma marca pronta para ser levada a sério.
+                        </h3>
+
+                        <p class="mt-6 text-[11px] leading-[1.7] text-white/45">
+                            Estratégia, identidade visual e direção de marca para negócios que precisam sair do
+                            improviso e construir uma presença profissional.
+                        </p>
+
+                        <ul class="mt-8 space-y-3 text-[10px] text-white/65">
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Estratégia de marca</li>
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Identidade visual</li>
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Sistema visual</li>
+                        </ul>
+
+                        <a href="#contact" class="mt-10 inline-flex items-center gap-3 text-[10px] font-semibold">
+                            Quero construir minha marca
+
+                            <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-black">
+                                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+                            </span>
+                        </a>
+                    </article>
+
+                    <article
+                        class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 dark:border-white/10 dark:bg-white/5 sm:p-9"
+                    >
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35"
+                            >
+                                02 / Digital
+                            </span>
+
+                            <i data-lucide="monitor-smartphone" class="h-4 w-4 text-[#ff3008]"></i>
+                        </div>
+
+                        <h3 class="mt-20 text-[36px] font-medium leading-[.95] tracking-[-.04em]">
+                            Um site que apresenta seu negócio e ajuda a vender.
+                        </h3>
+
+                        <p class="mt-6 text-[11px] leading-[1.7] text-black/45 dark:text-white/45">
+                            Landing pages e sites com estratégia, UX, copy e design para transformar sua presença
+                            digital em uma ferramenta comercial.
+                        </p>
+
+                        <ul class="mt-8 space-y-3 text-[10px] text-black/60 dark:text-white/60">
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Landing pages</li>
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Sites institucionais</li>
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Páginas de campanha</li>
+                        </ul>
+
+                        <a href="#contact" class="mt-10 inline-flex items-center gap-3 text-[10px] font-semibold">
+                            Quero um site
+
+                            <span
+                                class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black"
+                            >
+                                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+                            </span>
+                        </a>
+                    </article>
+
+                    <article
+                        class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 dark:border-white/10 dark:bg-white/5 sm:p-9"
+                    >
+                        <div class="flex items-center justify-between">
+                            <span
+                                class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35"
+                            >
+                                03 / Software
+                            </span>
+
+                            <i data-lucide="code-2" class="h-4 w-4 text-[#ff3008]"></i>
+                        </div>
+
+                        <h3 class="mt-20 text-[36px] font-medium leading-[.95] tracking-[-.04em]">
+                            Um processo melhor pode virar software.
+                        </h3>
+
+                        <p class="mt-6 text-[11px] leading-[1.7] text-black/45 dark:text-white/45">
+                            MVPs, automações e sistemas sob medida para problemas que precisam de uma solução digital
+                            mais eficiente.
+                        </p>
+
+                        <ul class="mt-8 space-y-3 text-[10px] text-black/60 dark:text-white/60">
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> MVPs</li>
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Automações</li>
+                            <li class="flex gap-2"><span class="text-[#ff3008]">+</span> Sistemas sob medida</li>
+                        </ul>
+
+                        <a href="#contact" class="mt-10 inline-flex items-center gap-3 text-[10px] font-semibold">
+                            Quero discutir uma solução
+
+                            <span
+                                class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black"
+                            >
+                                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+                            </span>
+                        </a>
+                    </article>
+                </div>
+
+                <div
+                    class="mt-10 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 sm:flex-row sm:items-center dark:border-white/10"
+                >
+                    <p class="max-w-[650px] text-[11px] leading-[1.6] text-black/40 dark:text-white/40">
+                        Se você ainda não sabe exatamente o que precisa, tudo bem. Podemos começar pelo problema e
+                        encontrar juntos a solução mais simples.
+                    </p>
+
+                    <a href="#contact" class="inline-flex shrink-0 items-center gap-2 text-[10px] font-semibold">
+                        Conversar sobre meu projeto
+                        <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- PROCESS -->
+
+            <section id="process" class="bg-[#171717] text-white dark:bg-black">
+                <div class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+                    <div class="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
+                        <div>
+                            <p class="text-[9px] uppercase tracking-[.2em] text-white/35">Processo</p>
+
+                            <h2 class="mt-5 text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]">
+                                Primeiro<br />
+                                <span class="text-white/25"> validamos. </span>
+                            </h2>
+
+                            <p class="mt-7 max-w-[390px] text-[12px] leading-[1.7] text-white/45">
+                                Não começo construindo meses de trabalho. Começo entendendo o problema e buscando a
+                                menor solução capaz de gerar resultado.
+                            </p>
+                        </div>
+
+                        <div>
+                            <div class="border-t border-white/10 py-7">
+                                <div class="flex gap-6">
+                                    <span class="text-[9px] text-[#ff3008]">01</span>
+
+                                    <div>
+                                        <h3 class="text-xl font-medium">Entender</h3>
+
+                                        <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                                            Problema, público, contexto, objetivo e oportunidade.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-white/10 py-7">
+                                <div class="flex gap-6">
+                                    <span class="text-[9px] text-[#ff3008]">02</span>
+
+                                    <div>
+                                        <h3 class="text-xl font-medium">Definir</h3>
+
+                                        <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                                            Encontrar a oferta e a solução mínima que fazem sentido testar.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-white/10 py-7">
+                                <div class="flex gap-6">
+                                    <span class="text-[9px] text-[#ff3008]">03</span>
+
+                                    <div>
+                                        <h3 class="text-xl font-medium">Construir</h3>
+
+                                        <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                                            Marca, landing page, site, MVP, automação ou software.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-white/10 py-7">
+                                <div class="flex gap-6">
+                                    <span class="text-[9px] text-[#ff3008]">04</span>
+
+                                    <div>
+                                        <h3 class="text-xl font-medium">Vender e aprender</h3>
+
+                                        <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                                            Colocar no mundo, ouvir o mercado, medir a resposta e decidir o próximo
+                                            passo.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-y border-white/10 py-7">
+                                <div class="flex gap-6">
+                                    <span class="text-[9px] text-[#ff3008]">05</span>
+
+                                    <div>
+                                        <h3 class="text-xl font-medium">Evoluir</h3>
+
+                                        <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                                            O que se repete pode virar processo, produto e, quando fizer sentido,
+                                            software.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+          
+
+            <!-- CONTACT -->
+
+            <section id="contact" class="bg-[red] text-white">
+                <div class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+                    <div class="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
+                        <div>
+                            <p class="text-[9px] font-semibold uppercase tracking-[.2em] text-white/55">
+                                Próximo projeto
+                            </p>
+
+                            <h2
+                                class="mt-5 max-w-[900px] text-[52px] font-medium leading-[.88] tracking-[-.07em] sm:text-[76px] lg:text-[100px]"
+                            >
+                                Tem um problema?
+                                <br />
+                                Vamos construir.
+                            </h2>
+
+                        
+                        </div>
+
+                        <a
+                            href=" "
+                            class="start-conversation group inline-flex w-fit items-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-[11px] font-semibold text-black"
+                        >
+                            Falar sobre meu Trabalho
+
+                            <span
+                                class="grid h-10 w-10 place-items-center rounded-full bg-[#171717] text-white transition group-hover:rotate-45"
+                            >
+                                <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="mt-16 border-t border-white/20 pt-7">
+                        <div class="grid gap-8 sm:grid-cols-3">
+                            <div>
+                                <p class="text-[8px] uppercase tracking-[.18em] text-white/45">Marca</p>
+                                <p class="mt-2 text-[12px] font-medium">Para quem precisa construir percepção.</p>
+                            </div>
+
+                            <div>
+                                <p class="text-[8px] uppercase tracking-[.18em] text-white/45">Digital</p>
+                                <p class="mt-2 text-[12px] font-medium">
+                                    Para quem precisa transformar presença em oportunidade.
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-[8px] uppercase tracking-[.18em] text-white/45">Software</p>
+                                <p class="mt-2 text-[12px] font-medium">
+                                    Para quem precisa transformar processos em solução.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+
+<button
+  onclick="abrirChat()"
+  aria-label="Conversar com Vinicius"
+  class="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition hover:scale-105 hover:bg-[#20bd5a]">
+
+  <svg viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8">
+    <path d="M20.52 3.48A11.82 11.82 0 0 0 12.04 0C5.47 0 .12 5.35.12 11.92c0 2.1.55 4.15 1.6 5.96L0 24l6.28-1.65a11.9 11.9 0 0 0 5.76 1.47h.01c6.57 0 11.92-5.35 11.92-11.92 0-3.18-1.24-6.17-3.45-8.42ZM12.05 21.8a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.73.98.99-3.64-.24-.37a9.85 9.85 0 1 1 8.39 4.62Zm5.41-7.38c-.3-.15-1.77-.87-2.05-.97-.28-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.74-1.65-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+  </svg>
+</button>
+
+
+
+        <footer class="bg-[#171717] text-white dark:bg-black">
+            <div class="mx-auto max-w-[1480px] px-5 py-8 sm:px-8 lg:px-10">
+                <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+                    <!-- Marca -->
+                    <div>
+                        <p class="text-[11px] font-bold">VINICIUS ARAUJO</p>
+
+                      
+                    </div>
+
+                    <!-- Contato + Redes -->
+                    <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
+                        <!-- Contatos -->
+                        <div class="flex flex-col gap-2">
+                            <!-- WhatsApp -->
+                            <a
+                                href="https://wa.me/5512981053361"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="group flex items-center gap-2 text-[9px] text-white/40 transition hover:text-white"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="transition-transform duration-300 group-hover:scale-110"
+                                >
+                                    <path
+                                        d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.3 8.3 0 0 1-4.1-1.1L3 20l1.1-5.2A8.3 8.3 0 0 1 3 10.7 8.5 8.5 0 1 1 21 11.5Z"
+                                    />
+                                    <path
+                                        d="M8 8.5c.2-.4.5-.4.8-.4h.6c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c.7 1.2 1.6 2.1 2.8 2.7l.7-.6c.2-.2.4-.2.7-.1l1.7.7c.3.1.4.3.4.5v.6c0 .3-.1.6-.4.8-.4.3-1 .5-1.6.4-1.6-.3-3.2-1.1-4.5-2.4-1.3-1.3-2.1-2.8-2.4-4.5-.1-.6.1-1.2.4-1.6Z"
+                                    />
+                                </svg>
+
+                                <span> chat online </span>
+                            </a>
+
+                            <!-- E-mail -->
+                            <a
+                                href="mailto:viniciusenginnerlabs@gmail.com"
+                                class="group flex items-center gap-2 text-[9px] text-white/40 transition hover:text-white"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="14"
+                                    height="14"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="transition-transform duration-300 group-hover:scale-110"
+                                >
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <path d="m3 7 9 6 9-6" />
+                                </svg>
+
+                                <span> viniciusenginnerlabs@gmail.com </span>
+                            </a>
+                        </div>
+
+                        <!-- Redes sociais -->
+                        <div class="flex items-center gap-2">
+                            <!-- Instagram -->
+                            <a
+                                href="https://www.instagram.com/viniciusaraujohub/"
+                                aria-label="Instagram"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition-all duration-300 hover:bg-white/10 hover:text-white"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                                    <circle cx="12" cy="12" r="4" />
+                                    <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none" />
+                                </svg>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a
+                                href="https://www.linkedin.com/in/vinicius-enginner/"
+                                aria-label="LinkedIn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition-all duration-300 hover:bg-white/10 hover:text-white"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M6 9v9" />
+                                    <path d="M6 6.5v.1" />
+                                    <path d="M10 18v-5a3 3 0 0 1 6 0v5" />
+                                    <path d="M10 9v9" />
+                                    <path d="M16 18v-5" />
+                                </svg>
+                            </a>
+
+                            <!-- GitHub -->
+                            <a
+                                href="https://github.com/ViniciusFlip"
+                                aria-label="GitHub"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition-all duration-300 hover:bg-white/10 hover:text-white"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path d="M9 19c-4 1.3-4-2-5.5-2" />
+                                    <path
+                                        d="M14.5 22v-3.9c0-1.1.4-1.8 1-2.2 3.3-.4 6.8-1.6 6.8-7.2 0-1.6-.6-2.9-1.6-3.9.2-.4.7-2-.2-3.8 0 0-1.3-.4-4.1 1.5a14 14 0 0 0-7.5 0C6.1.6 4.8 1 4.8 1c-.9 1.8-.4 3.4-.2 3.8-1 1-1.6 2.3-1.6 3.9 0 5.6 3.5 6.8 6.8 7.2.6.5 1 1.3 1 2.5V22"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="mt-7 border-t border-white/5 pt-5">
+                    <p class="text-[8px] text-white/20">© 2026 VINICIUS ARAUJO. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+
+        <div
+            id="conversationModal"
+            class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+        >
+            <div
+                id="conversationModalContent"
+                class="relative w-full max-w-sm overflow-hidden rounded-[24px] border border-black/10 bg-[#f5f5f3] p-6 text-[#171717] shadow-2xl dark:border-white/10 dark:bg-[#171717] dark:text-white sm:p-7"
+            >
+                <!-- Fechar -->
+                <button
+                    id="closeConversationModal"
+                    type="button"
+                    aria-label="Fechar"
+                    class="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full text-black/35 transition hover:bg-black/5 hover:text-black dark:text-white/35 dark:hover:bg-white/5 dark:hover:text-white"
+                >
+                    <i data-lucide="x" class="h-4 w-4"></i>
+                </button>
+
+                <!-- Conteúdo -->
+                <div class="pt-5">
+                    <h2 class="max-w-[280px] text-[27px] font-medium leading-[1] tracking-[-.045em] sm:text-[30px]">
+                        Conversar sobre
+                        <span class="text-[#ff3008]">seu projeto?</span>
+                    </h2>
+
+                    <!-- Ações -->
+                    <div class="mt-7">
+                        <!-- Google -->
+                        <button
+                            id="continueWithGoogle"
+                            type="button"
+                            class="group flex w-full items-center gap-3 rounded-full bg-[#4285F4] px-4 py-3 text-[10px] font-semibold text-white shadow-sm transition hover:bg-[#357AE8] hover:shadow-md"
+                        >
+                            <!-- Google -->
+                            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white">
+                                <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        fill="#4285F4"
+                                        d="M21.35 12.27c0-.68-.06-1.34-.17-1.97H12v3.73h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.7 2.91-4.2 2.91-7.15Z"
+                                    />
+                                    <path
+                                        fill="#34A853"
+                                        d="M12 21.7c2.63 0 4.84-.87 6.45-2.35l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.69-1.72-5.46-4.03H3.3v2.53A9.74 9.74 0 0 0 12 21.7Z"
+                                    />
+                                    <path
+                                        fill="#FBBC05"
+                                        d="M6.54 13.79A5.85 5.85 0 0 1 6.23 12c0-.62.11-1.22.31-1.79V7.68H3.3A9.75 9.75 0 0 0 2.25 12c0 1.57.38 3.06 1.05 4.32l3.24-2.53Z"
+                                    />
+                                    <path
+                                        fill="#EA4335"
+                                        d="M12 6.18c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 3.29 14.63 2.3 12 2.3a9.74 9.74 0 0 0-8.7 5.38l3.24 2.53c.77-2.31 2.92-4.03 5.46-4.03Z"
+                                    />
+                                </svg>
+                            </span>
+
+                            <span class="flex-1 text-left"> Continuar com Google </span>
+
+                            <i
+                                data-lucide="arrow-up-right"
+                                class="h-4 w-4 text-white/60 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            ></i>
+                        </button>
+
+                        <!-- WhatsApp -->
+
+                        <!-- WhatsApp -->
+                        <button
+                            id="skipConversation"
+                            type="button"
+                            class="group mx-auto mt-5 flex items-center gap-2 text-[10px] font-medium text-black/45 transition hover:text-black dark:text-white/45 dark:hover:text-white"
+                        >
+                            <!-- Indicador online -->
+                            <span class="relative flex h-2.5 w-2.5">
+                                <span
+                                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-40"
+                                ></span>
+                                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#25D366]"></span>
+                            </span>
+
+                            <span> Falar diretamente pelo WhatsApp </span>
+
+                            <i
+                                data-lucide="arrow-up-right"
+                                class="h-3 w-3 opacity-40 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            ></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="js/app.js?v=5465"></script>
+        <script>
+            fetch("http://localhost:3000/api/acessos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    pagina: window.location.pathname,
+                    horario: new Date().toISOString(),
+                }),
+            });
+        </script>
+        <script>
+            const conversationModal = document.getElementById("conversationModal");
+            const closeConversationModal = document.getElementById("closeConversationModal");
+            const skipConversation = document.getElementById("skipConversation");
+
+            // Todos os CTAs da landing
+            document.querySelectorAll(".start-conversation").forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    event.preventDefault();
+
+                    conversationModal.classList.remove("hidden");
+                    conversationModal.classList.add("flex");
+                });
+            });
+
+            // Fechar pelo X
+            closeConversationModal.addEventListener("click", () => {
+                conversationModal.classList.add("hidden");
+                conversationModal.classList.remove("flex");
+            });
+
+            // Fechar clicando fora do popup
+            conversationModal.addEventListener("click", (event) => {
+                if (event.target === conversationModal) {
+                    conversationModal.classList.add("hidden");
+                    conversationModal.classList.remove("flex");
+                }
+            });
+
+            // WhatsApp
+            // WhatsApp
+            skipConversation.addEventListener("click", async () => {
+                const telefone = "5512981053361";
+
+                try {
+                    await addDoc(collection(db, "conversations"), {
+                        uid: null,
+                        name: "",
+                        email: "",
+                        role: "client",
+                        authenticated: false,
+                        method: "visitor",
+                        action: "Falar diretamente pelo WhatsApp",
+                        page: window.location.pathname,
+                        whatsappOpened: true,
+                        createdAt: serverTimestamp(),
+                    });
+
+                    console.log("Conversation WhatsApp registrada");
+                } catch (error) {
+                    console.error("Erro ao registrar conversa:", error);
+                }
+
+                const mensagem = "Olá, Vinicius! Quero falar sobre meu projeto.";
+
+                const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+                window.open(url, "_blank");
+            });
+        </script>
+
+        <script>
+            lucide.createIcons();
+
+            /* =========================
+       DARK MODE
+    ========================== */
+
+            const root = document.documentElement;
+
+            const themeButtons = [document.getElementById("themeToggle"), document.getElementById("themeToggleMobile")];
+
+            function updateThemeIcons() {
+                const dark = root.classList.contains("dark");
+
+                themeButtons.forEach((button) => {
+                    if (!button) return;
+
+                    const icon = button.querySelector(".theme-icon");
+
+                    if (!icon) return;
+
+                    icon.setAttribute("data-lucide", dark ? "sun" : "moon");
+
+                    button.setAttribute("aria-label", dark ? "Ativar modo claro" : "Ativar modo escuro");
+                });
+
+                lucide.createIcons();
+            }
+
+            function toggleTheme() {
+                const dark = root.classList.toggle("dark");
+
+                localStorage.setItem("vinicius-theme", dark ? "dark" : "light");
+
+                updateThemeIcons();
+            }
+
+            themeButtons.forEach((button) => {
+                if (button) {
+                    button.addEventListener("click", toggleTheme);
+                }
+            });
+
+            updateThemeIcons();
+
+            /* =========================
+       PROJECT FILTER
+    ========================== */
+
+            const filters = document.querySelectorAll(".project-filter");
+            const groups = document.querySelectorAll(".project-group");
+
+            filters.forEach((filter) => {
+                filter.addEventListener("click", () => {
+                    const selected = filter.dataset.filter;
+
+                    filters.forEach((item) => {
+                        item.classList.remove("active");
+                    });
+
+                    filter.classList.add("active");
+
+                    groups.forEach((group) => {
+                        if (selected === "all" || group.dataset.group === selected) {
+                            group.classList.remove("hidden");
+                        } else {
+                            group.classList.add("hidden");
+                        }
+                    });
+                });
+            });
+        </script>
+        <!-- =========================================================
+     PROJECT PREVIEW MODAL
+========================================================= -->
+
+        <div id="projectPreview" class="fixed inset-0 z-[9999] hidden bg-black/90 backdrop-blur-sm">
+            <!-- FECHAR -->
+            <button
+                type="button"
+                onclick="closeProjectPreview()"
+                aria-label="Fechar projeto"
+                class="fixed right-5 top-5 z-[10000] flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-white hover:text-black"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+            </button>
+
+            <!-- ÁREA DE SCROLL -->
+            <div id="projectPreviewScroll" class="h-screen overflow-y-auto overscroll-contain">
+                <!-- CONTEÚDO -->
+                <div id="projectPreviewContent" class="mx-auto w-full max-w-[1200px]"></div>
+            </div>
+        </div>
+
+        <script>
+            /* =========================================================
+     PROJETOS
+  ========================================================= */
+
+            const projectPreviews = {
+                morren: [
+                    "./assets/images/screen-01.png",
+                    "./assets/images/screen-02.png",
+                    "./assets/images/screen-03.png",
+                ],
+
+                buyed: ["./assets/images/screen1.png", "./assets/images/screen2.png", "./assets/images/screen3.png"],
+
+                traki: ["./assets/images/screen1.png", "./assets/images/screen2.png", "./assets/images/screen3.png"],
+
+                veraspay: ["./assets/images/screen1.png", "./assets/images/screen2.png", "./assets/images/screen3.png"],
+
+                alle: ["./assets/images/screen1.png", "./assets/images/screen2.png", "./assets/images/screen3.png"],
+            };
+
+            /* =========================================================
+     ABRIR
+  ========================================================= */
+
+            function openProjectPreview(project) {
+                const modal = document.getElementById("projectPreview");
+                const content = document.getElementById("projectPreviewContent");
+
+                const images = projectPreviews[project];
+
+                if (!modal || !content || !images) return;
+
+                /* LIMPA */
+                content.innerHTML = "";
+
+                /* CRIA AS 3 IMAGENS */
+                images.forEach((src) => {
+                    const image = document.createElement("img");
+
+                    image.src = src;
+                    image.alt = "Projeto " + project;
+                    image.loading = "lazy";
+
+                    image.className = "block w-full h-auto m-0 p-0";
+
+                    content.appendChild(image);
+                });
+
+                /* MOSTRA */
+                modal.classList.remove("hidden");
+
+                document.body.classList.add("overflow-hidden");
+
+                document.getElementById("projectPreviewScroll").scrollTop = 0;
+            }
+
+            /* =========================================================
+     FECHAR
+  ========================================================= */
+
+            function closeProjectPreview() {
+                const modal = document.getElementById("projectPreview");
+
+                if (!modal) return;
+
+                modal.classList.add("hidden");
+
+                document.body.classList.remove("overflow-hidden");
+            }
+
+            /* =========================================================
+     ESC
+  ========================================================= */
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    closeProjectPreview();
+                }
+            });
+
+            document.getElementById("projectPreview")?.addEventListener("click", function (event) {
+                if (event.target === this) {
+                    closeProjectPreview();
+                }
+            });
+        </script>
+        <script>
+            document.querySelectorAll(".project-card").forEach((card) => {
+                let timer;
+
+                const controls = card.querySelector(".project-controls");
+
+                if (!controls) return;
+
+                card.addEventListener("pointerdown", (e) => {
+                    // Se tocou diretamente em algum botão já visível
+                    if (e.target.closest("button")) return;
+
+                    // Apenas mobile
+                    if (window.innerWidth >= 640) return;
+
+                    clearTimeout(timer);
+
+                    controls.classList.remove("hidden");
+                    controls.classList.add("flex");
+
+                    timer = setTimeout(() => {
+                        controls.classList.remove("flex");
+                        controls.classList.add("hidden");
+                    }, 3500);
+                });
+            });
+        </script>
+
+
+
+
+<script type="module">
+import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getAuth,
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  addDoc,
+  getDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// ======================================
+// FIREBASE
+// ======================================
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD-xzRjMRVUpey19g745DvPjjpCApqSHVE",
+  authDomain: "myops-d7525.firebaseapp.com",
+  projectId: "myops-d7525",
+  storageBucket: "myops-d7525.firebasestorage.app",
+  messagingSenderId: "247824192162",
+  appId: "1:247824192162:web:77c91ab1e3df855dc7fdfb"
+};
+
+const app = getApps().length
+  ? getApp()
+  : initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// ======================================
+// PERSONALIZAÇÃO
+// ======================================
+
+const ATENDENTE = "Vinicius Araujo";
+const FOTO = "foto.png";
+const STORAGE_KEY = "vinicius_chat_conversa";
+
+// ======================================
+// ABRIR CHAT
+// ======================================
+
+window.abrirChat = function() {
+
+  if (document.getElementById("chat-app")) return;
+
+  const previousOverflow = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
+
+  let enviando = false;
+  let conversaId = null;
+  let unsubscribeMensagens = null;
+  let fechado = false;
+
+  const chat = document.createElement("div");
+  chat.id = "chat-app";
+
+  chat.innerHTML = `
+    <div class="fixed inset-0 z-[99999] flex justify-center bg-black/40 md:items-end md:justify-end md:p-5">
+
+      <section class="flex h-[100dvh] w-full flex-col overflow-hidden bg-[#efeae2] md:h-[min(680px,85vh)] md:w-[400px] md:rounded-2xl md:shadow-2xl">
+
+        <header class="flex shrink-0 items-center gap-3 bg-[#075e54] px-4 py-3 text-white">
+
+          <button id="chat-back" class="flex h-9 w-7 items-center justify-center md:hidden">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
+              <path d="m15 18-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <div class="relative shrink-0">
+            <img src="${FOTO}" alt="${ATENDENTE}"
+              class="h-11 w-11 rounded-full border border-white/20 object-cover">
+
+            <span id="chat-online-indicator"
+              class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#075e54] bg-green-400">
+            </span>
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <h2 class="text-sm font-semibold">${ATENDENTE}</h2>
+            <p id="chat-status-text" class="text-xs text-green-100">Conectando...</p>
+          </div>
+
+          <button id="chat-close"
+            class="hidden h-9 w-9 items-center justify-center rounded-full hover:bg-white/10 md:flex">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+          </button>
+
+        </header>
+
+        <main id="chat-messages"
+          class="flex-1 space-y-3 overflow-y-auto p-4"
+          style="background-color:#efeae2;background-image:radial-gradient(#d8d1c7 .6px,transparent .6px);background-size:14px 14px;">
+        </main>
+
+        <div id="chat-error"
+          class="hidden bg-red-50 px-4 py-2 text-xs text-red-600">
+        </div>
+
+        <footer class="shrink-0 bg-[#f0f0f0] px-3 py-3"
+          style="padding-bottom:max(12px,env(safe-area-inset-bottom))">
+
+          <form id="chat-form" class="flex items-end gap-2">
+
+            <div class="flex min-h-[46px] flex-1 items-center rounded-3xl bg-white px-4">
+              <textarea id="chat-input" rows="1" maxlength="2000"
+                placeholder="Digite uma mensagem"
+                class="max-h-28 min-h-[24px] w-full resize-none bg-transparent py-3 text-sm outline-none placeholder:text-gray-500"></textarea>
+            </div>
+
+            <button type="submit" id="chat-send"
+              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#075e54] text-white hover:bg-[#064c44] disabled:opacity-50">
+
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+
+            </button>
+          </form>
+        </footer>
+
+      </section>
+    </div>
+  `;
+
+  document.body.appendChild(chat);
+
+  const messages = chat.querySelector("#chat-messages");
+  const input = chat.querySelector("#chat-input");
+  const form = chat.querySelector("#chat-form");
+  const error = chat.querySelector("#chat-error");
+  const sendButton = chat.querySelector("#chat-send");
+  const statusText = chat.querySelector("#chat-status-text");
+
+  // ======================================
+  // STATUS VISUAL
+  // ======================================
+
+  window.atualizarStatusChat = function(status) {
+
+    const indicator = chat.querySelector("#chat-online-indicator");
+
+    const estados = {
+      online: {
+        texto: "Online",
+        cor: "bg-green-400",
+        textoCor: "text-green-100"
+      },
+      ausente: {
+        texto: "Ausente",
+        cor: "bg-yellow-400",
+        textoCor: "text-yellow-100"
+      },
+      offline: {
+        texto: "Offline",
+        cor: "bg-gray-400",
+        textoCor: "text-gray-200"
+      }
+    };
+
+    const atual = estados[status] || estados.offline;
+
+    indicator.classList.remove(
+      "bg-green-400",
+      "bg-yellow-400",
+      "bg-gray-400"
+    );
+
+    indicator.classList.add(atual.cor);
+
+    statusText.textContent = atual.texto;
+    statusText.className = `text-xs ${atual.textoCor}`;
+  };
+
+  // ======================================
+  // FECHAR CHAT
+  // ======================================
+
+  function fecharChat() {
+
+    fechado = true;
+
+    if (unsubscribeMensagens) {
+      unsubscribeMensagens();
+      unsubscribeMensagens = null;
+    }
+
+    document.body.style.overflow = previousOverflow;
+    document.removeEventListener("keydown", escapeHandler);
+
+    chat.remove();
+  }
+
+  function escapeHandler(e) {
+    if (e.key === "Escape") fecharChat();
+  }
+
+  document.addEventListener("keydown", escapeHandler);
+
+  chat.querySelector("#chat-back").onclick = fecharChat;
+  chat.querySelector("#chat-close").onclick = fecharChat;
+
+  // ======================================
+  // AUTENTICAÇÃO E CONVERSA
+  // ======================================
+
+  async function obterConversa() {
+
+    if (!auth.currentUser) {
+      await signInAnonymously(auth);
+    }
+
+    const uid = auth.currentUser.uid;
+
+    if (conversaId) return conversaId;
+
+    let salvo = localStorage.getItem(STORAGE_KEY);
+
+    // Verifica se a conversa salva pertence ao visitante atual.
+    if (salvo) {
+
+      try {
+
+        const existente = await getDoc(
+          doc(db, "conversas", salvo)
+        );
+
+        if (
+          existente.exists() &&
+          existente.data().visitanteUid === uid
+        ) {
+          conversaId = salvo;
+          return conversaId;
+        }
+
+      } catch (e) {
+        console.warn("Não foi possível recuperar a conversa salva.", e);
+      }
+
+      localStorage.removeItem(STORAGE_KEY);
+      salvo = null;
+    }
+
+    // Cria uma conversa nova.
+    const ref = doc(collection(db, "conversas"));
+
+    await setDoc(ref, {
+      atendente: ATENDENTE,
+      visitanteUid: uid,
+      status: "aberta",
+      criadoEm: serverTimestamp()
+    });
+
+    conversaId = ref.id;
+
+    localStorage.setItem(STORAGE_KEY, conversaId);
+
+    return conversaId;
+  }
+
+  // ======================================
+  // FORMATA HORA
+  // ======================================
+
+  function formatarHora(timestamp) {
+
+    if (!timestamp || !timestamp.toDate) return "";
+
+    return timestamp.toDate().toLocaleTimeString("pt-BR", {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  }
+
+  // ======================================
+  // DESENHAR MENSAGEM
+  // ======================================
+
+  function desenharMensagem(mensagem) {
+
+    const visitante = mensagem.autor === "visitante";
+
+    const linha = document.createElement("div");
+
+    linha.className = visitante
+      ? "flex justify-end"
+      : "flex justify-start";
+
+    const bolha = document.createElement("div");
+
+    bolha.className = visitante
+      ? "max-w-[85%] rounded-lg rounded-tr-none bg-[#d9fdd3] px-3 py-2 shadow-sm"
+      : "max-w-[85%] rounded-lg rounded-tl-none bg-white px-3 py-2 shadow-sm";
+
+    const nome = document.createElement("p");
+
+    nome.className = "mb-1 text-[10px] font-semibold text-[#075e54]";
+
+    nome.textContent = visitante
+      ? "Você"
+      : (mensagem.nome || ATENDENTE);
+
+    const conteudo = document.createElement("p");
+
+    conteudo.className = "whitespace-pre-wrap break-words text-sm text-gray-800";
+    conteudo.textContent = mensagem.texto || "";
+
+    const hora = document.createElement("span");
+
+    hora.className = "mt-1 block text-right text-[10px] text-gray-500";
+    hora.textContent = formatarHora(mensagem.criadoEm);
+
+    bolha.append(nome, conteudo, hora);
+    linha.appendChild(bolha);
+
+    return linha;
+  }
+
+  // ======================================
+  // RECEBER MENSAGENS EM TEMPO REAL
+  // ======================================
+
+  function escutarMensagens(id) {
+
+    if (unsubscribeMensagens) {
+      unsubscribeMensagens();
+    }
+
+    const mensagensRef = collection(
+      db,
+      "conversas",
+      id,
+      "mensagens"
+    );
+
+    const consulta = query(
+      mensagensRef,
+      orderBy("criadoEm", "asc")
+    );
+
+    unsubscribeMensagens = onSnapshot(
+      consulta,
+      (snapshot) => {
+
+        if (fechado) return;
+
+        messages.innerHTML = "";
+
+        snapshot.forEach((documento) => {
+
+          const mensagem = documento.data();
+
+          if (!mensagem.texto) return;
+
+          messages.appendChild(
+            desenharMensagem(mensagem)
+          );
+
+        });
+
+        messages.scrollTop = messages.scrollHeight;
+      },
+      (err) => {
+
+        console.error("Erro ao receber mensagens:", err);
+
+        error.textContent = "Não foi possível carregar as mensagens.";
+        error.classList.remove("hidden");
+
+      }
+    );
+  }
+
+  // ======================================
+  // INICIALIZAR CHAT
+  // ======================================
+
+  async function iniciarChat() {
+
+    try {
+
+      statusText.textContent = "Conectando...";
+
+      const id = await obterConversa();
+
+      if (fechado) return;
+
+      escutarMensagens(id);
+
+      statusText.textContent = "Online";
+
+    } catch (err) {
+
+      console.error("Erro ao iniciar chat:", err);
+
+      error.textContent = "Não foi possível conectar ao atendimento. Tente novamente.";
+      error.classList.remove("hidden");
+
+      statusText.textContent = "Conexão indisponível";
+
+    }
+  }
+
+  // ======================================
+  // ENVIAR MENSAGEM
+  // ======================================
+
+  form.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const texto = input.value.trim();
+
+    if (!texto || enviando) return;
+
+    enviando = true;
+    sendButton.disabled = true;
+
+    error.classList.add("hidden");
+
+    try {
+
+      const id = await obterConversa();
+
+      await addDoc(
+        collection(db, "conversas", id, "mensagens"),
+        {
+          texto,
+          autor: "visitante",
+          visitanteUid: auth.currentUser.uid,
+          criadoEm: serverTimestamp()
+        }
+      );
+
+      // O onSnapshot desenha a mensagem automaticamente.
+      input.value = "";
+      input.style.height = "auto";
+
+    } catch (err) {
+
+      console.error("Erro ao enviar mensagem:", err);
+
+      error.textContent = "Não foi possível enviar sua mensagem. Tente novamente.";
+      error.classList.remove("hidden");
+
+    } finally {
+
+      enviando = false;
+      sendButton.disabled = false;
+      input.focus();
+
+    }
+
+  });
+
+  // ======================================
+  // CAMPO ADAPTÁVEL
+  // ======================================
+
+  input.addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = Math.min(this.scrollHeight, 112) + "px";
+  });
+
+  input.addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+
+  });
+
+  // Inicia automaticamente ao abrir.
+  iniciarChat();
+
+};
+</script>
+<!-- PREVIEW DOS TEMAS -->
+<script>
+(() => {
+    const modal = document.getElementById('themePreview');
+    const frame = document.getElementById('themeFrame');
+    const viewport = document.getElementById('previewFrame');
+
+    if (!modal || !frame || !viewport) return;
+
+    const baseURL = 'https://viniciusflip.github.io/site/';
+
+    const devices = {
+        desktop: '100%',
+        tablet: '768px',
+        mobile: '390px'
+    };
+
+    // ABRIR PREVIEW PELO DATA-OBJ
+    document.addEventListener('click', e => {
+        const btn = e.target.closest('[data-obj]');
+        if (!btn) return;
+
+        const theme = btn.dataset.obj;
+
+        frame.src = `${baseURL}e-machine/${encodeURIComponent(theme)}/index.html`;
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+
+        setDevice('desktop');
+    });
+
+    // ALTERNAR DISPOSITIVOS
+    function setDevice(device) {
+        viewport.style.width = devices[device];
+
+        document.querySelectorAll('[data-device]').forEach(btn => {
+            btn.classList.toggle('bg-neutral-900', btn.dataset.device === device);
+            btn.classList.toggle('text-white', btn.dataset.device === device);
+        });
+    }
+
+    document.querySelectorAll('[data-device]').forEach(btn => {
+        btn.addEventListener('click', () => setDevice(btn.dataset.device));
+    });
+
+    // FECHAR
+    function closePreview() {
+        modal.classList.add('hidden');
+        frame.src = 'about:blank';
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('closePreview')?.addEventListener('click', closePreview);
+
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closePreview();
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closePreview();
+    });
+})();
+</script>
+
+
+<!-- SWIPER INTELIGENTE -->
+<!-- SWIPER INTELIGENTE -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const swiperElement = document.querySelector("#intelligentSwiper");
+    if (!swiperElement) return;
+
+    // TEMAS
+    const intelligentArray = [
+        "e-vogue",
+        "e-finger",
+        "e-garden",
+        "e-juice",
+        "e-fit",
+        "e-beauty",
+        "e-fashion",
+        "e-shopify",
+        "landing-shopify"
+    ];
+
+    const baseURL = 'https://viniciusflip.github.io/site/';
+    const container = swiperElement.querySelector("#intelligentProjects");
+
+    // GERAR CARDS
+    container.innerHTML = intelligentArray.map(theme => `
+        <div class="swiper-slide">
+            <article
+                class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                data-category="brand"
+                data-project="${theme}"
+                style="background-image: url('${baseURL}e-machine/${theme}/screens.png')"
+            >
+
+                <!-- OVERLAY SOMENTE DESKTOP -->
+                <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                <!-- FOOTER MINIMALISTA -->
+                <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+
+                    <div class="flex h-10 w-full items-center justify-end sm:h-9 sm:w-auto sm:px-2">
+
+                        <button
+                            type="button"
+                            data-obj="${theme}"
+                            aria-label="Ver tema"
+                            class="flex h-10 w-full items-center justify-end rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                        >
+                            Ver
+                        </button>
+
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    `).join("");
+
+    // INICIALIZAR SWIPER
+    if (swiperElement.swiper) {
+        swiperElement.swiper.destroy(true, true);
+    }
+
+    new Swiper(swiperElement, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+
+        pagination: {
+            el: swiperElement.querySelector(".intelligent-pagination"),
+            clickable: true
+        },
+
+        navigation: {
+            nextEl: swiperElement.querySelector(".intelligent-next"),
+            prevEl: swiperElement.querySelector(".intelligent-prev")
+        },
+
+        breakpoints: {
+            640: {
+                slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 3
+            }
+        }
+    });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const swiperElement = document.querySelector("#webSwiper");
+    if (!swiperElement) return;
+
+    // TEMAS
+    const intelligentArray = [
+        "fishercreator",
+        "e-finger",
+        "e-garden",
+        "e-juice",
+        "e-fit",
+        "e-beauty",
+        "e-fashion",
+        "e-shopify",
+        "landing-shopify"
+    ];
+
+    const baseURL = 'https://viniciusflip.github.io/site/';
+    const container = swiperElement.querySelector("#intelligentProjects");
+
+    // GERAR CARDS
+    container.innerHTML = intelligentArray.map(theme => `
+        <div class="swiper-slide">
+            <article
+                class="project-card group relative h-[200px] overflow-hidden rounded-[20px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] lg:h-[290px]"
+                data-category="brand"
+                data-project="${theme}"
+                style="background-image: url('${baseURL}e-machine/${theme}/screens.png')"
+            >
+
+                <!-- OVERLAY SOMENTE DESKTOP -->
+                <div class="pointer-events-none absolute inset-0 z-0 hidden rounded-[20px] bg-gradient-to-t from-black/85 via-black/15 to-transparent sm:block"></div>
+
+                <!-- FOOTER MINIMALISTA -->
+                <div class="project-controls hidden absolute inset-x-0 bottom-0 items-center justify-end border-t border-white/10 bg-black/70 backdrop-blur-md sm:flex">
+
+                    <div class="flex h-10 w-full items-center justify-end sm:h-9 sm:w-auto sm:px-2">
+
+                        <button
+                            type="button"
+                            data-obj="${theme}"
+                            aria-label="Ver tema"
+                            class="flex h-10 w-full items-center justify-end rounded-full text-[10px] font-medium uppercase tracking-[.16em] text-white/70 transition-all duration-200 active:scale-[.98] hover:text-white sm:h-9 sm:w-auto sm:px-2"
+                        >
+                            Ver
+                        </button>
+
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    `).join("");
+
+    // INICIALIZAR SWIPER
+    if (swiperElement.swiper) {
+        swiperElement.swiper.destroy(true, true);
+    }
+
+    new Swiper(swiperElement, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+
+        pagination: {
+            el: swiperElement.querySelector(".intelligent-pagination"),
+            clickable: true
+        },
+
+        navigation: {
+            nextEl: swiperElement.querySelector(".intelligent-next"),
+            prevEl: swiperElement.querySelector(".intelligent-prev")
+        },
+
+        breakpoints: {
+            640: {
+                slidesPerView: 2
+            },
+            1024: {
+                slidesPerView: 3
+            }
+        }
+    });
+
+});
+</script>
+    </body>
+</html>
