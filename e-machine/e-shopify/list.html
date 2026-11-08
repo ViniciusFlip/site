@@ -2,27 +2,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Store — Products</title><script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>body{font-family:Inter,sans-serif;color:#171717}*{box-sizing:border-box}</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juvee — Shop</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+body{font-family:Inter,sans-serif;background:#f5f5ef;color:#111}
+</style>
 </head>
 <body>
-<div class="bg-pink-600 text-white text-center text-xs py-2" data-i="announce"></div>
-<header class="border-b px-4 py-5 flex justify-between items-center"><a href="index.html" class="text-xl font-extrabold">STORE.</a><div class="flex gap-4 items-center"><select id="lang" class="text-xs bg-transparent"><option value="pt">PT</option><option value="en">EN</option></select><a href="index.html" class="text-xs" data-i="home"></a><a href="details.html">Bag</a></div></header>
-<section class="bg-gray-50 px-4 py-12 text-center"><h1 class="text-3xl md:text-5xl font-bold" data-i="title"></h1><p class="text-sm text-gray-500 mt-3" data-i="intro"></p><p class="text-xs text-gray-400 mt-5"><a href="index.html" data-i="home"></a> / <span data-i="shop"></span></p></section>
-<main class="max-w-7xl mx-auto px-4 py-10">
-<div class="flex flex-wrap gap-3 justify-between mb-6"><input id="search" class="border p-3 text-xs flex-1 min-w-40" placeholder="Search products..." oninput="render()"><select id="sort" class="border p-3 text-xs" onchange="render()"><option value="default">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div>
-<div class="flex gap-2 overflow-x-auto pb-5 text-xs"><button onclick="category='all';render()" data-i="all"></button><button onclick="category='women';render()" data-i="women"></button><button onclick="category='men';render()" data-i="men"></button><button onclick="category='shoes';render()" data-i="shoes"></button><button onclick="category='accessories';render()" data-i="accessories"></button></div>
-<div id="products" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
-<p id="empty" class="hidden text-sm text-gray-500 py-10 text-center" data-i="empty"></p>
+<div class="bg-[#fff0a0] text-[9px] text-center py-1 font-bold">FREE SHIPPING ON 2 PACKS OR MORE ✦</div>
+<header class="flex justify-between items-center px-5 py-5"><a href="index.html" class="text-3xl font-black italic text-orange-500">juvee.</a><a href="index.html" class="text-xs">HOME　🛒</a></header>
+<main class="px-5 md:px-10 py-8">
+<div class="flex justify-between items-end mb-8"><div><p class="text-xs">JU VEE COLLECTION</p><h1 class="text-4xl font-extrabold mt-2">ALL FLAVORS</h1></div><span class="text-xs">3 products</span></div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+<a href="details.html" class="text-center"><div class="bg-gradient-to-b from-[#c5ff8b] to-transparent rounded-2xl h-56 md:h-80 flex items-center justify-center relative"><div class="absolute w-32 h-32 rounded-full bg-green-500/40"></div><img src="https://placehold.co/140x350/afff76/green?text=KIWI" class="relative h-4/5 object-contain"></div><h2 class="font-bold text-xs md:text-sm mt-4">KIWI STRAWBERRY</h2><p class="text-xs mt-2">$36.00</p><span class="block text-xs underline mt-3">View product →</span></a>
+<a href="details.html" class="text-center"><div class="bg-gradient-to-b from-[#fff28c] to-transparent rounded-2xl h-56 md:h-80 flex items-center justify-center relative"><div class="absolute w-32 h-32 rounded-full bg-orange-400/40"></div><img src="https://placehold.co/140x350/fff36b/orange?text=TROPICAL" class="relative h-4/5 object-contain"></div><h2 class="font-bold text-xs md:text-sm mt-4">TROPICAL CRUSH</h2><p class="text-xs mt-2">$36.00</p><span class="block text-xs underline mt-3">View product →</span></a>
+<a href="details.html" class="text-center"><div class="bg-gradient-to-b from-[#ffb6d6] to-transparent rounded-2xl h-56 md:h-80 flex items-center justify-center relative"><div class="absolute w-32 h-32 rounded-full bg-pink-500/40"></div><img src="https://placehold.co/140x350/ffb2df/pink?text=WATERMELON" class="relative h-4/5 object-contain"></div><h2 class="font-bold text-xs md:text-sm mt-4">WATERMELON LIME</h2><p class="text-xs mt-2">$36.00</p><span class="block text-xs underline mt-3">View product →</span></a>
+</div>
 </main>
-<footer class="border-t px-4 py-10 text-xs flex justify-between"><a href="index.html" class="font-bold text-xl">STORE.</a><a href="details.html" data-i="contact"></a><span>© 2026 STORE.</span></footer>
-<script>
-const T={pt:{announce:'Frete grátis em pedidos selecionados',home:'Início',shop:'Loja',title:'Todos os produtos',intro:'Encontre seus novos favoritos.',all:'Todos',women:'Feminino',men:'Masculino',shoes:'Calçados',accessories:'Acessórios',empty:'Nenhum produto encontrado.',contact:'Contato'},en:{announce:'Free shipping on selected orders',home:'Home',shop:'Shop',title:'All Products',intro:'Find your new favorites.',all:'All',women:'Women',men:'Men',shoes:'Shoes',accessories:'Accessories',empty:'No products found.',contact:'Contact'}};
-const P=[['Classic Tee',29.90,'women','https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80'],['Everyday Sneakers',79.90,'shoes','https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80'],['Urban Jacket',119.90,'men','https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80'],['Daily Bag',59.90,'accessories','https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80'],['Essential Shirt',39.90,'men','https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&q=80'],['Street Shoes',89.90,'shoes','https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80'],['Minimal Bag',69.90,'accessories','https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80'],['Basic Top',24.90,'women','https://images.unsplash.com/photo-1551163943-3f6a855d1153?w=600&q=80']];
-let category='all';
-function render(){let a=P.filter(p=>(category==='all'||p[2]===category)&&p[0].toLowerCase().includes(search.value.toLowerCase()));if(sort.value==='low')a.sort((x,y)=>x[1]-y[1]);if(sort.value==='high')a.sort((x,y)=>y[1]-x[1]);products.innerHTML=a.map(p=>{let i=P.indexOf(p);return `<a href="details.html?id=${i}&lang=${l}"><img src="${p[3]}" class="w-full aspect-[3/4] object-cover"><p class="text-xs mt-3">${p[0]}</p><p class="text-xs mt-1">${p[1].toLocaleString(l==='pt'?'pt-BR':'en-US',{style:'currency',currency:l==='pt'?'BRL':'USD'})}</p></a>`}).join('');empty.classList.toggle('hidden',a.length>0)}
-function setLang(x){l=x;localStorage.setItem('store-lang',l);document.documentElement.lang=l==='pt'?'pt-BR':'en';document.querySelectorAll('[data-i]').forEach(e=>e.textContent=T[l][e.dataset.i]||'');lang.value=l;search.placeholder=l==='pt'?'Buscar produtos...':'Search products...';sort.options[0].text=l==='pt'?'Destaques':'Featured';sort.options[1].text=l==='pt'?'Menor preço':'Price: low to high';sort.options[2].text=l==='pt'?'Maior preço':'Price: high to low';render()}
-let l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('store-lang')||(navigator.language.toLowerCase().startsWith('pt')?'pt':'en');setLang(l);lang.onchange=()=>setLang(lang.value);
-</script></body></html>
+<footer class="text-center py-12"><a href="index.html" class="text-4xl font-black italic text-orange-500">juvee.</a></footer>
+</body>
+</html>

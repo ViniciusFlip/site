@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Premium Shopify store design, mobile-first experiences and conversion-focused landing pages.">
+  <title>Shopify Store Design — Your Store, Designed to Sell</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root { --ink:#090909; --paper:#f5f4f1; --accent:#ff3008; --muted:#a7a7a7; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,system-ui,sans-serif; background:var(--ink); color:#fff; }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    .container { width:min(1160px, calc(100% - 48px)); margin-inline:auto; }
+    .accent { color:var(--accent); }
+    .eyebrow { display:flex; align-items:center; gap:10px; text-transform:uppercase; font-size:11px; font-weight:800; letter-spacing:.12em; }
+    .eyebrow:before { content:""; width:30px; height:3px; background:var(--accent); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; padding:0 25px; border-radius:999px; background:var(--accent); color:#fff; font-size:13px; font-weight:800; transition:transform .2s, background .2s; }
+    .btn:hover { transform:translateY(-2px); background:#e92805; }
+    .btn-dark { background:#111; }
+    .btn-dark:hover { background:#333; }
+    .header { height:78px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; gap:9px; font-weight:900; letter-spacing:-.09em; font-size:29px; }
+    .logo-mark { position:relative; display:inline-block; letter-spacing:-.12em; }
+    .logo-mark span { color:var(--accent); }
+    .nav { display:flex; align-items:center; gap:34px; font-size:13px; color:#d4d4d4; }
+    .nav a:hover, .footer-links a:hover { color:var(--accent); }
+    .header-actions { display:flex; align-items:center; gap:18px; }
+    .language { background:transparent; border:0; color:#ddd; font-size:12px; cursor:pointer; }
+    .hero { padding:62px 0 34px; overflow:hidden; position:relative; }
+    .hero:after { content:""; position:absolute; width:520px; height:520px; border:1px solid rgba(255,48,8,.28); border-radius:50%; right:-310px; top:10px; pointer-events:none; }
+    .hero-grid { display:grid; grid-template-columns:.92fr 1.08fr; align-items:center; gap:32px; }
+    h1 { font-size:clamp(43px,6.2vw,76px); line-height:.99; letter-spacing:-.075em; font-weight:800; margin:0 0 22px; max-width:620px; }
+    .hero-copy { color:#c8c8c8; font-size:clamp(16px,1.8vw,20px); line-height:1.5; max-width:440px; margin:0 0 27px; }
+    .trust { display:flex; align-items:center; gap:9px; color:#c9c9c9; font-size:12px; margin-top:18px; }
+    .hero-visual { min-width:0; position:relative; padding:18px 0 12px 24px; }
+    .device-desktop { background:#e9e5df; border:5px solid #292929; border-radius:18px; padding:9px; transform:perspective(1000px) rotateY(-5deg); box-shadow:0 28px 70px #0009; }
+    .browser-bar { height:23px; display:flex; align-items:center; gap:5px; padding:0 8px; }
+    .browser-bar i { width:6px; height:6px; border-radius:50%; background:#aaa; }
+    .store-screen { background:#f6f4ef; color:#111; min-height:300px; overflow:hidden; }
+    .store-nav { display:flex; justify-content:space-between; align-items:center; padding:14px 18px; font-size:10px; font-weight:800; }
+    .store-hero { min-height:220px; padding:25px 22px; display:flex; align-items:center; background:linear-gradient(90deg,rgba(0,0,0,.48),transparent),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85') center/cover; color:white; }
+    .store-hero h3 { font-size:clamp(24px,3vw,38px); line-height:1; letter-spacing:-.06em; max-width:190px; margin:0 0 12px; }
+    .store-hero p { font-size:9px; margin:0 0 15px; }
+    .mini-btn { display:inline-block; border-radius:30px; background:#fff; color:#111; padding:9px 14px; font-size:9px; font-weight:800; }
+    .store-products { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:10px; }
+    .store-products div { height:75px; background:#ddd8cf; border-radius:4px; }
+    .device-phone { position:absolute; width:145px; left:0; bottom:0; border:5px solid #242424; border-radius:24px; padding:5px; background:#111; box-shadow:0 15px 35px #0009; }
+    .phone-screen { border-radius:15px; overflow:hidden; background:#f6f4ef; color:#111; min-height:225px; }
+    .phone-screen .store-nav { padding:11px 8px; font-size:8px; }
+    .phone-screen .store-hero { min-height:165px; padding:13px; }
+    .phone-screen .store-hero h3 { font-size:22px; }
+    .phone-screen .store-hero p { font-size:7px; }
+    .phone-screen .mini-btn { font-size:7px; padding:7px 9px; }
+    .trust-row { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:48px 0 10px; color:#888; border-top:1px solid #292929; margin-top:55px; }
+    .trust-row strong { color:#aaa; font-size:clamp(14px,2vw,20px); letter-spacing:-.04em; }
+    .section-light { background:var(--paper); color:#111; padding:76px 0; }
+    .services-grid { display:grid; grid-template-columns:1.1fr repeat(3,1fr); gap:16px; align-items:stretch; }
+    .section-heading h2 { font-size:clamp(30px,4vw,43px); line-height:1.05; letter-spacing:-.065em; margin:18px 0 15px; }
+    .section-heading p { color:#555; line-height:1.55; max-width:320px; font-size:15px; }
+    .service-card { border:1px solid #d9d7d2; border-radius:14px; padding:24px 20px; min-height:190px; }
+    .service-card i { color:var(--accent); width:30px; height:30px; margin-bottom:20px; }
+    .service-card h3 { font-size:17px; letter-spacing:-.04em; margin:0 0 10px; }
+    .service-card p { font-size:13px; line-height:1.55; color:#555; margin:0; }
+    .process { padding:72px 0; }
+    .process-grid { display:grid; grid-template-columns:1fr 2fr; gap:50px; align-items:center; }
+    .process-grid .section-heading p { color:#aaa; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .step { text-align:center; position:relative; }
+    .step:not(:last-child):after { content:""; position:absolute; height:1px; width:calc(100% - 64px); background:#555; top:25px; left:calc(50% + 42px); }
+    .step-num { width:48px; height:48px; border:2px solid var(--accent); color:var(--accent); border-radius:50%; display:grid; place-items:center; font-size:22px; font-weight:700; margin:0 auto 15px; }
+    .step h3 { margin:0 0 8px; font-size:17px; }
+    .step p { color:#aaa; font-size:13px; line-height:1.5; margin:0; }
+    .work { padding:72px 0; background:var(--paper); color:#111; }
+    .work-grid { display:grid; grid-template-columns:.85fr 2.15fr; gap:30px; align-items:center; }
+    .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .project { border:1px solid #d6d4d0; border-radius:12px; overflow:hidden; background:white; }
+    .project-top { display:flex; justify-content:space-between; padding:12px; font-size:10px; font-weight:800; }
+    .project-image { height:190px; position:relative; display:flex; align-items:flex-end; padding:18px; color:#fff; background-size:cover; background-position:center; }
+    .project-image:before { content:""; position:absolute; inset:0; background:linear-gradient(0deg,#0009,transparent 75%); }
+    .project-image h3 { position:relative; z-index:1; font-size:23px; line-height:1; letter-spacing:-.06em; max-width:140px; margin:0; }
+    .project-bottom { display:flex; justify-content:space-between; align-items:center; padding:11px 12px; font-size:10px; color:#555; }
+    .project-bottom span:last-child { color:var(--accent); font-size:18px; }
+    .project-link { display:block; }
+    .project-link:hover .project-image { filter:brightness(.88); }
+    .cta { padding:58px 0; position:relative; overflow:hidden; }
+    .cta-grid { display:grid; grid-template-columns:1.1fr 1fr auto; gap:35px; align-items:center; }
+    .cta h2 { font-size:clamp(30px,4vw,42px); letter-spacing:-.065em; line-height:1.04; margin:0; }
+    .cta p { color:#bbb; border-left:1px solid var(--accent); padding-left:28px; line-height:1.6; font-size:14px; }
+    footer { border-top:1px solid #292929; padding:25px 0; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .footer-links { display:flex; gap:24px; font-size:12px; color:#bbb; }
+    .copyright { color:#777; font-size:11px; }
+    .mobile-menu { display:none; }
+    @media(max-width:900px) {
+      .hero-grid { grid-template-columns:1fr 1fr; gap:10px; }
+      .services-grid { grid-template-columns:repeat(3,1fr); }
+      .services-grid .section-heading { grid-column:1/-1; }
+      .process-grid,.work-grid { grid-template-columns:1fr; gap:35px; }
+      .cta-grid { grid-template-columns:1fr 1fr; }
+      .cta-grid .btn { grid-column:2; grid-row:1/3; }
+    }
+    @media(max-width:640px) {
+      .container { width:min(100% - 34px, 520px); }
+      .header { height:68px; }
+      .nav { display:none; }
+      .header-actions .btn { min-height:42px; padding:0 15px; font-size:11px; }
+      .language { display:none; }
+      .hero { padding:46px 0 26px; }
+      .hero-grid { grid-template-columns:1fr; }
+      h1 { font-size:clamp(44px,13vw,62px); max-width:500px; }
+      .hero-copy { font-size:16px; max-width:350px; }
+      .hero-visual { margin:15px -8px 0 10px; padding:8px 0 10px 20px; }
+      .device-desktop { transform:none; }
+      .store-screen { min-height:240px; }
+      .store-hero { min-height:175px; }
+      .device-phone { width:112px; left:-3px; }
+      .phone-screen { min-height:180px; }
+      .phone-screen .store-hero { min-height:130px; }
+      .phone-screen .store-hero h3 { font-size:18px; }
+      .trust-row { margin-top:38px; padding-top:25px; display:grid; grid-template-columns:repeat(3,1fr); text-align:center; gap:18px 8px; }
+      .trust-row span:first-child { grid-column:1/-1; }
+      .trust-row strong { font-size:14px; }
+      .section-light,.work { padding:56px 0; }
+      .services-grid { grid-template-columns:1fr; }
+      .services-grid .section-heading { grid-column:auto; margin-bottom:8px; }
+      .service-card { min-height:0; padding:20px; }
+      .service-card i { margin-bottom:12px; }
+      .process { padding:56px 0; }
+      .process-grid { gap:30px; }
+      .steps { gap:10px; }
+      .step:not(:last-child):after { width:calc(100% - 45px); left:calc(50% + 28px); top:21px; }
+      .step-num { width:42px; height:42px; font-size:18px; }
+      .step h3 { font-size:14px; }
+      .step p { font-size:11px; }
+      .projects { grid-template-columns:1fr; }
+      .project-image { height:210px; }
+      .work-grid { gap:28px; }
+      .cta { padding:48px 0; }
+      .cta-grid { grid-template-columns:1fr; gap:15px; }
+      .cta-grid .btn { grid-column:auto; grid-row:auto; justify-self:start; margin-top:8px; }
+      .cta p { padding-left:16px; }
+      .footer-inner { flex-wrap:wrap; }
+      .footer-links { order:3; width:100%; flex-wrap:wrap; gap:15px; }
+      .copyright { margin-left:auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="container header">
+    <a class="logo" href="#" aria-label="VA home"><span class="logo-mark">V<span>A</span></span></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#work" data-i18n="navProjects">Projects</a>
+      <a href="#services" data-i18n="navServices">Services</a>
+      <a href="#process" data-i18n="navAbout">Process</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn" href="#contact"><span data-i18n="start">Start Your Store</span><i data-lucide="arrow-up-right" width="15"></i></a>
+      <button class="language" id="languageToggle" type="button" aria-label="Change language">◎ <span id="languageLabel">EN</span>⌄</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <h1 data-i18n-html="heroTitle">Your Shopify Store,<br><span class="accent">Designed to Sell.</span></h1>
+            <p class="hero-copy" data-i18n="heroText">Premium store design, mobile-first experiences and conversion-focused details to help your business sell with confidence.</p>
+            <a class="btn" href="#contact"><span data-i18n="start">Start Your Store</span><i data-lucide="arrow-right" width="17"></i></a>
+            <div class="trust"><i data-lucide="shield-check" width="19"></i><span data-i18n="trust">Designed for businesses worldwide</span></div>
+          </div>
+          <div class="hero-visual" aria-label="Responsive Shopify store preview">
+            <div class="device-desktop">
+              <div class="browser-bar"><i></i><i></i><i></i></div>
+              <div class="store-screen">
+                <div class="store-nav"><b>MORREN<br>STUDIOS</b><span>SHOP　 ABOUT　 JOURNAL</span><span>⌕　♧</span></div>
+                <div class="store-hero"><div><h3>Modern<br>Living</h3><p>Design for a better tomorrow.</p><span class="mini-btn">Shop now →</span></div></div>
+                <div class="store-products"><div></div><div></div><div></div></div>
+              </div>
+            </div>
+            <div class="device-phone"><div class="phone-screen">
+              <div class="store-nav"><b>MORREN<br>STUDIOS</b><span>☰</span></div>
+              <div class="store-hero"><div><h3>Modern<br>Living</h3><p>Design for a better tomorrow.</p><span class="mini-btn">Shop now →</span></div></div>
+            </div></div>
+          </div>
+        </div>
+        <div class="trust-row">
+          <span data-i18n="trustedWorldwide">Trusted worldwide</span>
+          <strong>shopify</strong><strong>Google</strong><strong>Meta</strong><strong>PayPal</strong><strong>stripe</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light" id="services">
+      <div class="container services-grid">
+        <div class="section-heading">
+          <div class="eyebrow"><span data-i18n="servicesEyebrow">Our services</span></div>
+          <h2 data-i18n-html="servicesTitle">Complete Shopify<br>Design Solutions.</h2>
+          <p data-i18n="servicesText">From concept to launch, we create stores that look exceptional and make buying feel effortless.</p>
+        </div>
+        <article class="service-card"><i data-lucide="monitor"></i><h3 data-i18n="service1Title">Shopify Store Design</h3><p data-i18n="service1Text">A distinctive storefront built around your brand, products and customers.</p></article>
+        <article class="service-card"><i data-lucide="settings-2"></i><h3 data-i18n="service2Title">Customization</h3><p data-i18n="service2Text">Thoughtful improvements to your theme, layout and shopping experience.</p></article>
+        <article class="service-card"><i data-lucide="zap"></i><h3 data-i18n="service3Title">Landing Pages</h3><p data-i18n="service3Text">Focused product and campaign pages designed to turn visits into action.</p></article>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="container process-grid">
+        <div class="section-heading">
+          <div class="eyebrow"><span data-i18n="processEyebrow">Our process</span></div>
+          <h2 data-i18n-html="processTitle">From Idea<br>to <span class="accent">Launch.</span></h2>
+          <p data-i18n="processText">A clear, collaborative process. No unnecessary complexity.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><div class="step-num">1</div><h3 data-i18n="step1Title">Choose</h3><p data-i18n="step1Text">Choose the right direction for your business.</p></article>
+          <article class="step"><div class="step-num">2</div><h3 data-i18n="step2Title">Design</h3><p data-i18n="step2Text">We shape your store around your brand and goals.</p></article>
+          <article class="step"><div class="step-num">3</div><h3 data-i18n="step3Title">Launch</h3><p data-i18n="step3Text">Go live with a store ready for customers.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="container work-grid">
+        <div class="section-heading">
+          <div class="eyebrow"><span data-i18n="workEyebrow">Selected work</span></div>
+          <h2 data-i18n-html="workTitle">Stores with<br><span class="accent">a point of view.</span></h2>
+          <p data-i18n="workText">Explore selected storefront concepts and responsive theme previews.</p>
+          <a class="btn btn-dark" href="https://viniciusflip.github.io/site/e-machine/" target="_blank" rel="noopener"><span data-i18n="viewProjects">View all projects</span><i data-lucide="arrow-up-right" width="15"></i></a>
+        </div>
+        <div class="projects">
+          <a class="project-link" href="https://viniciusflip.github.io/site/e-machine/e-vogue/" target="_blank" rel="noopener">
+            <article class="project"><div class="project-top"><span>e-vogue</span><span>↗</span></div><div class="project-image" style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80')"><h3>Style<br>in motion.</h3></div><div class="project-bottom"><span>Fashion & Apparel</span><span>↗</span></div></article>
+          </a>
+          <a class="project-link" href="https://viniciusflip.github.io/site/e-machine/e-beauty/" target="_blank" rel="noopener">
+            <article class="project"><div class="project-top"><span>e-beauty</span><span>↗</span></div><div class="project-image" style="background-image:url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80')"><h3>Beauty<br>that inspires.</h3></div><div class="project-bottom"><span>Beauty & Care</span><span>↗</span></div></article>
+          </a>
+          <a class="project-link" href="https://viniciusflip.github.io/site/e-machine/e-garden/" target="_blank" rel="noopener">
+            <article class="project"><div class="project-top"><span>e-garden</span><span>↗</span></div><div class="project-image" style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80')"><h3>Make room<br>to grow.</h3></div><div class="project-bottom"><span>Home & Living</span><span>↗</span></div></article>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container cta-grid">
+        <h2 data-i18n-html="ctaTitle">Ready to build your<br>next <span class="accent">Shopify store?</span></h2>
+        <p data-i18n="ctaText">Tell us what you're building. Let's create a store that works harder for your business.</p>
+        <a class="btn" id="contactButton" href="#"><span data-i18n="startProject">Start a project</span><i data-lucide="arrow-right" width="16"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="logo" href="#"><span class="logo-mark">V<span>A</span></span></a>
+      <nav class="footer-links"><a href="#work" data-i18n="navProjects">Projects</a><a href="#services" data-i18n="navServices">Services</a><a href="#process" data-i18n="navAbout">Process</a><a href="#contact" data-i18n="navContact">Contact</a></nav>
+      <span class="copyright">© <span id="year"></span> VA Studio</span>
+    </div>
+  </footer>
+
+  <script>
+    // 1) Add your business email or WhatsApp number here before publishing.
+    const CONTACT_EMAIL = "your@email.com";
+    const WHATSAPP_NUMBER = ""; // Example: 5511999999999 (country code + area code + number)
+
+    const translations = {
+      en: {
+        navProjects:"Projects", navServices:"Services", navAbout:"Process", navContact:"Contact", start:"Start Your Store",
+        heroTitle:'Your Shopify Store,<br><span class="accent">Designed to Sell.</span>',
+        heroText:"Premium store design, mobile-first experiences and conversion-focused details to help your business sell with confidence.",
+        trust:"Designed for businesses worldwide", trustedWorldwide:"Trusted worldwide",
+        servicesEyebrow:"Our services", servicesTitle:"Complete Shopify<br>Design Solutions.",
+        servicesText:"From concept to launch, we create stores that look exceptional and make buying feel effortless.",
+        service1Title:"Shopify Store Design", service1Text:"A distinctive storefront built around your brand, products and customers.",
+        service2Title:"Customization", service2Text:"Thoughtful improvements to your theme, layout and shopping experience.",
+        service3Title:"Landing Pages", service3Text:"Focused product and campaign pages designed to turn visits into action.",
+        processEyebrow:"Our process", processTitle:'From Idea<br>to <span class="accent">Launch.</span>',
+        processText:"A clear, collaborative process. No unnecessary complexity.",
+        step1Title:"Choose", step1Text:"Choose the right direction for your business.", step2Title:"Design", step2Text:"We shape your store around your brand and goals.", step3Title:"Launch", step3Text:"Go live with a store ready for customers.",
+        workEyebrow:"Selected work", workTitle:'Stores with<br><span class="accent">a point of view.</span>',
+        workText:"Explore selected storefront concepts and responsive theme previews.", viewProjects:"View all projects",
+        ctaTitle:'Ready to build your<br>next <span class="accent">Shopify store?</span>',
+        ctaText:"Tell us what you're building. Let's create a store that works harder for your business.", startProject:"Start a project"
+      },
+      pt: {
+        navProjects:"Projetos", navServices:"Serviços", navAbout:"Processo", navContact:"Contato", start:"Comece sua loja",
+        heroTitle:'Sua loja Shopify,<br><span class="accent">feita para vender.</span>',
+        heroText:"Design premium, experiência mobile-first e foco em conversão para sua loja vender com confiança.",
+        trust:"Design para negócios em qualquer lugar", trustedWorldwide:"Confiança sem fronteiras",
+        servicesEyebrow:"Nossos serviços", servicesTitle:"Soluções completas<br>em Shopify.",
+        servicesText:"Do conceito ao lançamento, criamos lojas que valorizam sua marca e facilitam a compra.",
+        service1Title:"Design de loja Shopify", service1Text:"Uma loja exclusiva, construída em torno da sua marca, produtos e clientes.",
+        service2Title:"Customização", service2Text:"Melhorias no tema, layout e experiência de compra da sua loja.",
+        service3Title:"Landing Pages", service3Text:"Páginas de produto e campanha criadas para transformar visitas em ação.",
+        processEyebrow:"Nosso processo", processTitle:'Da ideia<br>ao <span class="accent">lançamento.</span>',
+        processText:"Um processo claro, colaborativo e sem complexidade desnecessária.",
+        step1Title:"Escolher", step1Text:"Definimos a melhor direção para o seu negócio.", step2Title:"Projetar", step2Text:"Criamos sua loja alinhada à marca e aos objetivos.", step3Title:"Lançar", step3Text:"Sua loja no ar, pronta para receber clientes.",
+        workEyebrow:"Projetos selecionados", workTitle:'Lojas com<br><span class="accent">identidade própria.</span>',
+        workText:"Conheça conceitos de lojas e prévias responsivas de temas.", viewProjects:"Ver todos os projetos",
+        ctaTitle:'Pronto para criar sua<br>próxima <span class="accent">loja Shopify?</span>',
+        ctaText:"Conte o que você está construindo. Vamos criar uma loja que trabalhe pelo seu negócio.", startProject:"Iniciar projeto"
+      }
+    };
+
+    let currentLanguage = "en";
+    function setLanguage(language) {
+      currentLanguage = language;
+      document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[language][key]) el.textContent = translations[language][key];
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (translations[language][key]) el.innerHTML = translations[language][key];
+      });
+      document.getElementById("languageLabel").textContent = language.toUpperCase();
+      document.title = language === "pt"
+        ? "Design de Lojas Shopify — Sua loja, feita para vender"
+        : "Shopify Store Design — Your Store, Designed to Sell";
+    }
+
+    // English is default. Brazilian Portuguese is selected automatically for pt-BR visitors.
+    const browserLanguage = (navigator.language || "").toLowerCase();
+    setLanguage(browserLanguage.startsWith("pt") ? "pt" : "en");
+    document.getElementById("languageToggle").addEventListener("click", () => {
+      setLanguage(currentLanguage === "en" ? "pt" : "en");
+    });
+
+    document.getElementById("contactButton").addEventListener("click", event => {
+      event.preventDefault();
+      const subject = encodeURIComponent("Shopify Store Design Project");
+      const body = encodeURIComponent("Hi! I'd like to start a Shopify project.\n\nBusiness / brand:\nProject type:\nBudget range:\nTimeline:\n");
+      if (WHATSAPP_NUMBER.trim()) {
+        const message = encodeURIComponent("Hi! I'd like to start a Shopify project.");
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank", "noopener");
+      } else if (CONTACT_EMAIL !== "your@email.com") {
+        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      } else {
+        alert(currentLanguage === "pt"
+          ? "Configure CONTACT_EMAIL ou WHATSAPP_NUMBER no final do HTML para ativar o contato."
+          : "Set CONTACT_EMAIL or WHATSAPP_NUMBER in the HTML script to activate contact.");
+      }
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    lucide.createIcons();
+  </script>
+</body>
+</html>
